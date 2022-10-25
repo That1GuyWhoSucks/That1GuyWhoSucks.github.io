@@ -1,0 +1,38 @@
+---
+permalink: /voiceassist
+---
+{% include header.html %}
+<p>it does some stuff</p>
+<pre><code>def getaudio(self):
+    id = self.threadnum
+    init_rec = sr.Recognizer()
+    while True:
+        if self.stop:
+            break
+        if self.mode == "mic":
+            if not self.miclock:
+                self.miclock = True
+                print(f"th #{id} listening")
+                with sr.Microphone() as source:
+                    audio_data = init_rec.record(source, duration=4)
+                self.miclock = False
+                print(f"th #{id} calcing")
+                try:
+                    self.trans.append((init_rec.recognize_google(audio_data)).lower())
+                    self.istalking = True
+                except speech_recognition.UnknownValueError:
+                    self.istalking = False
+            else:
+                tim.sleep(0.01)
+        elif self.mode == "email":
+            if not self.gmailock:
+                thing = getmsg()
+                if thing is not None:
+                    self.trans.append(thing.lower())
+                    print("got a thing")
+            tim.sleep(1)
+        elif self.mode == "console" and id == 1:
+            self.trans.append(str(input(": ")).lower())
+        else:
+            tim.sleep(0.1)</code></pre>
+<p>This is the interesting part of the VA, the commands just for keywords and split the text into excecutable chunks. Designed to work from voice commands, texts, or through the console. Multiple threads are used in order to always have the mic being listened to to ensure no audio is missed.</p>
