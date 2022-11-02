@@ -2,7 +2,9 @@
 permalink: /voiceassist
 ---
 {% include header.html %}
-<p>it does some stuff</p>
+<p>This is the listener for my voice assistant. Multiple threads run this function and trade off listening to the mic and reading what was said.
+    If it detects no speach it tells the commands processing threat to check the current commands list and execute commands as needed.
+</p>
 <pre><code>def getaudio(self):
     id = self.threadnum
     init_rec = sr.Recognizer()
@@ -35,4 +37,3 @@ permalink: /voiceassist
             self.trans.append(str(input(": ")).lower())
         else:
             tim.sleep(0.1)</code></pre>
-<p>This is the interesting part of the VA, the commands just for keywords and split the text into excecutable chunks. Designed to work from voice commands, texts, or through the console. Multiple threads are used in order to always have the mic being listened to to ensure no audio is missed.</p>

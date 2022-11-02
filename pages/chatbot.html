@@ -4,18 +4,15 @@ permalink: /chatbot
 {% include header.html %}
 <p>I made a chatbot</p>
 <img src="/assets/pizzamsg.png" alt="">
-<p>Hes not very smart but he slowly learned. He could also use a voice chat and respond through voice</p>
+<p>This is just his speaking function, the listening part is nearly identical to one used in my <a href="/pages/voiceassist.html">Voice assistant.</a>
+    It is used in a discord bot so people can talk to my bot and it can talk back.</p>
 <pre><code>async def speak(self):
 time = tim.perf_counter()
-print(self.backlog)
 self.chat = True
 while self.chat:
-    print("in mian")
     if time < tim.perf_counter() and len(self.backlog) > 0:
-        print("respone")
         gTTS(text=self.backlog.pop(0), lang="en", slow=False).save("respone.mp3")
         self.vc.play(discord.FFmpegPCMAudio("respone.mp3"))
         time = MP3("respone.mp3").info.length + tim.perf_counter()
     else:
         await asyncio.sleep(1)</code></pre>
-<p>This is just his speaking function, the listening part is nearly identical to one used in my <a href="/voiceassist.html">Voice assistant</a></p>

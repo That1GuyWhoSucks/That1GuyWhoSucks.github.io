@@ -56,5 +56,8 @@ code{
     border: 5px solid black;
     background-color: lightslategrey;
 }
+body {
+    margin: 15px;
+}
 .dropdown-content a:hover {background-color: lightsteelblue;}
 .dropdown:hover .dropdown-content {display: block;}
