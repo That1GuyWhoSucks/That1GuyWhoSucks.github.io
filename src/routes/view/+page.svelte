@@ -18,6 +18,7 @@ function GotoCode() {
     goto(`./view/${code}`);
 }
 function GenerateCode() {
+    code = "wasd"
     GotoCode()
 }
 </script>
