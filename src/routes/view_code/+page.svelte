@@ -1,7 +1,7 @@
 <script lang="ts">
 import * as Plotly from "plotly.js";
-import RawResults from '../../../results.json';
-import RawConfigs from '../../../configs.json';
+import RawResults from '../../results.json';
+import RawConfigs from '../../configs.json';
 import * as LZString from "lz-string"
 import type { Config, IndividualGraphTypes, GroupGraphTypes, IndividualStatistics, Results } from "$lib/index";
 let Configs: Config[] = RawConfigs;

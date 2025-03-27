@@ -15,7 +15,7 @@ let SelectedConfigs: {[key: string]: boolean} = {};
 let SelectedIndivdualGraphs: {[key: string]: boolean} = {};
 let SelectedGroupGraphs: {[key: string]: boolean} = {};
 function GotoCode() {
-    goto(`./view/${code}`);
+    goto(`./view_code?code=${code}`);
 }
 function GenerateCode() {
     code = "wasd"
