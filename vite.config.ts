@@ -14,5 +14,6 @@ export default defineConfig({
 			global: 'globalThis'
 		  }
 		}
-	  }
+	  },
+	  base: "/That1GuyWhoSucks.github.io/"
 });
