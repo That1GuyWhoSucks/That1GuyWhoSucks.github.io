@@ -3,7 +3,8 @@ import * as Plotly from "plotly.js";
 import RawResults from '../../results.json';
 import RawConfigs from '../../configs.json';
 import * as LZString from "lz-string"
-import type { Config, IndividualGraphTypes, GroupGraphTypes, IndividualStatistics, Results } from "$lib/index";
+import { type Config, IndividualGraphTypes, GroupGraphTypes, type IndividualStatistics, type Results, ShipData } from "$lib/index";
+import { goto } from "$app/navigation";
 let Configs: Config[] = RawConfigs;
 Configs = Configs.filter((config: Config) => {
     return config.outputName in RawResults
@@ -103,44 +104,6 @@ async function loadData() {
         }
     })
     spweapon_data = spareDic
-}
-
-
-class ShipData {
-    data: IndividualStatistics[];
-    name: string;
-    constructor(name: string) {
-        this.data = [];
-        this.name = name;
-    }
-
-    addTest(test: IndividualStatistics) {
-        this.data.push(test);
-    }
-
-    totalDmg() {
-        return this.data.map((test) => test.DMG + test.DoT)
-    }
-
-    AADmg() {
-        return this.data.map((test) => test.AA)
-    }
-
-    pureDmg() {
-        return this.data.map((test) => test.DMG)
-    }
-
-    DoTDmg() {
-        return this.data.map((test) => test.DoT)
-    }
-
-    HealthRemaining() {
-        return this.data.map((test) => test.Remaing_HP / 100.0)
-    }
-
-    length() {
-        return this.data.length
-    }
 }
 
 class Ship {
@@ -280,6 +243,7 @@ class Ship {
 async function process_fleet(config: Config, index: number, total: number) {
     const key: string = config.outputName;
     console.log("Parsing string: ", config.fleetBuilderLink.split("?AFLD=")[1])
+    console.log("Parsed: ", LZString.decompressFromEncodedURIComponent(config.fleetBuilderLink.split("?AFLD=")[1]))
     let fleet = JSON.parse(LZString.decompressFromEncodedURIComponent(config.fleetBuilderLink.split("?AFLD=")[1]).split("!")[0])
     if (fleet.length == 1) {
         fleet = fleet[0]
@@ -340,326 +304,38 @@ function generate_config_plots(config: Config, index: number, total: number) {
     });
 
     ship_data = Object.fromEntries(Object.entries(ship_data).sort(([a, _], [b, __]) => a.localeCompare(b)));
-
-    function plot1() {
-        const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
-            return {
-                y: val.pureDmg(),
-                name: val.name,
-                boxpoints: "outliers",
-                type: "box",
-            }
-        });
-        return Plotly.newPlot(document.createElement("div"), D, {
-            title: {
-                text: "Pure dmg"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        })
-    }
-    function plot2() {
-        const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
-            return {
-                y: val.AADmg(),
-                name: val.name,
-                boxpoints: "outliers",
-                type: "box",
-            }
-        });
-        return Plotly.newPlot(document.createElement("div"), D, {
-            title: {
-                text: "AA dmg"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        })
-    }
-    function plot3() {
-        const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
-            return {
-                y: val.DoTDmg(),
-                name: val.name,
-                boxpoints: "outliers",
-                type: "box",
-            }
-        });
-        return Plotly.newPlot(document.createElement("div"), D, {
-            title: {
-                text: "DoT dmg"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        })
-    }
-    function plot4() {
-        const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
-            return {
-                y: val.totalDmg(),
-                name: val.name,
-                boxpoints: "outliers",
-                type: "box",
-            }
-        });
-        return Plotly.newPlot(document.createElement("div"), D, {
-            title: {
-                text: "Surface dmg"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        })
-    }
-    function plot5() {
-        const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
-            return {
-                y: val.HealthRemaining(),
-                name: val.name,
-                boxpoints: "outliers",
-                type: "box",
-            }
-        });
-        return Plotly.newPlot(document.createElement("div"), D, {
-            title: {
-                text: "Remaining hp%"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        })
-    }
-    function plot6() {
-        let min: number;
-        let max: number;
-        data[key].forEach((attempt) => {
-            Object.values(attempt.Timed_Damage).forEach((k) => {
-                Object.keys(k).forEach((time) => {
-                    let ntime: number = Number(time);
-                    if (min == null || ntime < min) {
-                        min = ntime;
-                    }
-                    if (max == null || ntime > max) {
-                        max = ntime;
-                    }
-                })
-            })
-        });
-        const D: Plotly.Data[] = Object.values(ship_data).map((ship) => {
-            let record: Record<number, number> = {};
-            for (let i=0; i<data[key].length; i++) {
-                for (let time=min; time<=max; time++) {
-                    if (record[time] == null) {
-                        record[time] = 0;
-                    }
-                    if (data[key][i].Timed_Damage[ship.name][String(time)] != null) {
-                        record[time] += data[key][i].Timed_Damage[ship.name][time];
-                    }
-                }
-            }
-            for (let time=min; time<=max; time++) {
-                record[time] = record[time] / data[key].length;
-            }
-
-            return {
-                x: Object.keys(record),
-                y: Object.values(record),
-                name: ship.name,
-                type: "bar"
-            }
-        });
+    return SelectedIndividualGraphTypes.map((graph) => {
+        console.log(graph)
         // @ts-ignore
-        return Plotly.newPlot(document.createElement("div"), D, {
-            title: {
-                text: "Average attempt"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {
-                fixedrange: true,
-                dtick: 1,
-                rotation: 90
-            },
-            barmode: "stack",
-            width: 1800,
-            height: 600,
-        })
-    }
-    function plot7() {
-        let bucks: Record<number, number> = {}
-        data[key].forEach((res) => {
-            if (!(Math.floor(res.Battle_Length) in bucks)) {
-                bucks[Math.floor(res.Battle_Length)] = 0
-            }
-            bucks[Math.floor(res.Battle_Length)] += 1
-        })
-        return Plotly.newPlot(document.createElement("div"), [{
-            x: Object.keys(bucks),
-            y: Object.values(bucks),
-            type: "bar"
-        }], {
-            title: {
-                text: "Attempt length"
-            },
-            yaxis: {
-                fixedrange: true,
-                autorange: true,
-                dtick: 1
-            },
-            xaxis: {
-                fixedrange: true,
-                dtick: 1,
-                autorange: true
-            },
-        });
-    }
-    function plot8() {
-        let min: number;
-        let max: number;
-        data[key].forEach((attempt) => {
-            Object.values(attempt.Timed_Damage).forEach((k) => {
-                Object.keys(k).forEach((time) => {
-                    let ntime: number = Number(time);
-                    if (min == null || ntime < min) {
-                        min = ntime;
-                    }
-                    if (max == null || ntime > max) {
-                        max = ntime;
-                    }
-                })
-            })
-        });
-
-        const records: Plotly.Data[][] = data[key].map((res) => {
-            return Object.entries(res.Timed_Damage).sort(([ship, _], [ship2, __]) => ship.localeCompare(ship2)).map(([ship, vals]) => {
-                return {
-                    x: Object.keys(vals).map(k => Number(k)),
-                    y: Object.values(vals),
-                    name: ship,
-                    type: "bar",
-                }
-            })
-        })
-
-        let total_max: number = 0;
-
-
-        records.forEach((rec) => {
-            for (let i = min; i <= max; i++) {
-                let sum = 0;
-                rec.forEach(element => {
-                    // @ts-ignore
-                    const index = element.x.indexOf(i); // Find corresponding x value
-                    if (index !== -1) {
-                        // @ts-ignore
-                        sum += element.y[index]; // Use correct y value
-                    }
-                });
-                if (sum > total_max) {
-                    total_max = sum;
-                }
-            }
-        });
-
-        return records.map((res, i) => {
-            return Plotly.newPlot(document.createElement("div"), res, {
-                title: {
-                    text: `attempt ${i + 1}`
-                },
-                yaxis: {
-                    fixedrange: true,
-                    range: [0, total_max]
-                },
-                xaxis: {
-                    fixedrange: true,
-                    dtick: 1,
-                    range: [min, max]
-                },
-                barmode: "stack",
-                width: 1800,
-                height: 600,
-            })
-        })
-    }
-    return [plot1(), plot2(), plot3(), plot4(), plot5(), plot6(), plot7(), ...plot8()];
+        return IndividualGraphTypes[graph][1](data, key, ship_data)
+    })
 }
 function generate_overall_plots(configs: Config[]) {
-    function plot1() {
-        const D: Plotly.Data[] = configs.map((config) => {
-            return {
-                y: data[config.outputName].map((res) => {
-                    let sum = 0;
-                    Object.values(res.Statistics).forEach((stats) => {
-                        sum += stats.DMG + stats.DoT
-                    })
-                    return sum
-                }),
-                name: config.outputName,
-                boxpoints: "outliers",
-                type: "box"
-            }
-        })
-        return Plotly.newPlot(document.createElement("div"), D, {
-            title: {
-                text: "Comp dmg distr"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        })
-    }
-
-    function plot2() {
-        function getStandardDeviation(array: number[]) {
-            const n = array.length
-            const mean = array.reduce((a, b) => a + b) / n
-            return Math.sqrt(array.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
-        }
-        const D: number[] = configs.map((config) => {
-            return getStandardDeviation(data[config.outputName].map((res) => {
-                let sum = 0;
-                Object.values(res.Statistics).forEach((stats) => {
-                    sum += stats.DMG + stats.DoT
-                })
-                return sum
-            }))
-        })
-        
-        return Plotly.newPlot(document.createElement("div"), [{
-            x: Configs.map(config => config.outputName),
-            y: D,
-            type: "bar"
-        }], {
-            title: {
-                text: "Std dev"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        });
-    }
-    function plot3() {
-        const D: number[] = Configs.map((config) => {
-            return (data[config.outputName].filter((res) => res.Remaining_HP == 0).length / data[config.outputName].length) * 100;
-        });
-        return Plotly.newPlot(document.createElement("div"), [{
-            x: Configs.map(config => config.outputName),
-            y: D,
-            type: "bar"
-        }], {
-            title: {
-                text: "Kill %"
-            },
-            yaxis: {fixedrange: true},
-            xaxis: {fixedrange: true}
-        })
-    }
-
-    return [plot1(), plot2(), plot3()]
+    return SelectedGroupGraphs.map((graph) => {
+        // @ts-ignore
+        return GroupGraphTypes[graph][1](configs, data)
+    })
 }
 
 let PerConfigComponents: Record<string, HTMLElement[]> = {};
 let Container: HTMLElement;
 let GroupContainer: HTMLElement;
+let SelectedConfigs: string[] = [];
+let SelectedIndividualGraphTypes: string[] = []; 
+let SelectedGroupGraphs: string[] = [];
+try {
+    [SelectedConfigs, SelectedIndividualGraphTypes, SelectedGroupGraphs] = LZString.decompressFromEncodedURIComponent(window.location.hash.split("code=")[1]).split("!").map((str) => JSON.parse(str)) 
+    
+} catch (e) {
+    console.log("error decoding code: ", window.location.hash.split("code=")[1], e);
+    goto("#/view")
+}
+console.log(SelectedConfigs, SelectedIndividualGraphTypes, SelectedGroupGraphs);
+Configs = Configs.filter((config) => SelectedConfigs.includes(config.outputName))
 loadData().then(async () => {
-    // Configs = [Configs[0]]
     await Promise.all(Configs.map(async (config, i) => {
-        // PerConfigComponents[config.outputName] = await process_fleet(config, i, Configs.length);
-        PerConfigComponents[config.outputName] = await Promise.all(generate_config_plots(config, i, Configs.length))
+        PerConfigComponents[config.outputName] = [await process_fleet(config, i, Configs.length)];
+        PerConfigComponents[config.outputName].push(...await Promise.all(generate_config_plots(config, i, Configs.length)))
     }));
     Configs.forEach((config) => {
         const div = document.createElement("div");
