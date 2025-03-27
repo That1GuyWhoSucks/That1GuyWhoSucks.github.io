@@ -3,7 +3,7 @@ import * as Plotly from "plotly.js";
 import RawResults from '../../results.json';
 import RawConfigs from '../../configs.json';
 import * as LZString from "lz-string"
-import { type Config, IndividualGraphTypes, GroupGraphTypes, type IndividualStatistics, type Results, ShipData } from "$lib/index";
+import { type Config, IndividualGraphTypes, GroupGraphTypes, type IndividualStatistics, type Results, ShipData, loadDataByID } from "$lib/index";
 import { goto } from "$app/navigation";
 let Configs: Config[] = RawConfigs;
 Configs = Configs.filter((config: Config) => {
@@ -191,10 +191,16 @@ class Ship {
         
         let images: HTMLCanvasElement[] = await Promise.all([this.fetch_or_black("shipicon", this.shipId.split("|")[0])])
 
-        const gear_list = [this.gear1, this.gear2, this.gear3, this.gear4, this.gear5, this.fuckaug]
-        await Promise.all(gear_list.map(async (gear) => {
-            images.push(await this.fetch_or_black(gear == this.fuckaug ? "spweapon" : "equips", gear.split("|")[0]));
-        }));
+        const gear_list = [this.gear1, this.gear2, this.gear3, this.gear4, this.gear5, this.fuckaug];
+        images.push(...await Promise.all(
+            gear_list.map((gear) =>
+                this.fetch_or_black(
+                    gear === this.fuckaug ? "spweapon" : "equips",
+                    gear.split("|")[0]
+                )
+            )
+        ))
+
 
         let texts_top = [`aff ${Number(this.shipId.split("|")[2]) / 100}`]
         let texts_bottom  = [this.shipId.split('|')[1]]
@@ -242,13 +248,14 @@ class Ship {
 
 async function process_fleet(config: Config, index: number, total: number) {
     const key: string = config.outputName;
-    console.log("Parsing string: ", config.fleetBuilderLink.split("?AFLD=")[1])
-    console.log("Parsed: ", LZString.decompressFromEncodedURIComponent(config.fleetBuilderLink.split("?AFLD=")[1]))
-    let fleet = JSON.parse(LZString.decompressFromEncodedURIComponent(config.fleetBuilderLink.split("?AFLD=")[1]).split("!")[0])
+    let fleet: any = loadDataByID(false, decodeURIComponent(config.fleetBuilderLink.split("?AFLD=")[1]))
+    if (typeof fleet == "string") {
+        return createSolidCanvas(71 * 2 * 7, 71 * 3, "black")
+    }
     if (fleet.length == 1) {
         fleet = fleet[0]
     } else {
-        fleet = fleet[Number(key.split(" - fleet ")[-1]) - 1]
+        fleet = fleet[Number(key.split(" - fleet ")[1]) - 1]
     }
 
     let vang_ships: Ship[] = fleet[0].map((v: any[]) => new Ship(v));
@@ -305,7 +312,6 @@ function generate_config_plots(config: Config, index: number, total: number) {
 
     ship_data = Object.fromEntries(Object.entries(ship_data).sort(([a, _], [b, __]) => a.localeCompare(b)));
     return SelectedIndividualGraphTypes.map((graph) => {
-        console.log(graph)
         // @ts-ignore
         return IndividualGraphTypes[graph][1](data, key, ship_data)
     })

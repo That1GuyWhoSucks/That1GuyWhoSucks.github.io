@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@types/crypto-js": "^4.2.2",
 		"@types/plotly.js": "^2.35.2",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
@@ -24,6 +25,7 @@
 	},
 	"dependencies": {
 		"buffer": "^6.0.3",
+		"crypto-js": "^4.2.0",
 		"lz-string": "^1.5.0",
 		"plotly.js": "^3.0.1",
 		"stream-browserify": "^3.0.0",
