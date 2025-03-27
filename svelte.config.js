@@ -13,5 +13,6 @@ export default {
     prerender: {
       entries: ['*'],
     },
+	router: { type: 'hash' }
   }
 };
