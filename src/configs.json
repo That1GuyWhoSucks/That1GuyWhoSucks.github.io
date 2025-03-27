@@ -1,0 +1,238 @@
+[
+  {
+    "ft": {
+      "BB": {
+        "Reload": 1
+      }
+    },
+    "outputName": "hornm3",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgTggGGBowGYCMA2aCCsywaWjCdOZTaMjZc6ZAJgwCIB2AEzfYEMG5UBdOYIhoAOYrTT0sBEqjDDKZWvLi1ZlGtFqTm7TtzD9wNTJPGpJYbMTRyMwiLgyIY6qnUatdAIy49eh4CZqSSJaXBUtZRtlRExldHV0dzgdXRZfPgFcIPDhTAS4PILoyjBwnHLoIOTU3QzDJihNO3zoFoKiyQqMVCiqmm1Pdh9uPn5kfwBCaAA6KsmAM1QvdExEIA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "DD": {
+        "Health": 210,
+        "Firepower": 34,
+        "Torpedo": 32,
+        "AA": 16,
+        "Reload": 9,
+        "Accuracy": 2,
+        "Evasion": 19,
+        "ASW": 13
+      },
+      "CL": {
+        "Health": 80,
+        "Firepower": 35,
+        "Torpedo": 27,
+        "AA": 27,
+        "Reload": 16,
+        "Accuracy": 14,
+        "Evasion": 4,
+        "ASW": 13
+      },
+      "BB": {
+        "Health": 206,
+        "Firepower": 73,
+        "AA": 17,
+        "Reload": 0,
+        "Accuracy": 29,
+        "Evasion": 1
+      },
+      "CV": {
+        "AA": 5
+      }
+    },
+    "outputName": "Hornet META Darjeeling - Double Shell",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEZ2KwNnTQSwHZ9EIKToxos6EAiUgE3Y4EMmF8BdBMCz14letUwFEYfLFwl4YYigi489eoxYcuPdAOC4ssRmAKNJ1AkUQq1CuNHXCGibZx3defA8FJRaW1gKIJCEAGYUcKcSdHkceOhSWi02HVYvfkFkxUp8MHlkJTxCYnzEMOEKV2Y0j3ZMg1xk%2BRRgmLawouIEvDj1ZOQ3NM8efgEsHwBCaAA6JKmwUnDSACMwAGMgA",
+    "attempts": 20,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "DD": {
+        "Health": 210,
+        "Firepower": 34,
+        "Torpedo": 32,
+        "AA": 16,
+        "Reload": 9,
+        "Accuracy": 2,
+        "Evasion": 19,
+        "ASW": 13
+      },
+      "CL": {
+        "Health": 80,
+        "Firepower": 35,
+        "Torpedo": 27,
+        "AA": 27,
+        "Reload": 16,
+        "Accuracy": 14,
+        "Evasion": 4,
+        "ASW": 13
+      },
+      "BB": {
+        "Health": 206,
+        "Firepower": 73,
+        "AA": 17,
+        "Reload": 0,
+        "Accuracy": 29,
+        "Evasion": 1
+      },
+      "CV": {
+        "AA": 5
+      }
+    },
+    "outputName": "Hornet META Darjeeling - Radars",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEZ2KwNnTQSwHZ9EIKToxos6EAiUgE3Y4EMmF8BdBMCz14letUwFEYfLFwl4YYigi489eoxYcuPdAOC4ssRmAKNJ1AkUQq1CuNHXCGibZx3defA8FJRaW1gKIJCEAGYUcKcSdHl8YmFSWi02HQAjL35BZMVKfDB5ZCVpfATEcNhiMOEKV2Y0j3Ysg1xk%2BRRgmM6w4sS4xHKaZOQ3NI5Mnn4BLB8AQmgAOmhSOYAzAFNMFQ2gA",
+    "attempts": 20,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "EN 4 strike fleet",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsjfpoJYDseCE5W0Y0WtCARCQCZtsCGHjCOAugmDVasCElSIYuSdBwNSVWOnzQAzHQbN27brwHBlWWAzC4GmaRVkMUEZfnjwV1eoi0dtu-vuAkoNDBJLdCDyCHplYnRInCJqEhpNVm0AIy99NHh1CjlI5DA4nEJEVVgiPBU8VyZkj04efkEE%2BBtYVTyJYiKiUvLoSo03Wp0GvgEsMYBCaAA6aBJJlgAzeHQl9CA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "chicharon 2 - fleet 1",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBgJghWBOANFFAOCj4TANg7gFnUTFgI1XJOmxkQCIB2AE1bYEN7EcBdRYAMzZUeZLjoFYufDiIV45fLGjFIkFBiZsOXXv3Kk6UcRknSSs4qgUQlcW9TV0t25p248%2BIIY1KnfovBgUFRQlHSodDiqEIzQzizaAEbuesBxynTwOCEYKGEycsi53A6QeMGaiezMSW66XozwWBIB-uZBJWAEVNH4sfFVrikNfGBeIOpwSPnEWOaEqmQUVFOVDInaqV5CYCJ5JohmoovyiiSZMeoJrvUe%2BtiwRofHhVY2dsr9TkOu2xOQXwOVCwPB5eAaRAgsEkHoUOiAwYbW7bfgZGiYHKhNBvDACWDEGHlWi-Gp1VHpZoY6HA0EOTqrOGw1YDSEuLajEieACEEAAdLFucZ2Ek6jggA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "chicharon 2 - fleet 2",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBgJghWBOANFFAOCj4TANg7gFnUTFgI1XJOmxkQCIB2AE1bYEN7EcBdRYAMzZUeZLjoFYufDiIV45fLGjFIkFBiZsOXXv3Kk6UcRknSSs4qgUQlcW9TV0t25p248%2BIIY1KnfovBgUFRQlHSodDiqEIzQzizaAEbuesBxynTwOCEYKGEycsi53A6QeMGaiezMSW66XozwWBIB-uZBJWAEVNH4sfFVrikNfGBeIOpwSPnEWOaEqmQUVFOVDInaqV5CYCJ5JohmoovyiiSZMeoJrvUe%2BtiwRofHhVY2dsr9TkOu2xOQXwOVCwPB5eAaRAgsEkHoUOiAwYbW7bfgZGiYHKhNBvDACWDEGHlWi-Gp1VHpZoY6HA0EOTqrOGw1YDSEuLajEieACEEAAdLFucZ2Ek6jggA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "CV": {
+        "Reload": 0
+      }
+    },
+    "outputName": "hornm4",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgTggGGBowGYCMA2aCCsywaWjCdOZTaMjZc6ZAJgwCIB2AEzfYEMG5UBdOYIhoAOYrTT0sBODFSTS0WsIy1UuEjUWTm7TtzD9wNTJPFy82YmjDK4wiLgyIYlTXUatdAIy49eh4CZqSUQwWnVaSNtrW0RMW3RXdHc4HV0WXz4BXCD1YUxEuwLoSjVosHVndSoglLT2H24swKhFDHzCjpKi8xIKyn6NWu1PXUz-En8AQmgAOmgmKYBjZ2FaRA4gA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "CV": {
+        "Reload": 0
+      }
+    },
+    "outputName": "hornm-2bb",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgTggGGBowGYCMA2aCCsywaWjCdOZTaMjZc6ZAJgwCIB2AEzfYEMG5UBdOYBCbRE0XAhTEYBEqjAAOQsXkRRlanUat2bLgn7gamenFpoTYbMTQKMK3JTK1FJGjRPMdu7nwOGyZHCIYLTitOHWci6ImC7o6uiacJ5eenwCimSiQSFhEZRRGDFx0AnuWl4saQa4wuLymPFwDU3hzpRg4jhd0MJJKTrV-Mi8vACE0AB0vWMstEyoAMYApgBmQA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "BB": {
+        "Reload": 0
+      }
+    },
+    "outputName": "chicharon 3 - fleet 1",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiY5iIoTrT54JbRFZEIBEA7ACZsCGL77DC6AugmDUisCElT4xlAvSxMZlagGZodRMw6duvAULJZYc6mT7YZ0QokNxyCEmWtq19Ta25dd-QSCZQaxLB4GEy4iMooqsRy6KbUTDSu7mwcXkIJ8PQQhKbIYGhUOOgFwQhWVJYuGskpPGU%2BZAmmKEF2LaVgOKVYsYg4BfFVjO6cLABGdQKCWD4gkDDwEvkY5viW9A522U60SbVckz4icOJ5BRDSa%2BXySrBx0Krqw1oHacAGRtYmK2EIstbweDEUh2ahgvYjTx8bxCYB%2BGD0dChShI34QOjNej9JwJZDVfYTN4ZAJ-HKIM7WIolOzIe54J6aUbjOo4BrQJohX6oyidbq9MoDdlDTRcNiE6HTWbCAJiJbnS5-dYA5r3R57bijQ5Cea2OU-CzlbYIZQwHbC1haHTQ-RqT5Ub5mNFKqiAmlge7g-HJK1TWGNaCmbmcnldNpYwW49WjcV6YBoeCqUnu8mSQrFcKwalOelR2q8Vk2132WDKXKp3Dp42ZvqgyoMi0eKG%2Bmb8ACE0AAdOzWwBjUs4dh4IA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "BB": {
+        "Reload": 0
+      }
+    },
+    "outputName": "chicharon 3 - fleet 2",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiY5iIoTrT54JbRFZEIBEA7ACZsCGL77DC6AugmDUisCElT4xlAvSxMZlagGZodRMw6duvAULJZYc6mT7YZ0QokNxyCEmWtq19Ta25dd-QSCZQaxLB4GEy4iMooqsRy6KbUTDSu7mwcXkIJ8PQQhKbIYGhUOOgFwQhWVJYuGskpPGU%2BZAmmKEF2LaVgOKVYsYg4BfFVjO6cLABGdQKCWD4gkDDwEvkY5viW9A522U60SbVckz4icOJ5BRDSa%2BXySrBx0Krqw1oHacAGRtYmK2EIstbweDEUh2ahgvYjTx8bxCYB%2BGD0dChShI34QOjNej9JwJZDVfYTN4ZAJ-HKIM7WIolOzIe54J6aUbjOo4BrQJohX6oyidbq9MoDdlDTRcNiE6HTWbCAJiJbnS5-dYA5r3R57bijQ5Cea2OU-CzlbYIZQwHbC1haHTQ-RqT5Ub5mNFKqiAmlge7g-HJK1TWGNaCmbmcnldNpYwW49WjcV6YBoeCqUnu8mSQrFcKwalOelR2q8Vk2132WDKXKp3Dp42ZvqgyoMi0eKG%2Bmb8ACE0AAdOzWwBjUs4dh4IA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "BB": {
+        "Reload": 0
+      }
+    },
+    "outputName": "chicharon 3 - fleet 3",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiY5iIoTrT54JbRFZEIBEA7ACZsCGL77DC6AugmDUisCElT4xlAvSxMZlagGZodRMw6duvAULJZYc6mT7YZ0QokNxyCEmWtq19Ta25dd-QSCZQaxLB4GEy4iMooqsRy6KbUTDSu7mwcXkIJ8PQQhKbIYGhUOOgFwQhWVJYuGskpPGU%2BZAmmKEF2LaVgOKVYsYg4BfFVjO6cLABGdQKCWD4gkDDwEvkY5viW9A522U60SbVckz4icOJ5BRDSa%2BXySrBx0Krqw1oHacAGRtYmK2EIstbweDEUh2ahgvYjTx8bxCYB%2BGD0dChShI34QOjNej9JwJZDVfYTN4ZAJ-HKIM7WIolOzIe54J6aUbjOo4BrQJohX6oyidbq9MoDdlDTRcNiE6HTWbCAJiJbnS5-dYA5r3R57bijQ5Cea2OU-CzlbYIZQwHbC1haHTQ-RqT5Ub5mNFKqiAmlge7g-HJK1TWGNaCmbmcnldNpYwW49WjcV6YBoeCqUnu8mSQrFcKwalOelR2q8Vk2132WDKXKp3Dp42ZvqgyoMi0eKG%2Bmb8ACE0AAdOzWwBjUs4dh4IA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "CN comps - fleet 1",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBgJghWBOANFFAOCj4TANg1nGRMAdj03MhjCICISATAQyYbadsRwF1FxtYEDAGZI6RABZYufBEIZU8CUOKCo4yJrqM27Dl17BlYWESi4iUmZjlFFyjCbgrN2bc13NOPQ8BLwsO1g8BWCVYVRhFwllLg0IEmh3TwAjfR4%2BRLV8QliUdUccCXEQriJIPBoMek92b0NlRNjUMNDS-I0YjBx4xJRqnQ80%2Bt4wX34YBGQ0WWtcYscyHMdoNwHmVjqDPiiwVHJzeUlpSiLxexc1eK11zY36vmNTDEPLE8KFxAvHQUEVm8QNTuXgMvn8gTaKhapQiUUcXTiKz6yV0w22fmcRHguReM2IZ26KiOFTWgMGunSDQSEGarS%2BdI68NiPSRSXW7AYaJ8xHGUACzmmBWOcwJxCWFBW1BRm0pfCwkESNmsVli83O8DhXyULmwpJqHJBGSMAjMFgwVlOn2%2Bqmc-z1jFYMpGfGA6EEUQoUDyeLVIlgJR1lWSLC2RuUv3hf0FGlFR1KJKqZL0ocMWVWxCkKkZ%2BM%2Bwn9hJWQfZIcN3FG4yocCQ2fllo0sGaqtWiaBd1lwF2%2BxeZuFdYU2owz2IupbDs87aepqOFo%2B6ocNqjrlHHgpzpA4PTEhIyu35HgNFVCJZw%2BR7KG7bTWJx0dnBemTaLSZXXKpTUh75vGeZvTZT-PzrGbgAEIIAAOgSECGAAMyYVAAFMoCAA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "CN comps - fleet 2",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBgJghWBOANFFAOCj4TANg1nGRMAdj03MhjCICISATAQyYbadsRwF1FxtYEDAGZI6RABZYufBEIZU8CUOKCo4yJrqM27Dl17BlYWESi4iUmZjlFFyjCbgrN2bc13NOPQ8BLwsO1g8BWCVYVRhFwllLg0IEmh3TwAjfR4%2BRLV8QliUdUccCXEQriJIPBoMek92b0NlRNjUMNDS-I0YjBx4xJRqnQ80%2Bt4wX34YBGQ0WWtcYscyHMdoNwHmVjqDPiiwVHJzeUlpSiLxexc1eK11zY36vmNTDEPLE8KFxAvHQUEVm8QNTuXgMvn8gTaKhapQiUUcXTiKz6yV0w22fmcRHguReM2IZ26KiOFTWgMGunSDQSEGarS%2BdI68NiPSRSXW7AYaJ8xHGUACzmmBWOcwJxCWFBW1BRm0pfCwkESNmsVli83O8DhXyULmwpJqHJBGSMAjMFgwVlOn2%2Bqmc-z1jFYMpGfGA6EEUQoUDyeLVIlgJR1lWSLC2RuUv3hf0FGlFR1KJKqZL0ocMWVWxCkKkZ%2BM%2Bwn9hJWQfZIcN3FG4yocCQ2fllo0sGaqtWiaBd1lwF2%2BxeZuFdYU2owz2IupbDs87aepqOFo%2B6ocNqjrlHHgpzpA4PTEhIyu35HgNFVCJZw%2BR7KG7bTWJx0dnBemTaLSZXXKpTUh75vGeZvTZT-PzrGbgAEIIAAOgSECGAAMyYVAAFMoCAA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "CN comps - fleet 3",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBgJghWBOANFFAOCj4TANg1nGRMAdj03MhjCICISATAQyYbadsRwF1FxtYEDAGZI6RABZYufBEIZU8CUOKCo4yJrqM27Dl17BlYWESi4iUmZjlFFyjCbgrN2bc13NOPQ8BLwsO1g8BWCVYVRhFwllLg0IEmh3TwAjfR4%2BRLV8QliUdUccCXEQriJIPBoMek92b0NlRNjUMNDS-I0YjBx4xJRqnQ80%2Bt4wX34YBGQ0WWtcYscyHMdoNwHmVjqDPiiwVHJzeUlpSiLxexc1eK11zY36vmNTDEPLE8KFxAvHQUEVm8QNTuXgMvn8gTaKhapQiUUcXTiKz6yV0w22fmcRHguReM2IZ26KiOFTWgMGunSDQSEGarS%2BdI68NiPSRSXW7AYaJ8xHGUACzmmBWOcwJxCWFBW1BRm0pfCwkESNmsVli83O8DhXyULmwpJqHJBGSMAjMFgwVlOn2%2Bqmc-z1jFYMpGfGA6EEUQoUDyeLVIlgJR1lWSLC2RuUv3hf0FGlFR1KJKqZL0ocMWVWxCkKkZ%2BM%2Bwn9hJWQfZIcN3FG4yocCQ2fllo0sGaqtWiaBd1lwF2%2BxeZuFdYU2owz2IupbDs87aepqOFo%2B6ocNqjrlHHgpzpA4PTEhIyu35HgNFVCJZw%2BR7KG7bTWJx0dnBemTaLSZXXKpTUh75vGeZvTZT-PzrGbgAEIIAAOgSECGAAMyYVAAFMoCAA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "CN comps - fleet 4",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBgJghWBOANFFAOCj4TANg1nGRMAdj03MhjCICISATAQyYbadsRwF1FxtYEDAGZI6RABZYufBEIZU8CUOKCo4yJrqM27Dl17BlYWESi4iUmZjlFFyjCbgrN2bc13NOPQ8BLwsO1g8BWCVYVRhFwllLg0IEmh3TwAjfR4%2BRLV8QliUdUccCXEQriJIPBoMek92b0NlRNjUMNDS-I0YjBx4xJRqnQ80%2Bt4wX34YBGQ0WWtcYscyHMdoNwHmVjqDPiiwVHJzeUlpSiLxexc1eK11zY36vmNTDEPLE8KFxAvHQUEVm8QNTuXgMvn8gTaKhapQiUUcXTiKz6yV0w22fmcRHguReM2IZ26KiOFTWgMGunSDQSEGarS%2BdI68NiPSRSXW7AYaJ8xHGUACzmmBWOcwJxCWFBW1BRm0pfCwkESNmsVli83O8DhXyULmwpJqHJBGSMAjMFgwVlOn2%2Bqmc-z1jFYMpGfGA6EEUQoUDyeLVIlgJR1lWSLC2RuUv3hf0FGlFR1KJKqZL0ocMWVWxCkKkZ%2BM%2Bwn9hJWQfZIcN3FG4yocCQ2fllo0sGaqtWiaBd1lwF2%2BxeZuFdYU2owz2IupbDs87aepqOFo%2B6ocNqjrlHHgpzpA4PTEhIyu35HgNFVCJZw%2BR7KG7bTWJx0dnBemTaLSZXXKpTUh75vGeZvTZT-PzrGbgAEIIAAOgSECGAAMyYVAAFMoCAA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  },
+  {
+    "ft": {
+      "CV": {
+        "Reload": 0
+      }
+    },
+    "outputName": "hornm-cv-wich",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4TgdgBgZigWKAaeMCMA2ZYqe1DAJmyyQA4w5k0oBWXYpAIggBN2OBDJlAXSWDwwOHCnSl4tNIjF4kYUmnr1qdBshYcuPDP0G5ajQpkaS5OIsgqJq9QmVU00jTVtbckuvcGh3kMeEIZQhCHJEx4MJhaMKxVLGcNNjcPXQFEaBkyWjjyHKhqDEjqeBkYMBkaaETmZI4AI1S9CGEoRmzcjoK8y3DSksqoapc67U9efjQJgEIoADoh6c4MADM0GBWIIA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "dungeonId": 296270,
+    "const": {}
+  }
+]
