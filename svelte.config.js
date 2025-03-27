@@ -1,16 +1,17 @@
 import adapter from '@sveltejs/adapter-static';
 
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-	kit: {
-		adapter: adapter({
-			fallback: '404.html'
-		}),
-		paths: {
-			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
-		}
-		
-	}
+export default {
+  kit: {
+    adapter: adapter({
+      pages: 'build', // Ensures pages are generated
+      assets: 'build',
+      fallback: 'index.html', // Serves index.html for missing routes
+    }),
+    paths: {
+      base: '/that1guywhosucks.github.io', // Change to your repo name
+    },
+    prerender: {
+      entries: ['*'], // Ensures all pages are generated
+    },
+  }
 };
-
-export default config;

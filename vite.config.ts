@@ -15,5 +15,4 @@ export default defineConfig({
 		  }
 		}
 	  },
-	  base: "/That1GuyWhoSucks.github.io/"
 });
