@@ -8,7 +8,7 @@ export default {
       fallback: 'index.html',
     }),
     paths: {
-      base: '/That1GuyWhoSucks.github.io', // Set to match GitHub Pages repo name
+      base: './', // Set to match GitHub Pages repo name
     },
     prerender: {
       entries: ['*'],
