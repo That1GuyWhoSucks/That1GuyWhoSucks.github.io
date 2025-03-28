@@ -51,13 +51,12 @@ let SelectedIndividualGraphTypes: string[] = [];
 let SelectedGroupGraphs: string[] = [];
 let status = 0;
 try {
-    [SelectedConfigs, SelectedIndividualGraphTypes, SelectedGroupGraphs] = LZString.decompressFromEncodedURIComponent(code).split("!").map((str) => JSON.parse(str)) 
-    
+    [SelectedConfigs, SelectedIndividualGraphTypes, SelectedGroupGraphs] = LZString.decompressFromEncodedURIComponent(code).split("!").map((str) => JSON.parse(str));
 } catch (e) {
     console.log("error decoding code: ", code, e);
     status = 3;
 }
-
+Configs = Configs.filter((config) => SelectedConfigs.includes(config.outputName));
 if (status === 0) {
     let imageManager = new ImageLoader();
     try {
