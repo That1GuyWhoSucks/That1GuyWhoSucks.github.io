@@ -496,16 +496,16 @@ function StandTotalDmg(data: Record<string, Results[]>, key: string, ship_data: 
 }
 
 export const IndividualGraphTypes = {
-    Timelines: ["Timlines", Timelines],
-    AvgTimeline: ["Average Timeline", AvgTimeline],
-    SurfaceDmgDist: ["Surface Damage Distribution", SurfaceDmg],
+    LengthOfBattle: ["Length of Battle", AttemptLength],
     DoTDmgDist: ["DoT Damage Distribution", DotDmg],
+    RemainingHP: ["Remaining HP% of Ships", HPRemaining],
     PureDmgDist: ["Pure Damage Distribution", PurDmg],
     AADmgDist: ["AA Damage Distribution", AADmg],
-    LengthOfBattle: ["Length of Battle", AttemptLength],
-    RemainingHP: ["Remaining HP% of Ships", HPRemaining],
+    SurfaceDmgDist: ["Surface Damage Distribution", SurfaceDmg],
+    TotalDmg: ["Total Dmg", TotalDmg],
     StandardizedDmg: ["Standardized Total Damage", StandTotalDmg],
-    TotalDmg: ["Total Dmg", TotalDmg]
+    AvgTimeline: ["Average Timeline", AvgTimeline],
+    Timelines: ["Timlines", Timelines],
 }
 
 function GroupDmgDist(configs: Config[], data: Record<string, Results[]>) {
@@ -594,7 +594,6 @@ const ERROR_DESC = {
 
 export function loadDataByID(noDump = false, string: string) {
     let raw_data = string;
-    let c_formation;
     if (!raw_data.length) {
         return ERROR_DESC["no_data"]
     }

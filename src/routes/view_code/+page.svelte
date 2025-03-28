@@ -49,63 +49,84 @@ let GroupContainer: HTMLElement;
 let SelectedConfigs: string[] = [];
 let SelectedIndividualGraphTypes: string[] = []; 
 let SelectedGroupGraphs: string[] = [];
+let status = 0;
 try {
     [SelectedConfigs, SelectedIndividualGraphTypes, SelectedGroupGraphs] = LZString.decompressFromEncodedURIComponent(code).split("!").map((str) => JSON.parse(str)) 
     
 } catch (e) {
     console.log("error decoding code: ", code, e);
-    goto("#/view")
+    status = 3;
 }
-console.log(SelectedConfigs, SelectedIndividualGraphTypes, SelectedGroupGraphs);
-Configs = Configs.filter((config) => SelectedConfigs.includes(config.outputName));
-let complete = false;
-let imageManager = new ImageLoader();
-imageManager.init().then(async () => {
-    await Promise.all(Configs.map(async (config, i) => {
-        PerConfigComponents[config.outputName] = [await process_fleet(config, imageManager)];
-        const pre = document.createElement("pre");
-        pre.textContent = JSON.stringify(config, null, 2);
-        PerConfigComponents[config.outputName].push(pre);
-        PerConfigComponents[config.outputName].push(...await Promise.all(generate_config_plots(config, i, Configs.length)))
-    }));
-    Configs.forEach((config) => {
-        const div = document.createElement("div");
-        const header = document.createElement("h1");
-        header.innerText = config.outputName;
-        
-        mount(Accordian, {
-            target: div,
-            props: {
-                open: true
-            }
-        })
-        div.children[0].children[1].replaceChildren(...PerConfigComponents[config.outputName])
-        div.prepend(header);
-        Container.appendChild(div);
-    });
-    const header = document.createElement("h1");
-    header.innerText = "Group Graphs";
-    mount(Accordian, {
-        target: GroupContainer,
-        props: {
-            open: true
-        }
-    })
-    GroupContainer.children[0].children[1].replaceChildren(...await Promise.all(generate_overall_plots(Configs)));
-    GroupContainer.prepend(header); 
-    complete = true;
-})
 
+if (status === 0) {
+    let imageManager = new ImageLoader();
+    try {
+        imageManager.init().then(async () => {
+            await Promise.all(Configs.map(async (config, i) => {
+                PerConfigComponents[config.outputName] = [] //[await process_fleet(config, imageManager)];
+                const pre = document.createElement("pre");
+                pre.textContent = JSON.stringify(config, null, 2);
+                PerConfigComponents[config.outputName].push(pre, ...await Promise.all(generate_config_plots(config, i, Configs.length)))
+            }));
+            Configs.forEach((config) => {
+                const div = document.createElement("div");
+                const header = document.createElement("h1");
+                header.innerText = config.outputName;
+                
+                mount(Accordian, {
+                    target: div,
+                    props: {
+                        open: true
+                    }
+                });
+                div.children[0].children[1].replaceChildren(...PerConfigComponents[config.outputName])
+                div.prepend(header);
+                Container.appendChild(div);
+            });
+            if (SelectedGroupGraphs.length > 0) {
+                const header = document.createElement("h1");
+                header.innerText = "Group Graphs";
+                mount(Accordian, {
+                    target: GroupContainer,
+                    props: {
+                        open: true
+                    }
+                })
+                GroupContainer.children[0].children[1].replaceChildren(...await Promise.all(generate_overall_plots(Configs)));
+                GroupContainer.prepend(header); 
+                
+            }
+            status = 1;
+        })
+    } catch (e) {
+        console.log("Error is: ", e);
+        status = 2;
+    }
+}
 </script>
 <div bind:this={Container}></div>
 <div bind:this={GroupContainer}></div>
-{#if !complete && !(code === "NoXQhKEkA")}
-    <p>If you are seeing this there is 3 possibilities</p>
-    <p>1. The graphs are loading. This is the most probable. The more graphs you want and the more configs there are the longer this will take.</p>
-    <p>2. The tool broke loading. Eventually I'll add catches in the code but I'm a bad dev so it might be a while</p>
-    <p>3. You entered a bad code. Again eventually I'll add catches to see that but for now see the previous point</p>
+{#if status === 0 && !(code === "NoXQhKEkA")}
+    <h1>Loading...</h1>
+{/if}
+{#if status === 2}
+    <h1>ERROR!</h1>
+    <p>If you know what the console is check that, otherwise just yell @That1Nerd on discord</p>
+    <button on:click={function () {
+        goto("#/view")
+    }}>Go back</button>
+{/if}
+{#if status === 3}
+    <h1>Yo dawg, your code is invalid</h1>
+    <p>If you think this is an error yell @That1Nerd on discord</p>
+    <button on:click={function () {
+        goto("#/view")
+    }}>Go back</button>
 {/if}
 {#if code === "NoXQhKEkA" }
     <p>You entered the code that generates nothing.</p>
     <p>good job</p>
+    <button on:click={function () {
+        goto("#/view")
+    }}>Go back</button>
 {/if}
