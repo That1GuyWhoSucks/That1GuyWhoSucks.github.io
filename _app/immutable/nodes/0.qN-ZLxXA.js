@@ -1,0 +1,1 @@
+import{t as o,a as n}from"../chunks/7iky66cc.js";import"../chunks/DUyifmnE.js";import{s as f,f as i}from"../chunks/Cd_IT3Pj.js";import{s}from"../chunks/B2iQr3VC.js";var m=o('<nav><a href="/">Index</a> <a href="#/create">Create configs</a> <a href="#/view">View data</a></nav> <!>',1);function c(r,t){var a=m(),e=f(i(a),2);s(e,t,"default",{},null),n(r,a)}export{c as component};
