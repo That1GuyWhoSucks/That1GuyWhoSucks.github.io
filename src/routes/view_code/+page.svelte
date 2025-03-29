@@ -62,7 +62,7 @@ if (status === 0) {
     try {
         imageManager.init().then(async () => {
             await Promise.all(Configs.map(async (config, i) => {
-                PerConfigComponents[config.outputName] = [] //[await process_fleet(config, imageManager)];
+                PerConfigComponents[config.outputName] = [await process_fleet(config, imageManager)];
                 const pre = document.createElement("pre");
                 pre.textContent = JSON.stringify(config, null, 2);
                 PerConfigComponents[config.outputName].push(pre, ...await Promise.all(generate_config_plots(config, i, Configs.length)))
