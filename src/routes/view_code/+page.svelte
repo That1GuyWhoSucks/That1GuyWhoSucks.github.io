@@ -65,6 +65,7 @@ if (status === 0) {
                 PerConfigComponents[config.outputName] = [await process_fleet(config, imageManager)];
                 const pre = document.createElement("pre");
                 pre.textContent = JSON.stringify(config, null, 2);
+                pre.style = "word-wrap: anywhere; white-space: pre-wrap;"
                 PerConfigComponents[config.outputName].push(pre, ...await Promise.all(generate_config_plots(config, i, Configs.length)))
             }));
             Configs.forEach((config) => {
@@ -80,6 +81,7 @@ if (status === 0) {
                 });
                 div.children[0].children[1].replaceChildren(...PerConfigComponents[config.outputName])
                 div.prepend(header);
+                div.style = "height: 1060px; overflow-y: scroll;"
                 Container.appendChild(div);
             });
             if (SelectedGroupGraphs.length > 0) {
@@ -130,5 +132,12 @@ if (status === 0) {
         }}>Go back</button>
     {/if}
 </div>
-<div bind:this={Container}></div>
-<div bind:this={GroupContainer}></div>
+
+<div bind:this={Container} style="display: flex; 
+        flex-direction: row; 
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden; 
+        min-width: fit-content;"></div>
+<br>
+<div bind:this={GroupContainer} style="width: 1060px; min-width: 1060px;"></div>
