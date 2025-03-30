@@ -1,18 +1,20 @@
 <script>
     export let open = false;
+    export let style = '';
     import { slide } from 'svelte/transition';
     const handleClick = () => open = !open
 </script>
 
 <div class="accordion">
     <div class="header">
-        <div class="text">
-            <slot name="head"></slot>	
+        <div class="text" style="display: ruby; {style}">
+            <slot name="head"></slot>
+            <button on:click={handleClick}>
+                +/-
+            </button>
         </div>
         
-        <button on:click={handleClick}>
-            +/-
-        </button>
+        
     </div>
     
     <div class="details" transition:slide style="{open ? '' : 'display: none;'}">
@@ -27,7 +29,6 @@
     }
     
     div.header {
-        display:flex;
         width:100%;
     }
     

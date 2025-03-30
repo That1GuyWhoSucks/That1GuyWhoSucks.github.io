@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
+
 const ENEMIES = {
     "Hiryuu META": [295015, 296015],
     "Ark Royal META": [295030, 296030],
@@ -141,69 +143,75 @@ function GenerateConfig() {
     }
 };
 </script>
-<embed>
-<title>Welcoem</title>
-<meta name="The Autotester" content="The Autotester&#8482;">
-<meta property="og:image" content="logo.jpg">
-<meta content="https://that1nerd.nagami.moe/" property="og:url" />
-<meta property="og:title" content="The Autotester&#8482;">
-<meta property="og:description" content="Create advanced testing setups for Azur Lane">
-<link rel="icon" type="image" href="logo.jpg">
-<p>The Autotester&#8482; is a tool that extremely accurately replicates AL battle behavior and thus can be used to run mass testing.</p>
-<p>Complete the form below, download the configuration file generated, then send it to @that1nerd on discord to have it run through The Autotester&#8482;</p>
-<p>If you have any questions or want something more specific than can be generated here feel free to contact me @that1nerd on discord. If you want to try something there is a very good chance I can make it happen (with enough time).</p>
-<p>(wut noo I totally didn't have to recreate this page from scratch because svelte is a bitch)</p>
-<button>reset form</button>
-<form>
-    <p>Output Name*<input type="text" required bind:value="{outputName}"></p>
-    <p>The name the simulator uses to store data related to the comp. It is reccomended to make this unqiue as it WILL overrite data if it detects the same name twice.</p>
-    <p>Renhex Link*<input type="url" required bind:value="{renhexLink}"></p>
-    <p>Include the entire URL from the "generate URL" button. Only 1 fleet per link. It will copy gear, affinity, and level. Do not shorten the URL.</p>
-    <input type="range" min="1" max="20" bind:value="{attemptCount}">
-    <p>{attemptCount} attempts</p>
-    {#each (Object.entries(ENEMIES)) as name}
-        <p><input type="radio" name="enemyId" value="{name[1][0]}" bind:group="{enemy}">{name[0]}</p>
-    {/each}
-    <p>Select an enemy ID, this will be the enemy spawned that will be attacked and the base stats used.</p>
-    {#each (Object.entries(ENEMY_MODIFIERS)) as modifiers}
-        <p>{modifiers[0]}: <input type="number" bind:value={EnemyStats[modifiers[1] as keyof typeof EnemyStats]} defaultValue="-1"></p>
-    {/each}
-    {#each ["Default", "Light", "Medium", "Heavy"] as arm, index}
-        <p><input type="radio" name="armorSelection" value="{index}" bind:group="{armor}">{arm}</p>
-    {/each}
-    <p>Enemy stat modifications, values &lt; 0 will use default.</p>
-    {#each Object.entries(ENEMIES) as name}
-        <p><input type="radio" name="dungeonId" value="{name[1][1]}" bind:group="{dungeonId}">{name[0]}</p>
-    {/each}
-    <p>Select a dungeon ID, this will dictate things like movement patterns, attack patterns, and length of fight.</p>
-    <p>Length of fight <input type="number" bind:value={battleLength}> (value &le; 0 will use default length)</p>
-    <table>
-        <tbody>
-            <tr>
-                <th></th>
-                {#each FT_SHIPS as ship}
-                    <th>{ship}</th>
-                {/each}
-            </tr>
-            {#each FT_TECH as tech}
-                <tr>
-                    <th>{tech}</th>
-                    {#each FT_SHIPS as ship}
-                        <th><input type="number" bind:value={FT[`${ship}-${tech}` as keyof typeof FT]} defaultValue="-1"></th>
-                    {/each}
-                </tr>
+<div style="text-align: center;">
+    <p>Complete the form below, download the configuration file generated, then send it to @that1nerd on discord to have it run</p>
+    <p>If you have any questions or want something more specific than can be generated here feel free to contact me @that1nerd on discord. If you want to try something there is a very good chance I can make it happen (with enough time).</p>
+    <form>
+        <div style="border: 1px solid black;">
+            <p>Output Name*<input type="text" required bind:value="{outputName}"></p>
+            <p>The name the simulator uses to store data related to the comp. It is reccomended to make this unqiue as it WILL overrite data if it detects the same name twice.</p>
+        </div>
+        <div style="border: 1px solid black;">
+            <p>Renhex Link*<input type="url" required bind:value="{renhexLink}"></p>
+            <p>Include the entire URL from the "generate URL" button. Only 1 fleet per link. It will copy gear, affinity, and level. Do not shorten the URL.</p>
+        </div>
+        <div style="border: 1px solid black;">
+            <input type="range" min="1" max="20" bind:value="{attemptCount}">
+            <p>{attemptCount} attempts</p>
+        </div>
+        <div style="border: 1px solid black;">
+            {#each (Object.entries(ENEMIES)) as name}
+                <p><input type="radio" name="enemyId" value="{name[1][0]}" bind:group="{enemy}">{name[0]}</p>
             {/each}
-        </tbody>
-    </table>
-    <p>Fleet tech modifications (Values &lt; 0 will use max values at time of running)</p>
+            <p>Select an enemy ID, this will be the enemy spawned that will be attacked and the base stats used.</p>
+        </div>
+        <div style="border: 1px solid black;">
+            {#each (Object.entries(ENEMY_MODIFIERS)) as modifiers}
+                <p>{modifiers[0]}: <input type="number" bind:value={EnemyStats[modifiers[1] as keyof typeof EnemyStats]} defaultValue="-1"></p>
+            {/each}
+            {#each ["Default", "Light", "Medium", "Heavy"] as arm, index}
+                <p><input type="radio" name="armorSelection" value="{index}" bind:group="{armor}">{arm}</p>
+            {/each}
+            <p>Enemy stat modifications, values &lt; 0 will use default.</p>
+        </div>
+        <div style="border: 1px solid black;">
+            {#each Object.entries(ENEMIES) as name}
+                <p><input type="radio" name="dungeonId" value="{name[1][1]}" bind:group="{dungeonId}">{name[0]}</p>
+            {/each}
+            <p>Select a dungeon ID, this will dictate things like movement patterns, attack patterns, and length of fight.</p>
+        </div>
+        <div style="border: 1px solid black;">
+            <p>Length of fight <input type="number" bind:value={battleLength}> (value &le; 0 will use default length)</p>
+        </div>
+        <div style="border: 1px solid black; justify-content: center; display: grid;">
+            <table>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        {#each FT_SHIPS as ship}
+                            <th>{ship}</th>
+                        {/each}
+                    </tr>
+                    {#each FT_TECH as tech}
+                        <tr>
+                            <th>{tech}</th>
+                            {#each FT_SHIPS as ship}
+                                <th><input type="number" bind:value={FT[`${ship}-${tech}` as keyof typeof FT]} defaultValue="-1"></th>
+                            {/each}
+                        </tr>
+                    {/each}
+                </tbody>
+            </table>
+            <p>Fleet tech modifications (Values &lt; 0 will use max values at time of running)</p>
+        </div>
+        <br>
+        <br>
+    </form>
+    <button on:click={GenerateConfig}>Generate configuration file</button>
     <br>
-    <br>
-</form>
-<button on:click={GenerateConfig}>Generate configuration file</button>
-<a id="download"></a>
-<pre>
-    <code id="code"></code>
-</pre>
+    <a id="download"></a>
+    <pre id="code" style="text-align: left; width: 200px; margin: auto;"></pre>
+</div>
 <style>
 tr {
     input {

@@ -121,7 +121,8 @@ function PurDmg(data: Record<string, Results[]>, key: string, ship_data: Record<
             text: "Pure dmg"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     })
 }
 function AADmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
@@ -138,7 +139,8 @@ function AADmg(data: Record<string, Results[]>, key: string, ship_data: Record<s
             text: "AA dmg"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     })
 }
 function DotDmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
@@ -155,7 +157,8 @@ function DotDmg(data: Record<string, Results[]>, key: string, ship_data: Record<
             text: "DoT dmg"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     })
 }
 function SurfaceDmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
@@ -172,7 +175,8 @@ function SurfaceDmg(data: Record<string, Results[]>, key: string, ship_data: Rec
             text: "Surface dmg"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     })
 }
 function HPRemaining(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
@@ -189,7 +193,8 @@ function HPRemaining(data: Record<string, Results[]>, key: string, ship_data: Re
             text: "Remaining hp%"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     })
 }
 function AvgTimeline(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
@@ -272,6 +277,7 @@ function AttemptLength(data: Record<string, Results[]>, key: string, ship_data: 
             dtick: 1,
             autorange: true
         },
+        width: 994,
     });
 }
 function Timelines(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>): Promise<HTMLElement> {
@@ -430,6 +436,7 @@ function TotalDmg(data: Record<string, Results[]>, key: string, ship_data: Recor
             // range: [min, max]
         },
         barmode: "stack",
+        width: 994,
     })
 }
 
@@ -492,6 +499,7 @@ function StandTotalDmg(data: Record<string, Results[]>, key: string, ship_data: 
             // range: [min, max]
         },
         barmode: "stack",
+        width: 994,
     })
 }
 
@@ -528,7 +536,8 @@ function GroupDmgDist(configs: Config[], data: Record<string, Results[]>) {
             text: "Comp dmg distr"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     })
 }
 
@@ -557,7 +566,8 @@ function GroupStdDevDistr(configs: Config[], data: Record<string, Results[]>) {
             text: "Std dev"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     });
 }
 function GroupKillPerc(configs: Config[], data: Record<string, Results[]>) {
@@ -573,7 +583,8 @@ function GroupKillPerc(configs: Config[], data: Record<string, Results[]>) {
             text: "Kill %"
         },
         yaxis: {fixedrange: true},
-        xaxis: {fixedrange: true}
+        xaxis: {fixedrange: true},
+        width: 994,
     })
 }
 

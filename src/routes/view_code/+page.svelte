@@ -103,29 +103,32 @@ if (status === 0) {
     }
 }
 </script>
+<div style="text-align: center;">
+    <h1>Code: {code}</h1>
+    {#if status === 0 && !(code === "NoXQhKEkA")}
+        <h1>Loading...</h1>
+    {/if}
+    {#if status === 2}
+        <h1>ERROR!</h1>
+        <p>If you know what the console is check that, otherwise just yell @that1nerd on discord.</p>
+        <button on:click={function () {
+            goto("#/view")
+        }}>Go back</button>
+    {/if}
+    {#if status === 3}
+        <h1>Your code is invalid.</h1>
+        <p>If you think this is an error yell @that1nerd on discord.</p>
+        <button on:click={function () {
+            goto("#/view")
+        }}>Go back</button>
+    {/if}
+    {#if code === "NoXQhKEkA" }
+        <p>You entered the code that generates nothing.</p>
+        <p>Good job.</p>
+        <button on:click={function () {
+            goto("#/view")
+        }}>Go back</button>
+    {/if}
+</div>
 <div bind:this={Container}></div>
 <div bind:this={GroupContainer}></div>
-{#if status === 0 && !(code === "NoXQhKEkA")}
-    <h1>Loading...</h1>
-{/if}
-{#if status === 2}
-    <h1>ERROR!</h1>
-    <p>If you know what the console is check that, otherwise just yell @That1Nerd on discord</p>
-    <button on:click={function () {
-        goto("#/view")
-    }}>Go back</button>
-{/if}
-{#if status === 3}
-    <h1>Yo dawg, your code is invalid</h1>
-    <p>If you think this is an error yell @That1Nerd on discord</p>
-    <button on:click={function () {
-        goto("#/view")
-    }}>Go back</button>
-{/if}
-{#if code === "NoXQhKEkA" }
-    <p>You entered the code that generates nothing.</p>
-    <p>good job</p>
-    <button on:click={function () {
-        goto("#/view")
-    }}>Go back</button>
-{/if}
