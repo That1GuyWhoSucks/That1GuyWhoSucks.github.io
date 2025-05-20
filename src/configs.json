@@ -234,5 +234,18 @@
     "enemyId": 295270,
     "dungeonId": 296270,
     "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion testing",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsjfpoJYDseS66%2B0AzNFmIgEQkAm77ARgIZMLoBdBOGhgs8JKgzZyBIqVnwws0fUYIWHLr35Dg6KHEQ0aWaNOhViOQvjKJ41Kg2ZtWnDjsF6R2OsUpyZDB5G3llRDxqPBcNNy0vPToqWUDEYNDbBBpYIijiaBj1TS1WROE0eH8adDArDPww41zI8wKi11Kyvm9iHxFkNtNoIkxcRqyFdMpqOliSjh4evUYxCQb%2BGQn5eworM0Z5%2BO1l4SwsNHUTM2MzTJ3yRwLnYuP2RJ8sQ3204hIZ6xZHJ5NpmDpxLrlYBmEg3P4Ar50OwIlH7aAkUSvSGnEQYjHw-YQJHZFDEmgQH5ojGDCGLbq6IRYfqQGDrKSbcaAh7TNFzLFaJa6YSrcTpdljWRNP6KUQqQ78xZQgys4zDCz7KVTBBPMwvTruTzLHyMPz4X4bOT4CIIfJgtT6hI4qjwCRYc3sy3ZFo20GFe20x1C4CVWjGWr1D1S4GtaL%2BhaGhl9YQgFlGSQhaScz1auq8uNvQWCYWiUXp0ZbLl2GXWg750qFvTKtPXNqYSzbKsOX162ked5G5POtNu9BBSNA722v1HbFB5J%2BgKjsUZytekGxmelKEh6rh5f3Zrr9p1rcDpnJ8CGNkriUd6U82YnxU4kXX8tZzW7UU11Sb59BpsJBbdU7y1HV203Pt6V6EB51SJcyzvaMfQ3BUEyLfQjFdd0V09ZCp3BeN%2ByDHcwzqfckMnX1CLeaCBEZeiAEJoAAOnRRjuE4CBOAuEggA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "armor": 1
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {}
   }
 ]
