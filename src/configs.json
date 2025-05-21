@@ -313,5 +313,19 @@
     "enemyModifications": {},
     "dungeonId": 296015,
     "dungeonModifications": {}
+  },
+  {
+    "ft": {
+      "DD": {
+        "Health": 9999
+      }
+    },
+    "outputName": "Pilica 113mm traf test",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZqWsAOJOMSZE3aaDAIgHYATR%2BgI2YENrFUBdRYBKAGZCyNBiw5EeEcVKyKUKkjpMW7Tjz5gAnNogxcgqCImlpuWqiLkpESFBoNV6zN14gI7hLQiCLYDChaAKJ8SFwbKEiIBGUnRjZEzjB3T14oNwBCCAA6CFpMwQAzeiLmOG0gA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {},
+    "dungeonId": 296015,
+    "dungeonModifications": {}
   }
 ]
