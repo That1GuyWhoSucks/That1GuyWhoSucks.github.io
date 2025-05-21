@@ -31,7 +31,8 @@ const ENEMY_MODIFIERS = {
     "FP": "cannon",
     "AVI": "air",
     "TRP": "torpedo",
-    "HIT": "hit"
+    "HIT": "hit",
+    "Hull type": "type"
 };
 const FT_SHIPS = [
     "DD",
@@ -95,7 +96,7 @@ function GenerateConfig() {
         }
     })
     if (armor > 0) {
-        statsCopy["armor"] = armor;
+        statsCopy["armor_type"] = armor;
     }
     let FTCopy: {[key: string]: {[key: string]: number}} = {}
     Object.entries(FT).forEach(([key, value]) => {
