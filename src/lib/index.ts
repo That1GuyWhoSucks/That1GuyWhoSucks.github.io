@@ -533,7 +533,8 @@ function GroupDmgDist(configs: Config[], data: Record<string, Results[]>) {
             }),
             name: config.outputName,
             boxpoints: "outliers",
-            type: "box"
+            type: "box",
+            boxmean: true,
         }
     })
     return Plotly.newPlot(document.createElement("div"), D, {
