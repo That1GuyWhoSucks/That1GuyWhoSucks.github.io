@@ -114,6 +114,7 @@ function PurDmg(data: Record<string, Results[]>, key: string, ship_data: Record<
             name: val.name,
             boxpoints: "outliers",
             type: "box",
+            boxmean: true,
         }
     });
     return Plotly.newPlot(document.createElement("div"), D, {
@@ -132,6 +133,7 @@ function AADmg(data: Record<string, Results[]>, key: string, ship_data: Record<s
             name: val.name,
             boxpoints: "outliers",
             type: "box",
+            boxmean: true,
         }
     });
     return Plotly.newPlot(document.createElement("div"), D, {
@@ -150,6 +152,7 @@ function DotDmg(data: Record<string, Results[]>, key: string, ship_data: Record<
             name: val.name,
             boxpoints: "outliers",
             type: "box",
+            boxmean: true,
         }
     });
     return Plotly.newPlot(document.createElement("div"), D, {
@@ -168,7 +171,7 @@ function SurfaceDmg(data: Record<string, Results[]>, key: string, ship_data: Rec
             name: val.name,
             boxpoints: "outliers",
             type: "box",
-            boxmean: true
+            boxmean: true,
         }
     });
     return Plotly.newPlot(document.createElement("div"), D, {
@@ -187,6 +190,7 @@ function HPRemaining(data: Record<string, Results[]>, key: string, ship_data: Re
             name: val.name,
             boxpoints: "outliers",
             type: "box",
+            boxmean: true,
         }
     });
     return Plotly.newPlot(document.createElement("div"), D, {
