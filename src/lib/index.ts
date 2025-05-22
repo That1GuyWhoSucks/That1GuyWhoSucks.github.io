@@ -168,6 +168,7 @@ function SurfaceDmg(data: Record<string, Results[]>, key: string, ship_data: Rec
             name: val.name,
             boxpoints: "outliers",
             type: "box",
+            boxmean: true
         }
     });
     return Plotly.newPlot(document.createElement("div"), D, {
