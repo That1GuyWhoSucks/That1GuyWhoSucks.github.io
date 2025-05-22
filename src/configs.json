@@ -375,5 +375,152 @@
     "enemyModifications": {},
     "dungeonId": 296015,
     "dungeonModifications": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion med tests - fleet 1",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZUotYAOJOMXE3KaaDAIgHYATJhgIxYEMbFUBdRYAMzQCqYmgxY0SfEWSlpMCHFF4qcWo2ZtO3PsDgBOAxEXJ1sySpnS6K8tIhCoG5kw5dee4HSNKkBGFF-QIgkAQIhaXk8aMo6JRdXBh1efnjFDAN0MnNpVEIkIO4MSlF1JHok5I89SHjcAKLG0Lx82RwKWIh48sRKpJSePigvcGh4MXQkSzyCuTIuymcKzTd3XX4EKHDJiWwKNuJYjKsqZb7V1nXU-V9TdTgLbCtDvFsjikdqFaTrof5vL4MM1gkVwpEYp1Pj1Eq5BmkTH5EFkSMRcq05kUpqoyrDmPCxvVQS0QRj2rEujCfgMasNRpBYBgUNiZmSPuzVEs8doaptoDtkOJpvtZrJ7HgTg4udS1gTDMZ7ujWdY3nYuk48axBl4iIohMiIHMHu1Xs4VEVSgkZfjefoTFJkdk0Y9RWEYLILRBcdamATIIpTAZKC1ja7EAJ3YUWpbev04bS8PTxkyhZhnmHxeKlt8Lq4eRtwL5jJgBA7JLgwKWrO95g4Gdy-ps7s6ng6VVAa1mvuc425tQD-YjkcGW2GIx7o16rbmaQWEOnHaizC62eHI9xJ96Z-GC7qvgajej28oow4t73fQmRjwAIQQAB03RvMDogQMjCAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion med tests - fleet 2",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZUotYAOJOMXE3KaaDAIgHYATJhgIxYEMbFUBdRYAMzQCqYmgxY0SfEWSlpMCHFF4qcWo2ZtO3PsDgBOAxEXJ1sySpnS6K8tIhCoG5kw5dee4HSNKkBGFF-QIgkAQIhaXk8aMo6JRdXBh1efnjFDAN0MnNpVEIkIO4MSlF1JHok5I89SHjcAKLG0Lx82RwKWIh48sRKpJSePigvcGh4MXQkSzyCuTIuymcKzTd3XX4EKHDJiWwKNuJYjKsqZb7V1nXU-V9TdTgLbCtDvFsjikdqFaTrof5vL4MM1gkVwpEYp1Pj1Eq5BmkTH5EFkSMRcq05kUpqoyrDmPCxvVQS0QRj2rEujCfgMasNRpBYBgUNiZmSPuzVEs8doaptoDtkOJpvtZrJ7HgTg4udS1gTDMZ7ujWdY3nYuk48axBl4iIohMiIHMHu1Xs4VEVSgkZfjefoTFJkdk0Y9RWEYLILRBcdamATIIpTAZKC1ja7EAJ3YUWpbev04bS8PTxkyhZhnmHxeKlt8Lq4eRtwL5jJgBA7JLgwKWrO95g4Gdy-ps7s6ng6VVAa1mvuc425tQD-YjkcGW2GIx7o16rbmaQWEOnHaizC62eHI9xJ96Z-GC7qvgajej28oow4t73fQmRjwAIQQAB03RvMDogQMjCAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion med tests - fleet 3",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZUotYAOJOMXE3KaaDAIgHYATJhgIxYEMbFUBdRYAMzQCqYmgxY0SfEWSlpMCHFF4qcWo2ZtO3PsDgBOAxEXJ1sySpnS6K8tIhCoG5kw5dee4HSNKkBGFF-QIgkAQIhaXk8aMo6JRdXBh1efnjFDAN0MnNpVEIkIO4MSlF1JHok5I89SHjcAKLG0Lx82RwKWIh48sRKpJSePigvcGh4MXQkSzyCuTIuymcKzTd3XX4EKHDJiWwKNuJYjKsqZb7V1nXU-V9TdTgLbCtDvFsjikdqFaTrof5vL4MM1gkVwpEYp1Pj1Eq5BmkTH5EFkSMRcq05kUpqoyrDmPCxvVQS0QRj2rEujCfgMasNRpBYBgUNiZmSPuzVEs8doaptoDtkOJpvtZrJ7HgTg4udS1gTDMZ7ujWdY3nYuk48axBl4iIohMiIHMHu1Xs4VEVSgkZfjefoTFJkdk0Y9RWEYLILRBcdamATIIpTAZKC1ja7EAJ3YUWpbev04bS8PTxkyhZhnmHxeKlt8Lq4eRtwL5jJgBA7JLgwKWrO95g4Gdy-ps7s6ng6VVAa1mvuc425tQD-YjkcGW2GIx7o16rbmaQWEOnHaizC62eHI9xJ96Z-GC7qvgajej28oow4t73fQmRjwAIQQAB03RvMDogQMjCAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion med tests - fleet 4",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZUotYAOJOMXE3KaaDAIgHYATJhgIxYEMbFUBdRYAMzQCqYmgxY0SfEWSlpMCHFF4qcWo2ZtO3PsDgBOAxEXJ1sySpnS6K8tIhCoG5kw5dee4HSNKkBGFF-QIgkAQIhaXk8aMo6JRdXBh1efnjFDAN0MnNpVEIkIO4MSlF1JHok5I89SHjcAKLG0Lx82RwKWIh48sRKpJSePigvcGh4MXQkSzyCuTIuymcKzTd3XX4EKHDJiWwKNuJYjKsqZb7V1nXU-V9TdTgLbCtDvFsjikdqFaTrof5vL4MM1gkVwpEYp1Pj1Eq5BmkTH5EFkSMRcq05kUpqoyrDmPCxvVQS0QRj2rEujCfgMasNRpBYBgUNiZmSPuzVEs8doaptoDtkOJpvtZrJ7HgTg4udS1gTDMZ7ujWdY3nYuk48axBl4iIohMiIHMHu1Xs4VEVSgkZfjefoTFJkdk0Y9RWEYLILRBcdamATIIpTAZKC1ja7EAJ3YUWpbev04bS8PTxkyhZhnmHxeKlt8Lq4eRtwL5jJgBA7JLgwKWrO95g4Gdy-ps7s6ng6VVAa1mvuc425tQD-YjkcGW2GIx7o16rbmaQWEOnHaizC62eHI9xJ96Z-GC7qvgajej28oow4t73fQmRjwAIQQAB03RvMDogQMjCAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion heavy testing - fleet 1",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBjAmA2BOANNMtoUQFgKyo6zADg2k0xLPygmnUQCIB2AE1eYCN2BDexWAXUTAAzFEKwSqOjjyICxZJUXk51WhiasuHbrwFCwYYnTDCjGeFAlzYRfI2ukVkcjA0s2HHn36CQw%2BEtsDDsVAOEVUPwlMBiIRho6TU9mb30ReIgFKMRwsMJSaOc4hPUGD080v1FGMGDc%2BAiMQmw0ZtaTGJLE9xTUvV85PxB0UwUUNqxca3kKFScqSDdyz04qoVEjRykQ6fxbcaUF1Ugy5O01gYNzEzMFS1lZuQc5qlckitZdH2H0BITkIxhHRhAVIsQwvBis5MmdPux%2Bj4NplshCMHl0WCitjVKUPn11hlavUMYgWpNyZ1oVQ8b0UlVBGBhsBoIEIPVaNBsnsbHZno44pt8akvoTRqDJJMZDMDq85ME4IsoMKvt90pg2fVTOYphBnLKyVCIHKXMq6QjLj8hBlcMbcpgdZyFE9hNgFBIqBI4QSriz2bJ4JA7U79nzXe67ZAvSq2ITiMFRIhLHyQ7znYq%2BJGING6ZUBozmaygiRaNzHgawC9lFQhXTtF5feLxjspuWUzEFTNqMtkqrCRri3I7rs9aGFIQjSbRz2PBa1YMQORgvVA8aS1yx%2Bi3RgPaocyt6Y3-dZV8HS5vctvM56ege80jgPGIInk%2BNz2n8Bnd1Hb73Y-mhmtFlNXXMsZT5SsBRhWsD3rechAHCBLCwMxrGlEJUPsGZOzeM07x0fsQKHHUcFHD9DXIKd3nNAiAMXdkGKTINQIvcMdyzfc-y0I8eVPFjyLY6891-T5uIfJ8Xz1N8N3ImBrG-bMRJ9K0mX4ABCCAADp4jUgAzZhoF0rhdIAYyAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 317,
+      "dodge": 75,
+      "luck": 50,
+      "speed": 20,
+      "hit": 110,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion heavy testing - fleet 2",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBjAmA2BOANNMtoUQFgKyo6zADg2k0xLPygmnUQCIB2AE1eYCN2BDexWAXUTAAzFEKwSqOjjyICxZJUXk51WhiasuHbrwFCwYYnTDCjGeFAlzYRfI2ukVkcjA0s2HHn36CQw%2BEtsDDsVAOEVUPwlMBiIRho6TU9mb30ReIgFKMRwsMJSaOc4hPUGD080v1FGMGDc%2BAiMQmw0ZtaTGJLE9xTUvV85PxB0UwUUNqxca3kKFScqSDdyz04qoVEjRykQ6fxbcaUF1Ugy5O01gYNzEzMFS1lZuQc5qlckitZdH2H0BITkIxhHRhAVIsQwvBis5MmdPux%2Bj4NplshCMHl0WCitjVKUPn11hlavUMYgWpNyZ1oVQ8b0UlVBGBhsBoIEIPVaNBsnsbHZno44pt8akvoTRqDJJMZDMDq85ME4IsoMKvt90pg2fVTOYphBnLKyVCIHKXMq6QjLj8hBlcMbcpgdZyFE9hNgFBIqBI4QSriz2bJ4JA7U79nzXe67ZAvSq2ITiMFRIhLHyQ7znYq%2BJGING6ZUBozmaygiRaNzHgawC9lFQhXTtF5feLxjspuWUzEFTNqMtkqrCRri3I7rs9aGFIQjSbRz2PBa1YMQORgvVA8aS1yx%2Bi3RgPaocyt6Y3-dZV8HS5vctvM56ege80jgPGIInk%2BNz2n8Bnd1Hb73Y-mhmtFlNXXMsZT5SsBRhWsD3rechAHCBLCwMxrGlEJUPsGZOzeM07x0fsQKHHUcFHD9DXIKd3nNAiAMXdkGKTINQIvcMdyzfc-y0I8eVPFjyLY6891-T5uIfJ8Xz1N8N3ImBrG-bMRJ9K0mX4ABCCAADp4jUgAzZhoF0rhdIAYyAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 317,
+      "dodge": 75,
+      "luck": 50,
+      "speed": 20,
+      "hit": 110,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion heavy testing - fleet 3",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBjAmA2BOANNMtoUQFgKyo6zADg2k0xLPygmnUQCIB2AE1eYCN2BDexWAXUTAAzFEKwSqOjjyICxZJUXk51WhiasuHbrwFCwYYnTDCjGeFAlzYRfI2ukVkcjA0s2HHn36CQw%2BEtsDDsVAOEVUPwlMBiIRho6TU9mb30ReIgFKMRwsMJSaOc4hPUGD080v1FGMGDc%2BAiMQmw0ZtaTGJLE9xTUvV85PxB0UwUUNqxca3kKFScqSDdyz04qoVEjRykQ6fxbcaUF1Ugy5O01gYNzEzMFS1lZuQc5qlckitZdH2H0BITkIxhHRhAVIsQwvBis5MmdPux%2Bj4NplshCMHl0WCitjVKUPn11hlavUMYgWpNyZ1oVQ8b0UlVBGBhsBoIEIPVaNBsnsbHZno44pt8akvoTRqDJJMZDMDq85ME4IsoMKvt90pg2fVTOYphBnLKyVCIHKXMq6QjLj8hBlcMbcpgdZyFE9hNgFBIqBI4QSriz2bJ4JA7U79nzXe67ZAvSq2ITiMFRIhLHyQ7znYq%2BJGING6ZUBozmaygiRaNzHgawC9lFQhXTtF5feLxjspuWUzEFTNqMtkqrCRri3I7rs9aGFIQjSbRz2PBa1YMQORgvVA8aS1yx%2Bi3RgPaocyt6Y3-dZV8HS5vctvM56ege80jgPGIInk%2BNz2n8Bnd1Hb73Y-mhmtFlNXXMsZT5SsBRhWsD3rechAHCBLCwMxrGlEJUPsGZOzeM07x0fsQKHHUcFHD9DXIKd3nNAiAMXdkGKTINQIvcMdyzfc-y0I8eVPFjyLY6891-T5uIfJ8Xz1N8N3ImBrG-bMRJ9K0mX4ABCCAADp4jUgAzZhoF0rhdIAYyAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 317,
+      "dodge": 75,
+      "luck": 50,
+      "speed": 20,
+      "hit": 110,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion heavy testing - fleet 4",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBjAmA2BOANNMtoUQFgKyo6zADg2k0xLPygmnUQCIB2AE1eYCN2BDexWAXUTAAzFEKwSqOjjyICxZJUXk51WhiasuHbrwFCwYYnTDCjGeFAlzYRfI2ukVkcjA0s2HHn36CQw%2BEtsDDsVAOEVUPwlMBiIRho6TU9mb30ReIgFKMRwsMJSaOc4hPUGD080v1FGMGDc%2BAiMQmw0ZtaTGJLE9xTUvV85PxB0UwUUNqxca3kKFScqSDdyz04qoVEjRykQ6fxbcaUF1Ugy5O01gYNzEzMFS1lZuQc5qlckitZdH2H0BITkIxhHRhAVIsQwvBis5MmdPux%2Bj4NplshCMHl0WCitjVKUPn11hlavUMYgWpNyZ1oVQ8b0UlVBGBhsBoIEIPVaNBsnsbHZno44pt8akvoTRqDJJMZDMDq85ME4IsoMKvt90pg2fVTOYphBnLKyVCIHKXMq6QjLj8hBlcMbcpgdZyFE9hNgFBIqBI4QSriz2bJ4JA7U79nzXe67ZAvSq2ITiMFRIhLHyQ7znYq%2BJGING6ZUBozmaygiRaNzHgawC9lFQhXTtF5feLxjspuWUzEFTNqMtkqrCRri3I7rs9aGFIQjSbRz2PBa1YMQORgvVA8aS1yx%2Bi3RgPaocyt6Y3-dZV8HS5vctvM56ege80jgPGIInk%2BNz2n8Bnd1Hb73Y-mhmtFlNXXMsZT5SsBRhWsD3rechAHCBLCwMxrGlEJUPsGZOzeM07x0fsQKHHUcFHD9DXIKd3nNAiAMXdkGKTINQIvcMdyzfc-y0I8eVPFjyLY6891-T5uIfJ8Xz1N8N3ImBrG-bMRJ9K0mX4ABCCAADp4jUgAzZhoF0rhdIAYyAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 317,
+      "dodge": 75,
+      "luck": 50,
+      "speed": 20,
+      "hit": 110,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Lion heavy testing - fleet 5",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4RgBjAmA2BOANNMtoUQFgKyo6zADg2k0xLPygmnUQCIB2AE1eYCN2BDexWAXUTAAzFEKwSqOjjyICxZJUXk51WhiasuHbrwFCwYYnTDCjGeFAlzYRfI2ukVkcjA0s2HHn36CQw%2BEtsDDsVAOEVUPwlMBiIRho6TU9mb30ReIgFKMRwsMJSaOc4hPUGD080v1FGMGDc%2BAiMQmw0ZtaTGJLE9xTUvV85PxB0UwUUNqxca3kKFScqSDdyz04qoVEjRykQ6fxbcaUF1Ugy5O01gYNzEzMFS1lZuQc5qlckitZdH2H0BITkIxhHRhAVIsQwvBis5MmdPux%2Bj4NplshCMHl0WCitjVKUPn11hlavUMYgWpNyZ1oVQ8b0UlVBGBhsBoIEIPVaNBsnsbHZno44pt8akvoTRqDJJMZDMDq85ME4IsoMKvt90pg2fVTOYphBnLKyVCIHKXMq6QjLj8hBlcMbcpgdZyFE9hNgFBIqBI4QSriz2bJ4JA7U79nzXe67ZAvSq2ITiMFRIhLHyQ7znYq%2BJGING6ZUBozmaygiRaNzHgawC9lFQhXTtF5feLxjspuWUzEFTNqMtkqrCRri3I7rs9aGFIQjSbRz2PBa1YMQORgvVA8aS1yx%2Bi3RgPaocyt6Y3-dZV8HS5vctvM56ege80jgPGIInk%2BNz2n8Bnd1Hb73Y-mhmtFlNXXMsZT5SsBRhWsD3rechAHCBLCwMxrGlEJUPsGZOzeM07x0fsQKHHUcFHD9DXIKd3nNAiAMXdkGKTINQIvcMdyzfc-y0I8eVPFjyLY6891-T5uIfJ8Xz1N8N3ImBrG-bMRJ9K0mX4ABCCAADp4jUgAzZhoF0rhdIAYyAA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 317,
+      "dodge": 75,
+      "luck": 50,
+      "speed": 20,
+      "hit": 110,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
   }
 ]

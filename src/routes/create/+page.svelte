@@ -154,7 +154,7 @@ function GenerateConfig() {
         </div>
         <div style="border: 1px solid black;">
             <p>Renhex Link*<input type="url" required bind:value="{renhexLink}"></p>
-            <p>Include the entire URL from the "generate URL" button. Only 1 fleet per link. It will copy gear, affinity, and level. Do not shorten the URL.</p>
+            <p>Include the entire URL from the "generate URL" button. It will copy gear, affinity, and level. Do not shorten the URL.</p>
         </div>
         <div style="border: 1px solid black;">
             <input type="range" min="1" max="20" bind:value="{attemptCount}">
