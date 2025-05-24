@@ -588,5 +588,23 @@
     "dungeonId": 296015,
     "dungeonModifications": {},
     "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Stupid fucking yellow shell",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsjfpoJYDseS66%2B0AzNFmIgEQkAm77ARgIZMI4BdBOGhgs8JKgzZyBIqVnwws0fUYIWHVpx59Bw9FDiIaNLNGnQqxHIXxlEKCFWpUGzNq24de-AUJAqeAksSnJkMHlbIhpYIjxqPHcNTy1ffREZfDDECKi7BFj5aBUk9U0tLz0AtHg6ChdJSPxokzjEBOIStQ9Kqr8hLH8AQmgAOmgSYZwnCABTLyA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "dodge": 75,
+      "luck": 30,
+      "speed": 50,
+      "armor_type": 1,
+      "type": 2,
+      "durability": 9999999
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
   }
 ]
