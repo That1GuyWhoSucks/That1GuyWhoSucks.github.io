@@ -606,5 +606,35 @@
     "dungeonId": 296015,
     "dungeonModifications": {},
     "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "BB JANK",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZqXVrJEAOATkiVghggumgwCIB2AEzfYEMHFUBdRYAGYIgqCSRhRqCfEJowRXAVxM5VekmZF2bLj37BxUCEyRHpmbBfHpcYOdTiLEx43EZNtbAEYs9fA2BTRwosGmR3Z3lnQRhndzVpKA9tDh9-A0VqY0RBMDhCdyczCFsXPCRpWiSUv05uPgEskTN0QsiKAhi4yvDjGs1POt0G3n4oMYBCCAA6E0nvADMOEm8AY0WgA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296270,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {
+      "BB": {
+        "Reload": 0
+      }
+    },
+    "outputName": "CV fleet (revealed)",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEZ2JgNjESwHZ89yEtoisiEAiEgE1bYEMGF8BdBYAMzQsKSmCyEM2SgXooIuYvDBoqwmvSYo2rTtz7BcWWPXGSEmCcXzpV8xVXjxi6uoi07me3geAkoNIgosORBIdCIAihCxOi4VHEuJMKaJNo63gbJyhRg8cgq1raIodz01ORujGleHFy8-LjJ8cGlrRFUNqo48T1JKe41GfU8fFijAITQAHTQJBPsc%2BwhJEA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296270,
+    "dungeonModifications": {},
+    "const": {}
   }
 ]
