@@ -653,5 +653,31 @@
     "dungeonId": 296270,
     "dungeonModifications": {},
     "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "alsus cv ( revealed )",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEZ2LANn1wQn0RVOkS2jGizoQCIB2AEw4EM3POmF8AXQTAYNFojFkEmLNIJFyEFoyzwAzNJrbGrDj158Bw4LjWMwcxrPmFiFXNXjxq9ervbcvRoSdPQJe1gycmCqBDl0NAj0Yhw4gPdEPS4ufiERNA1JfDBiZDBoyOiQhHVYIugyBmT2AzTjERYoWlDSlDDEdRR1cPjqWNcJGuY6-R50wWEsKYBCaAA6ANmIeB58TiA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296270,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "bz cv ( revealed  ) ",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiw47qIR4IqnSJbRjRZ0IBEA7ACYcCGbnnTCOALoJg6KNBgJ0AZlwZsxKbLIVpaBJQQ1iDRKw5ce-ISJ2xGYXI0xykhRRWLV48avXqN93b3wGDhIMQs0A6weIgoYVRaROpY6IrxidDBuszshkZ%2BpnC5GjhgishgcbGI0rDqyMl4afo83ABGvibALOKMkeHkUeUo0tFJ1AluqZ4ZBllCwlj%2BAITQAHQpcxVsBZBAA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296270,
+    "dungeonModifications": {},
+    "const": {}
   }
 ]
