@@ -636,5 +636,22 @@
     "dungeonId": 296270,
     "dungeonModifications": {},
     "const": {}
+  },
+  {
+    "ft": {
+      "BB": {
+        "Reload": 0
+      }
+    },
+    "outputName": "CV fleet (not revealed)",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEZ2JgNjESwHZ89yEtoisiEAiEgE1bYEMGF8BdBYAMzQsKSmCyEM2SgXooIuYvDBoqwmvSYo2rTtz7BcWWPXGSEmCcXzpV8xVXjxi6uoi07me3geAkoNIgosORBIdCIAihCxOi4VHEuJMKaJNo63gbJyhRg8cgq1raIodz01ORujGleHFy8-LjJ8cGlrRFUNqo48T1JKe41GfU8fFijAITQAHTQJBPsc%2BwhJEA",
+    "attempts": 10,
+    "enemyId": 295270,
+    "enemyModifications": {
+      "durability": 9999999
+    },
+    "dungeonId": 296270,
+    "dungeonModifications": {},
+    "const": {}
   }
 ]
