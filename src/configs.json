@@ -769,5 +769,49 @@
     "dungeonId": 296015,
     "dungeonModifications": {},
     "const": {}
+  },
+  {
+    "ft": {
+      "DD": {
+        "Health": 9999
+      },
+      "CL": {
+        "Health": 9999
+      }
+    },
+    "outputName": "Black Shell - Aurora",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEZ2LANn1wSwHZ9EIKToxos6EAiUgE3Y4EMmF8BdBOFpZ4SVBmzUCRRGWoBmGTToNELDuwBG3XgOC4RjMFnyNMJvIWIoIuWfHiz69Rus4ad-Pfri%2BS6dClxEiI0BHlYMNMnCmQ1NlZ3dggefkE0eHk8AOg8YJN0MIZqaJpY1wSk1hTdQTpJWQCgsCLQxAioxixocvj2KpqvEj4%2BAEJoADpoUlGAY3l0KlJOIA",
+    "attempts": 20,
+    "enemyId": 295045,
+    "enemyModifications": {
+      "durability": 3000000,
+      "dodge": 75,
+      "luck": 50
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {
+      "DD": {
+        "Health": 9999
+      },
+      "CL": {
+        "Health": 9999
+      }
+    },
+    "outputName": "Black Shell - Trafalgar",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEZ2LANn1wSwHZ9EIKToxos6EAiUgE3Y4EMmF8BdBOHoBmNEiz5GmCXkLEUEXIgUVEWevUYtWnDjp79BuLLEZgJU7NQJFli6Gvjw1Ghom26uBvgJC4naujo1qhqRGLCsGKSLhTI7mw6HBDegmjwwnhBDkihJOFqBIgxNHFaiZ6sKby%2BdFaBwXh5EugRUcWM6mUJ7JXV-AJYPgCE0AB00KTDEKwAxoqsAKZAA",
+    "attempts": 20,
+    "enemyId": 295045,
+    "enemyModifications": {
+      "durability": 3000000,
+      "dodge": 75,
+      "luck": 50
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
   }
 ]

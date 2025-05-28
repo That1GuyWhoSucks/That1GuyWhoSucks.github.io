@@ -1,8 +1,8 @@
 <script>
-    export let open = false;
-    export let style = '';
-    import { slide } from 'svelte/transition';
-    const handleClick = () => open = !open
+export let open = false;
+export let style = '';
+import { slide } from 'svelte/transition';
+const handleClick = () => open = !open
 </script>
 
 <div class="accordion">
@@ -13,7 +13,6 @@
                 +/-
             </button>
         </div>
-        
         
     </div>
     

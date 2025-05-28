@@ -7,7 +7,7 @@ import { type Config, IndividualGraphTypes, GroupGraphTypes, type Results, ShipD
 import { goto } from "$app/navigation";
 import { mount } from "svelte";
 import Accordian from "../../Accordian.svelte";
-let Configs: Config[] = RawConfigs;
+let Configs: Config[] = RawConfigs as Config[];
 Configs = Configs.filter((config: Config) => {
     return config.outputName in RawResults
 });
@@ -132,7 +132,20 @@ if (status === 0) {
         }}>Go back</button>
     {/if}
 </div>
-
+<Accordian>
+    <h2 slot="head">Tips and extra info</h2>
+    <div slot="details" style="">
+        <p>You can click on elements in legends to disable them in the graph. The graph will automatically scale to the new data.</p>
+        <p>Hover over elements to see their exact value/s. Hovering over annotations will show the time the event occured.</p>
+        <p>Selected Configs: {SelectedConfigs.join(", ")}</p>
+        <p>Selected Individual Graphs: {SelectedIndividualGraphTypes.map((graph) => IndividualGraphTypes[graph as keyof typeof IndividualGraphTypes][0]).join(", ")}</p>
+        <p>Selected Group Graphs: {SelectedGroupGraphs.map((graph) => GroupGraphTypes[graph as keyof typeof GroupGraphTypes][0]).join(", ")}</p>
+    </div>
+</Accordian>
+<div>
+    
+    
+</div>
 <div bind:this={Container} style="display: flex; 
         flex-direction: row; 
         flex-wrap: nowrap;

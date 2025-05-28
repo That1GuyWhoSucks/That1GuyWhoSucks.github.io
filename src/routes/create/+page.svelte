@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
-
+import { goto } from "$app/navigation";
+import Accordian from '../../Accordian.svelte';
 const ENEMIES = {
     "Hiryuu META": [295015, 296015],
     "Ark Royal META": [295030, 296030],
@@ -52,7 +52,7 @@ const FT_SHIPS = [
     "IXS",
     "IXV",
     "IXM",
-]
+];
 const FT_TECH = [
     "Health",
     "Firepower",
@@ -63,7 +63,26 @@ const FT_TECH = [
     "Accuracy",
     "Evasion",
     "ASW",
-]
+];
+const FT_SHIP_GROUP_TO_INDEX = {
+    "DD": 1,
+    "CL": 2,
+    "CA": 3,
+    "BC": 4,
+    "BB": 5,
+    "CVL": 6,
+    "CV": 7,
+    "SS": 8,
+    "BBV": 10,
+    "AR": 12,
+    "BM": 13,
+    "SSV": 17,
+    "CB": 18,
+    "AE": 19,
+    "IXS": 22,
+    "IXV": 23,
+    "IXM": 24
+}
 
 let outputName: string = "";
 let renhexLink: string = "";
@@ -154,17 +173,26 @@ function GenerateConfig() {
         </div>
         <div style="border: 1px solid black;">
             <p>Renhex Link*<input type="url" required bind:value="{renhexLink}"></p>
-            <p>Include the entire URL from the "generate URL" button. It will copy gear, affinity, and level. Do not shorten the URL.</p>
+            <p>Include the entire URL from the "generate URL" button. It will copy gear, affinity, and level. Do not shorten the URL through any means (including the "short URL" option).</p>
         </div>
         <div style="border: 1px solid black;">
             <input type="range" min="1" max="20" bind:value="{attemptCount}">
-            <p>{attemptCount} attempts</p>
+            <p>The number of trials per fleet, more will mean more datapoints but longer to run.</p>
+            <p>{attemptCount} attempts.</p>
         </div>
-        <div style="border: 1px solid black;">
-            {#each (Object.entries(ENEMIES)) as name}
-                <p><input type="radio" name="enemyId" value="{name[1][0]}" bind:group="{enemy}">{name[0]}</p>
-            {/each}
-            <p>Select an enemy ID, this will be the enemy spawned that will be attacked and the base stats used.</p>
+        <div style="border: 1px solid black; display: inline-flex;">
+            <div style="width: fit-content; margin: 0 10px 0 10px;">
+                {#each (Object.entries(ENEMIES)) as name}
+                    <p><input type="radio" name="enemyId" value="{name[1][0]}" bind:group="{enemy}">{name[0]}</p>
+                {/each}
+                <p>Select an enemy ID, this will be the enemy spawned that will be attacked and the base stats used.</p>
+            </div>
+            <div style="width: fit-content; margin: 0 10px 0 10px;">
+                {#each Object.entries(ENEMIES) as name}
+                    <p><input type="radio" name="dungeonId" value="{name[1][1]}" bind:group="{dungeonId}">{name[0]}</p>
+                {/each}
+                <p>Select a dungeon ID, this will dictate things like movement patterns, attack patterns, and length of fight.</p>
+            </div>
         </div>
         <div style="border: 1px solid black;">
             {#each (Object.entries(ENEMY_MODIFIERS)) as modifiers}
@@ -174,12 +202,30 @@ function GenerateConfig() {
                 <p><input type="radio" name="armorSelection" value="{index}" bind:group="{armor}">{arm}</p>
             {/each}
             <p>Enemy stat modifications, values &lt; 0 will use default.</p>
+            <Accordian>
+                <div slot="head">Click here to see the hull type numbers</div>
+                <div slot="details">
+                    <table style="margin: auto;">
+                        <thead>
+                            <tr>
+                                <th>Hull Type</th>
+                                <th>Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {#each Object.entries(FT_SHIP_GROUP_TO_INDEX) as [name, value]}
+                                <tr>
+                                    <td>{name}</td>
+                                    <td>{value}</td>
+                                </tr>
+                            {/each}
+                        </tbody>
+                    </table>
+                </div>
+            </Accordian>
         </div>
         <div style="border: 1px solid black;">
-            {#each Object.entries(ENEMIES) as name}
-                <p><input type="radio" name="dungeonId" value="{name[1][1]}" bind:group="{dungeonId}">{name[0]}</p>
-            {/each}
-            <p>Select a dungeon ID, this will dictate things like movement patterns, attack patterns, and length of fight.</p>
+            
         </div>
         <div style="border: 1px solid black;">
             <p>Length of fight <input type="number" bind:value={battleLength}> (value &le; 0 will use default length)</p>
