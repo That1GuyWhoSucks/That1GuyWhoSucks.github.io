@@ -679,5 +679,95 @@
     "dungeonId": 296270,
     "dungeonModifications": {},
     "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Antilight BB",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiw47qIR4JbzyJbRjRZ0IBEA7ACYecCGTCOAugnC0K%2BVBmzEkhKVhZlRBarXqNWnDgCMefQcGIVGMXBJPSiiFBBZoEV4spoNE6jWx0C9wNPADM1dHQyZDBbXHRbX1hbPGU8Z2Z2Nw89YkoAoLFQ6iJI6MRY8mh4tSSNFKE6bH9yQODxclzqJT5oONUXMu5eT3J%2BfgBCaAA6aBYhlCwAYzYAM1ggA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 1,
+      "armor_type": 1
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Antilight Kear",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsjfpoIR4Jbzz7RjRY0IBEA7ACZvsCGDCOAuguGrlEyMEUxZ0%2BHIXxNSwsAuq16zdmwBGXHv2BZVOCMVqkJCmURQQmRMOillaqxOo3bufPfuhMDch0QAZghcAMdJRxwiAyZqNVZ3HT4BLChoCIdSFFg8ERwZYNg7eyo8OldE9g9dASk4iKZAsiaIy3xm6Ko45EqNFhqvMl5eAEJoADpfUY4IILAmWyA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 1,
+      "armor_type": 1
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Antilight Neko",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiw47qIR4JbzyJbRjRZ0IBEA7ACYecCGTCOAugnC0K%2BVBmzEkhKVhZlRBarXqNWnDgCMefQcGIVGYXI0y58MxCgjErEFmnL1VidRu28Be4CygryLOiygVIQDLJBiDiONCy0auzuOgJCcfCMWEFkyGCOBESIAMyweWCy0HjIromcOBCeesRxwZEBrbjoMa3RynFVzDVayfyCWCMAhNAAdNAs42wQmugAxjiwQA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 1,
+      "armor_type": 1
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Antilight Kear (no cloak)",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsjfpoIR4Jbzz7RjRY0IBEA7ACZvsCGDCOAuguGrlEyMEUxZ0%2BHIXxNSwsAuq16zdmwBGXHv2BZVOCMVqkJCmURQQmRMOillaqxOo3bufPfuhMDch0QAZghcAMdJRxwiAyZqNVZ3HT4BLChoCIdSFFg8ERwZYNg7eyo8OldE9g9dASk4iKZAsiaIy3xm6Ko45EqNFhqvMl5eAEJoADpfUY4IILAmWyA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 1,
+      "armor_type": 1
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "Antilight Neko (no cloak)",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiw47qIR4JbzyJbRjRZ0IBEA7ACYecCGTCOAugnC0K%2BVBmzEkhKVhZlRBarXqNWnDgCMefQcGIVGYXI0y58MxCgjErEFmnL1VidRu28Be4CygryLOiygVIQDLJBiDiONCy0auzuOgJCcfCMWEFkyGCOBESIAMyweWCy0HjIromcOBCeesRxwZEBrbjoMa3RynFVzDVayfyCWCMAhNAAdNAs42wQmugAxjiwQA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 1,
+      "armor_type": 1
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "const": {}
   }
 ]
