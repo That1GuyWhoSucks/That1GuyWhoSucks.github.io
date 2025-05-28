@@ -518,7 +518,7 @@ export const IndividualGraphTypes = {
     TotalDmg: ["Total Dmg", TotalDmg],
     StandardizedDmg: ["Standardized Total Damage", StandTotalDmg],
     AvgTimeline: ["Average Timeline", AvgTimeline],
-    Timelines: ["Timlines", Timelines],
+    Timelines: ["Timelines", Timelines],
 }
 
 function GroupDmgDist(configs: Config[], data: Record<string, Results[]>) {
