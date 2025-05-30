@@ -3,15 +3,19 @@
 import RawResults from '../../results.json';
 import RawConfigs from '../../configs.json';
 import { goto } from '$app/navigation';
-import { TAB_SIZE, GroupGraphTypes, IndividualGraphTypes, ImageLoader, process_fleet } from "$lib/index";
+import { GroupGraphTypes, IndividualGraphTypes, ImageLoader, process_fleet, SEARCH_TYPES, ELEMENTS_PER_ROW, ENEMIES } from "$lib/index";
 import type { Config } from '$lib/index';
 import * as LZString from "lz-string";
 import Accordian from '../../Accordian.svelte';
+
 let Configs: Config[] = RawConfigs as Config[];
 Configs = Configs.filter((config: Config) => {
     return config.outputName in RawResults
 });
-let ConfigNames: string[] = Configs.map((config: Config) => config.outputName)
+let ConfigNames: string[] = Configs.map((config: Config) => config.outputName);
+let ConfigSearchTerm: string = "";
+let ConfigSearchType: keyof typeof SEARCH_TYPES = "Name";
+let CurrentConfigs: string[] = ConfigNames;
 let code: string = "";
 let SelectedConfigs: Record<string, boolean> = {};
 let SelectedIndivdualGraphs: Record<string, boolean> = {};
@@ -35,11 +39,15 @@ function GenerateCode() {
     }`);
     GotoCode()
 }
-const ELEMENTS_PER_ROW = 6; 
-function chunkArray<T>(arr: T[], size: number): T[][] {
+function SortConfigs() {
+    CurrentConfigs = Configs.filter(config => {
+        return SEARCH_TYPES[ConfigSearchType](config, ConfigSearchTerm);
+    }).map(config => config.outputName);
+}
+function Chunk(arr: string[]): string[][] {
     const result = [];
-    for (let i = 0; i < arr.length; i += size) {
-        result.push(arr.slice(i, i + size));
+    for (let i = 0; i < arr.length; i += ELEMENTS_PER_ROW) {
+        result.push(arr.slice(i, i + ELEMENTS_PER_ROW));
     }
     return result;
 }
@@ -112,22 +120,42 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
         </Accordian>
         <p>Configs:</p>
         <p><button on:click={function () {
-            Object.keys(SelectedConfigs).forEach((key) => {
+            CurrentConfigs.forEach((key) => {
                 SelectedConfigs[key] = !SelectedConfigs[key];
             })
         }}>Invert</button><button on:click={function () {
-            Object.keys(SelectedConfigs).forEach((key) => {
+            CurrentConfigs.forEach((key) => {
                 SelectedConfigs[key] = true;
             })
         }}>All</button><button on:click={function () {
-            Object.keys(SelectedConfigs).forEach((key) => {
+            CurrentConfigs.forEach((key) => {
                 SelectedConfigs[key] = false;
             })
         }}>None</button></p>
-
+        <div>
+            <p>Search by: </p>
+            <div style="display: ruby;">
+                {#each Object.keys(SEARCH_TYPES) as type}
+                    <label style="margin-right: 1rem;">
+                        <input type="radio" name="searchType" value={type} bind:group={ConfigSearchType} on:change={() => ConfigSearchTerm = ""}> {type}
+                    </label>
+                {/each}
+            </div>
+        </div>
+        <Accordian>
+            <div slot="head">
+                <p>Click to see enemy and dungeon IDs</p>
+            </div>
+            <div slot="details" style="padding: 1rem;">
+                {#each Object.entries(ENEMIES) as data}
+                    <p>{data[0]} - enemy: {data[1][0]}, dungeon: {data[1][1]}</p>
+                {/each}
+            </div>
+        </Accordian>
+        <p>Search: <input type="text" bind:value={ConfigSearchTerm} on:input={() => SortConfigs()}></p>
         <table style="width: 100%;">
             <tbody>
-                {#each chunkArray(ConfigNames, ELEMENTS_PER_ROW) as row}
+                {#each Chunk(CurrentConfigs) as row}
                     <tr>
                         {#each row as Name}
                             <td style="vertical-align: top; border: 1px solid black;">

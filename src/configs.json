@@ -10,7 +10,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -51,7 +53,9 @@
     "attempts": 20,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -92,7 +96,9 @@
     "attempts": 20,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -101,7 +107,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -110,7 +118,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -119,7 +129,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -132,7 +144,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -145,7 +159,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -158,7 +174,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -171,7 +189,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -184,7 +204,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -193,7 +215,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -202,7 +226,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -211,7 +237,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -220,7 +248,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -233,7 +263,9 @@
     "attempts": 10,
     "enemyId": 295270,
     "dungeonId": 296270,
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -247,7 +279,9 @@
     "enemyId": 295015,
     "enemyModifications": {},
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -261,7 +295,9 @@
     "enemyId": 295015,
     "enemyModifications": {},
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -278,7 +314,9 @@
       "durability": 9999999
     },
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -295,7 +333,9 @@
       "durability": 9999999
     },
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -312,7 +352,9 @@
       "durability": 9999999
     },
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -329,7 +371,9 @@
       "durability": 9999999
     },
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -346,7 +390,9 @@
       "durability": 9999999
     },
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -360,7 +406,9 @@
     "enemyId": 295015,
     "enemyModifications": {},
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -374,7 +422,9 @@
     "enemyId": 295015,
     "enemyModifications": {},
     "dungeonId": 296015,
-    "dungeonModifications": {}
+    "dungeonModifications": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -387,7 +437,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -400,7 +452,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -413,7 +467,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -426,7 +482,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -445,7 +503,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -464,7 +524,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -483,7 +545,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -502,7 +566,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -521,7 +587,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -543,7 +611,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -565,7 +635,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -587,7 +659,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -605,7 +679,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -618,7 +694,9 @@
     },
     "dungeonId": 296270,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -635,7 +713,9 @@
     },
     "dungeonId": 296270,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -652,7 +732,9 @@
     },
     "dungeonId": 296270,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -665,7 +747,9 @@
     },
     "dungeonId": 296270,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -678,7 +762,9 @@
     },
     "dungeonId": 296270,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -696,7 +782,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -714,7 +802,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -732,7 +822,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -750,7 +842,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {},
@@ -768,7 +862,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -790,7 +886,9 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   },
   {
     "ft": {
@@ -812,6 +910,8 @@
     },
     "dungeonId": 296015,
     "dungeonModifications": {},
-    "const": {}
+    "const": {},
+    "author": "",
+    "description": ""
   }
 ]

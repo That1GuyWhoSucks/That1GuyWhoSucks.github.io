@@ -2,6 +2,28 @@ import * as Plotly from "plotly.js";
 import LZString from 'lz-string';
 import CryptoJS from 'crypto-js';
 
+export const ENEMIES = {
+    "Hiryuu META": [295015, 296015],
+    "Ark Royal META": [295030, 296030],
+    "Helena META": [295045, 296045],
+    "Soryuu META": [295060, 296060],
+    "Gneisenau META": [295075, 296075],
+    "Scharnhorst META": [295090, 296090],
+    "Repulse META": [295105, 296105],
+    "Renown META": [295120, 296120],
+    "Arizona META": [295135, 296135],
+    "Queen Elizabeth META": [295150, 296150],
+    "Algérie META": [295165, 296165],
+    "Jintsuu META": [295180, 296180],
+    "Kirov META": [295195, 296195],
+    "Rodney META": [295210, 296210],
+    "Wichita META": [295225, 296225],
+    "Nagato META": [295240, 296240],
+    "Taihou META": [295255, 296255],
+    "Hornet META": [295270, 296270],
+    "Kawakaze META": [-1, -1],
+};
+
 export interface IndividualFleetTech {
     Health?: number
     Firepower?: number
@@ -39,6 +61,8 @@ export interface FleetTech {
 
 export interface Config {
     outputName: string
+    author: string
+    description: string
     fleetBuilderLink: string
     attempts: number
     enemyId: number
@@ -68,7 +92,78 @@ export interface Results {
     History: History
 }
 
-export const TAB_SIZE: number = 40;
+export const ELEMENTS_PER_ROW = 6;
+
+export const SEARCH_TYPES = {
+    "Name": (config: Config, term: string) => config.outputName.toLowerCase().includes(term.toLowerCase()),
+    "Author": (config: Config, term: string) => config.author.toLowerCase().includes(term.toLowerCase()),
+    "Description": (config: Config, term: string) => config.description.toLowerCase().includes(term.toLowerCase()),
+    "Enemy ID": (config: Config, term: string) => config.enemyId.toString().includes(term),
+    "Dungeon ID": (config: Config, term: string) => config.dungeonId.toString().includes(term)
+};
+
+export const ENEMY_MODIFIERS = {
+    "HP": "durability",
+    "AA": "antiaircraft",
+    "EVA": "dodge",
+    "LUCK": "luck",
+    "SPEED": "speed",
+    "RLD": "reload",
+    "FP": "cannon",
+    "AVI": "air",
+    "TRP": "torpedo",
+    "HIT": "hit",
+    "Hull type": "type"
+};
+export const FT_SHIPS = [
+    "DD",
+    "CL",
+    "CA",
+    "BC",
+    "BB",
+    "CVL",
+    "CV",
+    "SS",
+    "BBV",
+    "AR",
+    "BM",
+    "SSV",
+    "CB",
+    "AE",
+    "IXS",
+    "IXV",
+    "IXM",
+];
+export const FT_TECH = [
+    "Health",
+    "Firepower",
+    "Torpedo",
+    "AA",
+    "Aviation",
+    "Reload",
+    "Accuracy",
+    "Evasion",
+    "ASW",
+];
+export const FT_SHIP_GROUP_TO_INDEX = {
+    "DD": 1,
+    "CL": 2,
+    "CA": 3,
+    "BC": 4,
+    "BB": 5,
+    "CVL": 6,
+    "CV": 7,
+    "SS": 8,
+    "BBV": 10,
+    "AR": 12,
+    "BM": 13,
+    "SSV": 17,
+    "CB": 18,
+    "AE": 19,
+    "IXS": 22,
+    "IXV": 23,
+    "IXM": 24
+}
 
 export class ShipData {
     data: IndividualStatistics[];

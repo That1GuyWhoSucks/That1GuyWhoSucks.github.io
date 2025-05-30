@@ -1,6 +1,6 @@
 <script lang="ts">
 import { goto } from "$app/navigation";
-    import Accordian from "../Accordian.svelte";
+import Accordian from "../Accordian.svelte";
 function ViewData() {
     goto("#/view");
 }
@@ -11,6 +11,9 @@ function CreateConfig() {
 </script>
 <div style="margin: auto; text-align: center;">
     <h1>The AutoTester&#8482;</h1>
+    <h3>Autotester&#8482; version: 1.2.4 (last updated 30/5/25)</h3>
+    <h3>Data viewer version: 2.3.1 (last updated 30/5/25)</h3>
+    <br>
     <button onclick="{CreateConfig}">Create config for testing</button>
     <button onclick="{ViewData}">View data</button>
     <br>
@@ -23,6 +26,14 @@ function CreateConfig() {
     <br>
     <h3>FAQ</h3>
     <div style="justify-content: center; align-items: center;">
+        <Accordian>
+            <div slot="head">
+                <p>How do I contact you?</p>
+            </div>
+            <div slot="details">
+                <p>Feel free to message me at "that1nerd" on discord.</p>
+            </div>
+        </Accordian>
         <Accordian>
             <div slot="head">
                 <p>Is it accurate?</p>
@@ -46,12 +57,22 @@ function CreateConfig() {
         </Accordian>
         <Accordian>
             <div slot="head">
+                <p>Can I share this?</p>
+            </div>
+            <div slot="details">
+                <p>Yes absolutely. Feel free to share all of this, when you view data it will generate a code that can also be shared (the full link also works).</p>
+            </div>
+        </Accordian>
+        <Accordian>
+            <div slot="head">
                 <p>Why would I use this?</p>
             </div>
             <div slot="details">
                 <p>1: The setup you want to test is too expensive for your account.</p>
                 <p>2: Testing against bosses you have limited access to (like past METAs).</p>
                 <p>3: Convience, this tool allows you to get statistically significant amoutns of data without all the hastle.</p>
+                <p>4: The Autotester&#8482; allows you to modify enemies and dungeons as your heart desires to get clearer data.</p>
+                <p>5: Because the code is all run under my control I can collect data that is impossible to detangle under normal runs (like DoT).</p>
             </div>
         </Accordian>
         <Accordian>
@@ -64,7 +85,7 @@ function CreateConfig() {
         </Accordian>
         <Accordian>
             <div slot="head">
-                <p>Can you share the code?</p>
+                <p>Can you share the source code?</p>
             </div>
             <div slot="details">
                 <p>No sadly not. The code contains sensitive data that cannot be removed. Not to mention actually getting it to run is a nightmare.</p>
