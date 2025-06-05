@@ -1,7 +1,7 @@
 import * as Plotly from "plotly.js";
 import LZString from 'lz-string';
 import CryptoJS from 'crypto-js';
-
+// enemyID, dungeonID
 export const ENEMIES = {
     "Hiryuu META": [295015, 296015],
     "Ark Royal META": [295030, 296030],
@@ -21,7 +21,7 @@ export const ENEMIES = {
     "Nagato META": [295240, 296240],
     "Taihou META": [295255, 296255],
     "Hornet META": [295270, 296270],
-    "Kawakaze META": [-1, -1],
+    "Kawakaze META": [295285, 296285],
 };
 
 export interface IndividualFleetTech {
