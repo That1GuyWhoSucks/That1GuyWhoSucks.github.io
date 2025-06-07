@@ -913,5 +913,87 @@
     "const": {},
     "author": "",
     "description": ""
+  },
+  {
+    "ft": {},
+    "outputName": "CV Heavy",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4ZgBjBGBOCA0AWGA2RSCs10J0gDkQCZUkSzFoJMJpjEAiAdgBN2OBDRhVAXQTg6BXMRwNk2XPiIJS5OUgXVqxCSw7sARt14Dg5aJgljUErNAWlKCArHKI7zWSrrq2m1rv76hzI1TMYLKEEArBkFRKiKguEMwQakweHDo8-IKQCbIREIhgsDj5BJF40bxxCUkIGpppeoIMCQl4QTkleQi5UQqxVPGJ7p71Pnh8fACEEAB08RNaxIRahUA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 5,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "author": "Faer+Neko",
+    "description": "",
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "BB Heavy (Alsus)",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZqXVrJFYIYIkAOATkiSmmgwCIB2AE3Y4ENHFUBdRMADMEIVEpIwY1JOwzk%2BQnkKV5dUlCZsO7brwHA4lCaWRw45WVCWLazeVRpEICTUhY7dPfgfAl-iJR0ZGYWtASWiEIwkTK0EDLm7to6evyCItghQlIY5mFEEUjRsSF0iVqerGkGlqQigcG45pFoYK14SHHOFclVNQJQfHwAhBAAdBDMI0bqMkA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 5,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "author": "Faer+Neko",
+    "description": "",
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "BB Heavy (Vanguard)",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4FgBgRgVgJggGjlAbAxYZqXVrJFYIYIkAOATkiSmmgwCIB2AE3Y4ENHFUBdRMADMEIVEpIwY1JOwzk%2BQnkKV5dUlCZsO7brwHA4lCaWRw45WVCWLazeVRpEICTUhY7dPfgfAl-iBJglmYWtAQhQjAhMrQQMubu2jp6-IIi2GSIQlIY5mFEEUhRMVl0CVqerKkGCNgigXRZ%2BSFowbR4SLHOFUlVNQJQfHwAhBAAdBDMI0LkMELMcABGQA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 5,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {},
+    "author": "Faer+Neko",
+    "description": "",
+    "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "CV Heavy (Revealed)",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4ZgBjBGBOCA0AWGA2RSCs10J0gDkQCZUkSzFoJMJpjEAiAdgBN2OBDRhVAXQTg6BXMRwNk2XPiIJS5OUgXVqxCSw7sARt14Dg5aJgljUErNAWlKCArHKI7zWSrrq2m1rv76hzI1TMYLKEEArBkFRKiKguEMwQakweHDo8-IKQCbIREIhgsDj5BJF40bxxCUkIGpppeoIMCQl4QTkleQi5UQqxVPGJ7p71Pnh8fACEEAB08RNaxIRahUA",
+    "attempts": 10,
+    "enemyId": 295015,
+    "enemyModifications": {
+      "durability": 9999999,
+      "antiaircraft": 332,
+      "dodge": 75,
+      "luck": 50,
+      "type": 5,
+      "armor_type": 3
+    },
+    "dungeonId": 296015,
+    "dungeonModifications": {
+      "'stages'/1/'stageCloaktype'": 0
+    },
+    "author": "Faer+Neko",
+    "description": "",
+    "const": {}
   }
 ]
