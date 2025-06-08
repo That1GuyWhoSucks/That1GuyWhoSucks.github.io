@@ -995,5 +995,18 @@
     "author": "Faer+Neko",
     "description": "",
     "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "kawam-0.1",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgBgRgZgDggGjFAbJRAWArGpZVVMkpsIwFFSIyTpoMAiAdgBN2OBDRxVAXUTAoDVAE5kaDDjzJCxRHFHESZAnWFQmbDqwBG3LAKFQEGGDGFJR0VPjklmthfOHFNSFjvYH%2BR8DRkoTEwnMDCnNExKGGxKWzpbd0RPVk5Obx5%2BQQQyGHxgiHxwkiJo2KR4qghErW8uTKNiZggXZgKqNvkwigrKIJcIZrCPbXZdVIaBKD4%2BAEIIADpB2dEwdMwAUzggA",
+    "attempts": 10,
+    "enemyId": 295285,
+    "enemyModifications": {},
+    "dungeonId": 296285,
+    "dungeonModifications": {},
+    "author": "riceist",
+    "description": "",
+    "const": {}
   }
 ]
