@@ -1098,5 +1098,18 @@
     "author": "",
     "description": "",
     "const": {}
+  },
+  {
+    "ft": {},
+    "outputName": "kawam-raf",
+    "fleetBuilderLink": "https://renhex.github.io/AzurLaneFleet/?AFLD=No4JgTggGBWaA0ZkA5EBZYEYBsiw47qJYDseCW8Yal0Y0WDCARKQCacCG3LCOAXQThGAZlphczTFmJJCcsOjmiiJRvWZt2XXQCM9XPuiHBiVZlizQ5MigTWV4y-C7rWmibaV3tDfQVNgPHgJF3xkewVEUVhaPHU8T1YOHU4dANMGbApZdHtI-GiEWPjoRMYtVN8M-lNiUhsSUjcyN2QaRBxaPPVG5C9Uzj1awMoBAQBCaAA6aFJJyBxYLgAzCCA",
+    "attempts": 10,
+    "enemyId": 295285,
+    "enemyModifications": {},
+    "dungeonId": 296285,
+    "dungeonModifications": {},
+    "author": "riceist",
+    "description": "",
+    "const": {}
   }
 ]
