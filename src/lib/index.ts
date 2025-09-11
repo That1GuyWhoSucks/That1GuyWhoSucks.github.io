@@ -22,6 +22,7 @@ export const ENEMIES = {
     "Taihou META": [295255, 296255],
     "Hornet META": [295270, 296270],
     "Kawakaze META": [295285, 296285],
+    "Yuudachi META": [295300, 296300],
 };
 
 export interface IndividualFleetTech {
