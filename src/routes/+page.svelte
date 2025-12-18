@@ -11,9 +11,8 @@ function CreateConfig() {
 </script>
 <div style="margin: auto; text-align: center;">
     <h1>The AutoTester&#8482;</h1>
-    <h1>As of 10/16/2025 AutoTester is dead due to updates that break the entire chain and a lack of motivation. If this changes this site will be updated.</h1>
-    <h3>Autotester&#8482; version: 1.2.4 (last updated 30/5/25)</h3>
-    <h3>Data viewer version: 2.3.1 (last updated 30/5/25)</h3>
+    <h3>Autotester&#8482; version: 1.2.5 (last updated 18/12/25)</h3>
+    <h3>Data viewer version: 2.3.2 (last updated 18/12/25)</h3>
     <br>
     <button onclick="{CreateConfig}">Create config for testing</button>
     <button onclick="{ViewData}">View data</button>
