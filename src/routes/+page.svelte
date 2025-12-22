@@ -7,12 +7,13 @@ function ViewData() {
 function CreateConfig() {
     goto("#/create");
 }
-
+let backlog = Object.keys(import.meta.glob("../pending/*.json")).length;
 </script>
 <div style="margin: auto; text-align: center;">
     <h1>The AutoTester&#8482;</h1>
     <h3>Autotester&#8482; version: 1.4.0 (last updated 22/12/25)</h3>
     <h3>Data viewer version: 3.0.0 (last updated 22/12/25)</h3>
+    <h3>Current backlog is {backlog} items long</h3>
     <br>
     <button onclick="{CreateConfig}">Create config for testing</button>
     <button onclick="{ViewData}">View data</button>
@@ -49,7 +50,7 @@ function CreateConfig() {
                 <p>How do I use this?</p>
             </div>
             <div slot="details">
-                <p>First you need to create a config file. Press the "Create config" button above, fill out the form and then send the file it spits out to @that1nerd on discord.</p>
+                <p>First you need to create a config file. Press the "Create config" button above, fill out the form and then generate the file. Then just copy it and send it through the google form.</p>
                 <p>I will run The AutoTester&#8482; with your config and let you know when this site is update with your results.</p>
                 <p>Then simply navigate to the "View data" page, select your config (and any other configs you want to compare to), select what graphs to generate and hit generate.</p>
                 <p>It will redirect you to the code viewer page, give it some time to generate the graphs then look at your data. If you want to share simply give them the code or the URL, either works.</p>

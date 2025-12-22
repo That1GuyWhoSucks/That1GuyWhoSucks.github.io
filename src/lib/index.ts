@@ -88,6 +88,11 @@ export interface Config {
     id: string
 }
 
+export interface ViewConfig extends Config {
+    active: boolean
+    images: [HTMLElement | null, boolean]
+}
+
 export interface IndividualStatistics {
     Remaing_HP: number
     AA: number

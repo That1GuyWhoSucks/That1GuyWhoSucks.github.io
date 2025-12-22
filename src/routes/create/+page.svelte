@@ -101,7 +101,7 @@ function GenerateConfig() {
 };
 </script>
 <div style="text-align: center;">
-    <p>Complete the form below, download the configuration file generated, then send it to @that1nerd on discord to have it run</p>
+    <p>Complete the form below, copy the file generated, then send it through the google form. Or you may send it to me through discord @that1nerd</p>
     <p>If you have any questions or want something more specific than can be generated here feel free to contact me @that1nerd on discord. If you want to try something there is a very good chance I can make it happen (with enough time).</p>
     <form>
         <h2>General information</h2>

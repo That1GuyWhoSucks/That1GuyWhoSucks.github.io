@@ -2,15 +2,9 @@
 <script lang="ts">
 import { goto } from '$app/navigation';
 import { GroupGraphTypes, IndividualGraphTypes, ImageLoader, process_fleet, SEARCH_TYPES, ELEMENTS_PER_ROW, ENEMIES } from "$lib/index";
-import type { Config } from '$lib/index';
+import type { ViewConfig } from '$lib/index';
 import * as LZString from "lz-string";
 import Accordian from '../../Accordian.svelte';
-    import { json } from '@sveltejs/kit';
-
-interface ViewConfig extends Config {
-    active: boolean
-    images: [HTMLElement | null, boolean]
-}
 
 let configs: ViewConfig[] = [];
 let ConfigSearchTerm: string = "";
