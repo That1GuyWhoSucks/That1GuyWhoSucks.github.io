@@ -11,7 +11,7 @@ function Home() {
     goto("/");
 }
 function ViewBacklog() {
-    goto("#/view_pending");
+    goto("#/view_backlog");
 }
 </script>
 <nav style="text-align: center; background-color: #f0f0f0; padding: 10px;">

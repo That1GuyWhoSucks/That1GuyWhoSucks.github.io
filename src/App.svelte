@@ -11,7 +11,7 @@ const routes = {
   '/create': Create,
   '/view_code': ViewCode,
   '/view': View,
-  '/view_pending': ViewBacklog
+  '/view_backlog': ViewBacklog
 };
 </script>
 
