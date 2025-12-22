@@ -82,6 +82,7 @@ function GenerateConfig() {
     } else if (config.fleetBuilderLink.length < 46) {
         alert("Enter the ENTIRE renhex link (`https://renhex.github.io/AzurLaneFleet/?AFLD=` included!)");
     } else {
+        (document.getElementById("code") as HTMLElement).innerText = JSON.stringify(config, null, 2);
         window.open(`https://docs.google.com/forms/d/e/1FAIpQLSc81Mzv69MWE2iCAIxDZf4Oxz3WVjnmoDK_IokUJaAmn3I2zw/viewform?usp=pp_url&entry.123100218=${JSON.stringify(config)}`)
     }
 };
@@ -197,6 +198,8 @@ function GenerateConfig() {
         <br>
     </form>
     <button on:click={GenerateConfig} style="font-size: 69px;">Generate configuration file</button>
+
+    <pre id="code" style="text-align: left; width: 200px; margin: auto;"></pre>
 </div>
 <style>
 tr {
