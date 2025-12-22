@@ -11,14 +11,14 @@ function Home() {
     goto("/");
 }
 function ViewBacklog() {
-    goto("#/view_backlog");
+    goto("#/view_pending");
 }
 </script>
 <nav style="text-align: center; background-color: #f0f0f0; padding: 10px;">
     <button onclick="{CreateConfig}">Create config</button>
     <button onclick="{ViewData}">View data</button>
     <button onclick="{Home}">Home</button>
-    <button onclick="{ViewBacklog}">View config backlog</button>
+    <button onclick="{ViewBacklog}">View pending configs</button>
 </nav>
 
 <slot/>

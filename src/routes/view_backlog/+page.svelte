@@ -26,7 +26,7 @@ function Chunk(arr: ViewConfig[]): ViewConfig[][] {
     return result;
 }
 </script>
-<h1>Current backlog is {configs.length} items long</h1>
+<h1>{configs.length} pending configs</h1>
 <table style="width: 100%;">
     <tbody>
         {#each Chunk(configs) as row}

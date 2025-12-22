@@ -13,7 +13,7 @@ let backlog = Object.keys(import.meta.glob("../pending/*.json")).length;
     <h1>The AutoTester&#8482;</h1>
     <h3>Autotester&#8482; version: 1.4.0 (last updated 22/12/25)</h3>
     <h3>Data viewer version: 3.0.0 (last updated 22/12/25)</h3>
-    <h3>Current backlog is {backlog} items long</h3>
+    <h3>{backlog} pending configs</h3>
     <br>
     <button onclick="{CreateConfig}">Create config for testing</button>
     <button onclick="{ViewData}">View data</button>
