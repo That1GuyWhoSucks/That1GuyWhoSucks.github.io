@@ -50,9 +50,9 @@ let backlog = Object.keys(import.meta.glob("../pending/*.json")).length;
                 <p>How do I use this?</p>
             </div>
             <div slot="details">
-                <p>First you need to create a config file. Press the "Create config" button above, fill out the form and then generate the file. Then just copy it and send it through the google form.</p>
-                <p>I will run The AutoTester&#8482; with your config and let you know when this site is update with your results.</p>
-                <p>Then simply navigate to the "View data" page, select your config (and any other configs you want to compare to), select what graphs to generate and hit generate.</p>
+                <p>First you need to create a config file. Press the "Create config" button above, fill out the form and then press the "Generate configuration file" button, then just press submit and you're done!</p>
+                <p>I will run The AutoTester&#8482; with your config and update the site with the results. I reccomend reaching out to me @that1nerd on discord for updates.</p>
+                <p>When you are ready simply navigate to the "View data" page, select your config (and any other configs you want to compare to), select what graphs to generate and hit generate.</p>
                 <p>It will redirect you to the code viewer page, give it some time to generate the graphs then look at your data. If you want to share simply give them the code or the URL, either works.</p>
             </div>
         </Accordian>

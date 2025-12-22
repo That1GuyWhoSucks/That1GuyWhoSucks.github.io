@@ -1,9 +1,6 @@
 <script lang="ts">
 import Accordian from '../../Accordian.svelte';
 import { ENEMIES, ENEMY_MODIFIERS, FT_TECH, FT_SHIPS, FT_SHIP_GROUP_TO_INDEX, type CreatedConfig } from '$lib/index';
-function redirect() {
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSc81Mzv69MWE2iCAIxDZf4Oxz3WVjnmoDK_IokUJaAmn3I2zw/viewform?usp=dialog");
-}
 let outputName: string = "";
 let renhexLink: string = "";
 let authorName: string = "";
@@ -85,23 +82,12 @@ function GenerateConfig() {
     } else if (config.fleetBuilderLink.length < 46) {
         alert("Enter the ENTIRE renhex link (`https://renhex.github.io/AzurLaneFleet/?AFLD=` included!)");
     } else {
-        var element: HTMLElement = document.getElementById('download') as HTMLElement;
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(config, null, 2)));
-        element.setAttribute('download', `config-${config.outputName}.json`);
-        element.innerText = `Download config-${config.outputName}.json`;
-        (document.getElementById("code") as HTMLElement).innerText = JSON.stringify(config, null, 2);
-        element = document.getElementById("clipboard-button") as HTMLElement;
-        element.onclick = () => {
-            navigator.clipboard.writeText(JSON.stringify(config, null, 2));
-            alert("Copied to clipboard succsefully.")
-        }
-        element.style = "font-size: 42px;"
-
+        window.open(`https://docs.google.com/forms/d/e/1FAIpQLSc81Mzv69MWE2iCAIxDZf4Oxz3WVjnmoDK_IokUJaAmn3I2zw/viewform?usp=pp_url&entry.123100218=${JSON.stringify(config)}`)
     }
 };
 </script>
 <div style="text-align: center;">
-    <p>Complete the form below, copy the file generated, then send it through the google form. Or you may send it to me through discord @that1nerd</p>
+    <p>Complete the form below, hit the big "Generate configuration file", then submit in the form and you are done!</p>
     <p>If you have any questions or want something more specific than can be generated here feel free to contact me @that1nerd on discord. If you want to try something there is a very good chance I can make it happen (with enough time).</p>
     <form>
         <h2>General information</h2>
@@ -211,12 +197,6 @@ function GenerateConfig() {
         <br>
     </form>
     <button on:click={GenerateConfig} style="font-size: 69px;">Generate configuration file</button>
-    <br>
-    <button id="clipboard-button" style="display: none;"> Copy Config to Clipboard </button>
-    <br>
-    <button id="form-button" style="font-size: 42px;" on:click={redirect}> &gt; Go to form to submit config &lt; </button>
-    <a id="download"></a>
-    <pre id="code" style="text-align: left; width: 200px; margin: auto;"></pre>
 </div>
 <style>
 tr {
