@@ -1,54 +1,47 @@
 <script lang="ts">
-import * as Plotly from "plotly.js";
-import RawResults from '../../results.json';
-import RawConfigs from '../../configs.json';
 import * as LZString from "lz-string"
-import { type Config, IndividualGraphTypes, GroupGraphTypes, type Results, ShipData, process_fleet, ImageLoader } from "$lib/index";
+import { type Config, IndividualGraphTypes, GroupGraphTypes, type Results, ShipData, process_fleet, ImageLoader, get_fleet_by_url } from "$lib/index";
 import { goto } from "$app/navigation";
 import { mount } from "svelte";
 import Accordian from "../../Accordian.svelte";
-let Configs: Config[] = RawConfigs as Config[];
-Configs = Configs.filter((config: Config) => {
-    return config.outputName in RawResults
-});
-// @ts-ignore
-let data: Record<string, Results[]> = RawResults;
+import type { PlotlyHTMLElement } from "plotly.js";
 
 const code = window.location.hash.split("code=")[1];
 
-
-function generate_config_plots(config: Config, index: number, total: number) {
-    const key = config.outputName;
+function generate_config_plots(config: Config, res: Results[], imageLoader: ImageLoader): PlotlyHTMLElement[] {
     let ship_data: Record<string, ShipData> = {};
-    Object.keys(data[key][0].Statistics).forEach((key) => {
-        ship_data[key] = new ShipData(key)
+    Object.keys(res[0].Statistics).forEach((key) => {
+        ship_data[key] = new ShipData(imageLoader.ship_data[key]["en_name"], key)
     });
     
-    data[key].forEach((test) => {
+    res.forEach((test) => {
         Object.keys(test.Statistics).forEach((ship) => {
             ship_data[ship].addTest(test.Statistics[ship]);
         })
     });
-
-    ship_data = Object.fromEntries(Object.entries(ship_data).sort(([a, _], [b, __]) => a.localeCompare(b)));
+    const fleet = get_fleet_by_url(config);
+    let con = [fleet[1][1], fleet[1][0], fleet[1][2], fleet[0][2], fleet[0][1], fleet[0][0]].map((s) => {
+        return s[0];
+    }).filter((s) => s).map((k) => ship_data[k]);
     return SelectedIndividualGraphTypes.map((graph) => {
         // @ts-ignore
-        return IndividualGraphTypes[graph][1](data, key, ship_data)
-    })
-}
-function generate_overall_plots(configs: Config[]) {
-    return SelectedGroupGraphs.map((graph) => {
-        // @ts-ignore
-        return GroupGraphTypes[graph][1](configs, data)
+        return IndividualGraphTypes[graph][1](res, con)
     })
 }
 
-let PerConfigComponents: Record<string, HTMLElement[]> = {};
+function generate_overall_plots(configs: Config[], res: Record<string, Results[]>) {
+    return SelectedGroupGraphs.map((graph) => {
+        // @ts-ignore
+        return GroupGraphTypes[graph][1](configs, res)
+    })
+}
+
 let Container: HTMLElement;
 let GroupContainer: HTMLElement;
 let SelectedConfigs: string[] = [];
-let SelectedIndividualGraphTypes: string[] = []; 
-let SelectedGroupGraphs: string[] = [];
+let Configs: Config[] = [];
+let SelectedIndividualGraphTypes: (keyof typeof IndividualGraphTypes)[] = []; 
+let SelectedGroupGraphs: (keyof typeof GroupGraphTypes)[] = [];
 let status = 0;
 try {
     [SelectedConfigs, SelectedIndividualGraphTypes, SelectedGroupGraphs] = LZString.decompressFromEncodedURIComponent(code).split("!").map((str) => JSON.parse(str));
@@ -56,48 +49,55 @@ try {
     console.log("error decoding code: ", code, e);
     status = 3;
 }
-Configs = Configs.filter((config) => SelectedConfigs.includes(config.outputName));
 if (status === 0) {
     let imageManager = new ImageLoader();
     try {
         imageManager.init().then(async () => {
-            await Promise.all(Configs.map(async (config, i) => {
-                PerConfigComponents[config.outputName] = [await process_fleet(config, imageManager)];
-                const pre = document.createElement("pre");
-                pre.textContent = JSON.stringify(config, null, 2);
-                pre.style = "word-wrap: anywhere; white-space: pre-wrap;"
-                PerConfigComponents[config.outputName].push(pre, ...await Promise.all(generate_config_plots(config, i, Configs.length)))
-            }));
-            Configs.forEach((config) => {
+            let Res: Record<string, Results[]> = {};
+            Promise.all(SelectedConfigs.map(async (id) => {
+                const conf: Config = (await import(`../../configs/${id}.json`, { with: { type: "json" } })).default;
+                conf.id = id;
+                const res: Results[] = (await import(`../../results/${id}.json`, { with: { type: "json" } })).default;
                 const div = document.createElement("div");
                 const header = document.createElement("h1");
-                header.innerText = config.outputName;
-                
+                const pre = document.createElement("pre");
+                pre.textContent = JSON.stringify(conf, ["outputName", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2);
+                pre.style = "word-wrap: anywhere; white-space: pre-wrap;"
+                header.innerText = conf.outputName;
                 mount(Accordian, {
                     target: div,
                     props: {
                         open: true
                     }
                 });
-                div.children[0].children[1].replaceChildren(...PerConfigComponents[config.outputName])
+                // @ts-ignore
+                div.children[0].children[1].replaceChildren(...[
+                    await process_fleet(conf, imageManager), 
+                    pre, 
+                    ...await Promise.all(generate_config_plots(conf, res, imageManager))
+                ]);
                 div.prepend(header);
-                div.style = "height: 1060px; overflow-y: scroll;"
+                div.style = "height: 1060px; overflow-y: scroll; width: 1080px"
                 Container.appendChild(div);
+                Configs.push(conf);
+                Res[conf.id] = res;
+            })).then(async () => {
+                Configs = Configs;
+                if (SelectedGroupGraphs.length > 0) {
+                    const header = document.createElement("h1");
+                    header.innerText = "Group Graphs";
+                    mount(Accordian, {
+                        target: GroupContainer,
+                        props: {
+                            open: true
+                        }
+                    })
+                    GroupContainer.children[0].children[1].replaceChildren(...await Promise.all(generate_overall_plots(Configs, Res)));
+                    GroupContainer.prepend(header); 
+                }
+                status = 1;
             });
-            if (SelectedGroupGraphs.length > 0) {
-                const header = document.createElement("h1");
-                header.innerText = "Group Graphs";
-                mount(Accordian, {
-                    target: GroupContainer,
-                    props: {
-                        open: true
-                    }
-                })
-                GroupContainer.children[0].children[1].replaceChildren(...await Promise.all(generate_overall_plots(Configs)));
-                GroupContainer.prepend(header); 
-                
-            }
-            status = 1;
+            
         })
     } catch (e) {
         console.log("Error is: ", e);
@@ -132,12 +132,12 @@ if (status === 0) {
         }}>Go back</button>
     {/if}
 </div>
-<Accordian>
+<Accordian open={true}>
     <h2 slot="head">Tips and extra info</h2>
-    <div slot="details" style="">
+    <div slot="details" style="width: fit-content">
         <p>You can click on elements in legends to disable them in the graph. The graph will automatically scale to the new data.</p>
         <p>Hover over elements to see their exact value/s. Hovering over annotations will show the time the event occured.</p>
-        <p>Selected Configs: {SelectedConfigs.join(", ")}</p>
+        <p>Selected Configs: {Configs.map((conf) => conf.outputName).join(", ")}</p>
         <p>Selected Individual Graphs: {SelectedIndividualGraphTypes.map((graph) => IndividualGraphTypes[graph as keyof typeof IndividualGraphTypes][0]).join(", ")}</p>
         <p>Selected Group Graphs: {SelectedGroupGraphs.map((graph) => GroupGraphTypes[graph as keyof typeof GroupGraphTypes][0]).join(", ")}</p>
     </div>

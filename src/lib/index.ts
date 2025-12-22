@@ -60,16 +60,32 @@ export interface FleetTech {
     IXM?: IndividualFleetTech
 }
 
+export interface CreatedConfig {
+    outputName: string
+    author: string
+    description: string
+    fleetBuilderLink: string
+    enemyId: number
+    dungeonId: number
+    ft: FleetTech
+    createdAt: string
+    attempts: number
+    enemyModifications: Record<string, any>
+    dungeonModifications: Record<string, any>
+}
+
 export interface Config {
     outputName: string
     author: string
     description: string
     fleetBuilderLink: string
-    attempts: number
     enemyId: number
     dungeonId: number
-    const: object
     ft: FleetTech
+    createdAt: string
+    enemyModifications: Record<string, any>
+    dungeonModifications: Record<string, any>
+    id: string
 }
 
 export interface IndividualStatistics {
@@ -91,6 +107,7 @@ export interface Results {
     Statistics: Record<string, IndividualStatistics>
     Timed_Damage: Record<string, Record<string, number>>
     History: History
+    DateRun: string
 }
 
 export const ELEMENTS_PER_ROW = 6;
@@ -169,9 +186,11 @@ export const FT_SHIP_GROUP_TO_INDEX = {
 export class ShipData {
     data: IndividualStatistics[];
     name: string;
-    constructor(name: string) {
+    skin_id: string;
+    constructor(name: string, skin_id: string) {
         this.data = [];
         this.name = name;
+        this.skin_id = skin_id;
     }
 
     addTest(test: IndividualStatistics) {
@@ -203,7 +222,7 @@ export class ShipData {
     }
 }
 
-function PurDmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
+function PurDmg(data: Results[], ship_data: Record<string, ShipData>) {
     const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
         return {
             y: val.pureDmg(),
@@ -222,7 +241,7 @@ function PurDmg(data: Record<string, Results[]>, key: string, ship_data: Record<
         width: 994,
     })
 }
-function AADmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
+function AADmg(data: Results[], ship_data: Record<string, ShipData>) {
     const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
         return {
             y: val.AADmg(),
@@ -241,8 +260,8 @@ function AADmg(data: Record<string, Results[]>, key: string, ship_data: Record<s
         width: 994,
     })
 }
-function DotDmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
-    const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
+function DotDmg(data: Results[], ship_data: ShipData[]) {
+    const D: Plotly.Data[] = ship_data.map((val) => {
         return {
             y: val.DoTDmg(),
             name: val.name,
@@ -260,8 +279,8 @@ function DotDmg(data: Record<string, Results[]>, key: string, ship_data: Record<
         width: 994,
     })
 }
-function SurfaceDmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
-    const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
+function SurfaceDmg(data: Results[], ship_data: ShipData[]) {
+    const D: Plotly.Data[] = ship_data.map((val) => {
         return {
             y: val.totalDmg(),
             name: val.name,
@@ -279,8 +298,8 @@ function SurfaceDmg(data: Record<string, Results[]>, key: string, ship_data: Rec
         width: 994,
     })
 }
-function HPRemaining(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
-    const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
+function HPRemaining(data: Results[], ship_data: ShipData[]) {
+    const D: Plotly.Data[] = ship_data.map((val) => {
         return {
             y: val.HealthRemaining(),
             name: val.name,
@@ -298,10 +317,10 @@ function HPRemaining(data: Record<string, Results[]>, key: string, ship_data: Re
         width: 994,
     })
 }
-function AvgTimeline(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
+function AvgTimeline(data: Results[], ship_data: ShipData[]) {
     let min: number;
     let max: number;
-    data[key].forEach((attempt) => {
+    data.forEach((attempt) => {
         Object.values(attempt.Timed_Damage).forEach((k) => {
             Object.keys(k).forEach((time) => {
                 let ntime: number = Number(time);
@@ -314,20 +333,20 @@ function AvgTimeline(data: Record<string, Results[]>, key: string, ship_data: Re
             })
         })
     });
-    const D: Plotly.Data[] = Object.values(ship_data).map((ship) => {
+    const D: Plotly.Data[] = ship_data.map((ship) => {
         let record: Record<number, number> = {};
-        for (let i=0; i<data[key].length; i++) {
+        for (let i=0; i<data.length; i++) {
             for (let time=min; time<=max; time++) {
                 if (record[time] == null) {
                     record[time] = 0;
                 }
-                if (data[key][i].Timed_Damage[ship.name][String(time)] != null) {
-                    record[time] += data[key][i].Timed_Damage[ship.name][time];
+                if (data[i].Timed_Damage[ship.skin_id][String(time)] != null) {
+                    record[time] += data[i].Timed_Damage[ship.skin_id][time];
                 }
             }
         }
         for (let time=min; time<=max; time++) {
-            record[time] = record[time] / data[key].length;
+            record[time] = record[time] / data.length;
         }
 
         return {
@@ -352,9 +371,9 @@ function AvgTimeline(data: Record<string, Results[]>, key: string, ship_data: Re
         height: 600,
     })
 }
-function AttemptLength(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
+function AttemptLength(data: Results[], ship_data: ShipData[]): Promise<Plotly.PlotlyHTMLElement> {
     let bucks: Record<number, number> = {}
-    data[key].forEach((res) => {
+    data.forEach((res) => {
         if (!(Math.floor(res.Battle_Length) in bucks)) {
             bucks[Math.floor(res.Battle_Length)] = 0
         }
@@ -381,10 +400,10 @@ function AttemptLength(data: Record<string, Results[]>, key: string, ship_data: 
         width: 994,
     });
 }
-function Timelines(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>): Promise<HTMLElement> {
+function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement> {
     let min: number;
     let max: number;
-    data[key].forEach((attempt) => {
+    data.forEach((attempt) => {
         Object.values(attempt.Timed_Damage).forEach((k) => {
             Object.keys(k).forEach((time) => {
                 let ntime: number = Number(time);
@@ -398,7 +417,7 @@ function Timelines(data: Record<string, Results[]>, key: string, ship_data: Reco
         })
     });
 
-    const records: Plotly.Data[][] = data[key].map((res) => {
+    const records: Plotly.Data[][] = data.map((res) => {
         return Object.entries(res.Timed_Damage).sort(([ship, _], [ship2, __]) => ship.localeCompare(ship2)).map(([ship, vals]) => {
             return {
                 x: Object.keys(vals).map(k => Number(k)),
@@ -432,7 +451,7 @@ function Timelines(data: Record<string, Results[]>, key: string, ship_data: Reco
     return new Promise(async (resolve) => {
         div.replaceChildren(...await Promise.all(records.map((res, i) => {
             let annotations: Plotly.Annotations[] = []
-            Object.entries(data[key][i].History.airstrikes).forEach(([ship, data]) => { 
+            Object.entries(data[i].History.airstrikes).forEach(([ship, data]) => { 
                 // @ts-ignore
                 annotations.push(...Object.entries(data).map(([time, hidden]) => {
                     return {
@@ -447,7 +466,7 @@ function Timelines(data: Record<string, Results[]>, key: string, ship_data: Reco
                     }
                 }))
             })
-            Object.entries(data[key][i].History.salvos).forEach(([ship, data]) => { 
+            Object.entries(data[i].History.salvos).forEach(([ship, data]) => { 
                 // @ts-ignore
                 annotations.push(...Object.entries(data).map(([time, hidden]) => {
                     return {
@@ -462,7 +481,7 @@ function Timelines(data: Record<string, Results[]>, key: string, ship_data: Reco
                     }
                 }))
             })
-            Object.entries(data[key][i].History.torps).forEach(([ship, data]) => { 
+            Object.entries(data[i].History.torps).forEach(([ship, data]) => { 
                 // @ts-ignore
                 annotations.push(...Object.entries(data).map(([time, hidden]) => {
                     return {
@@ -491,7 +510,7 @@ function Timelines(data: Record<string, Results[]>, key: string, ship_data: Reco
             })
             return Plotly.newPlot(document.createElement("div"), res, {
                 title: {
-                    text: `attempt ${i + 1} (${(100 - (data[key][i].Remaining_HP / 100)).toFixed(1)})%`
+                    text: `attempt ${i + 1} (${(100 - (data[i].Remaining_HP / 100)).toFixed(1)})%`
                 },
                 yaxis: {
                     fixedrange: true,
@@ -512,8 +531,8 @@ function Timelines(data: Record<string, Results[]>, key: string, ship_data: Reco
     })
     
 }
-function TotalDmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
-    let D: Plotly.Data[] = Object.values(ship_data).map(data => {
+function TotalDmg(data: Results[], ship_data: ShipData[]): Promise<Plotly.PlotlyHTMLElement> {
+    let D: Plotly.Data[] = ship_data.map(data => {
         return {
             x: [...Array(data.data.length).keys()].map(i => i + 1),
             y: data.data.map(stats => {
@@ -541,8 +560,8 @@ function TotalDmg(data: Record<string, Results[]>, key: string, ship_data: Recor
     })
 }
 
-function StandTotalDmg(data: Record<string, Results[]>, key: string, ship_data: Record<string, ShipData>) {
-    const att = Object.values(ship_data)[0].data.length
+function StandTotalDmg(data: Results[], ship_data: ShipData[]): Promise<Plotly.PlotlyHTMLElement> {
+    const att = ship_data[0].data.length
     let D: Plotly.Data[] = Object.values(ship_data).map(sdata => {
         return {
             x: [...Array(att).keys()].map(i => i + 1),
@@ -581,7 +600,7 @@ function StandTotalDmg(data: Record<string, Results[]>, key: string, ship_data: 
 
     D.push({
         x: [...Array(att).keys()].map(i => i + 1),
-        y: data[key].map(res => res.Remaining_HP / 100),
+        y: data.map(res => res.Remaining_HP / 100),
         type: "scatter",
         name: "Remaining boss HP %"
     })
@@ -620,7 +639,7 @@ export const IndividualGraphTypes = {
 function GroupDmgDist(configs: Config[], data: Record<string, Results[]>) {
     const D: Plotly.Data[] = configs.map((config) => {
         return {
-            y: data[config.outputName].map((res) => {
+            y: data[config.id].map((res) => {
                 let sum = 0;
                 Object.values(res.Statistics).forEach((stats) => {
                     sum += stats.DMG + stats.DoT
@@ -632,7 +651,7 @@ function GroupDmgDist(configs: Config[], data: Record<string, Results[]>) {
             type: "box",
             boxmean: true,
         }
-    })
+    });
     return Plotly.newPlot(document.createElement("div"), D, {
         title: {
             text: "Comp dmg distr"
@@ -640,7 +659,7 @@ function GroupDmgDist(configs: Config[], data: Record<string, Results[]>) {
         yaxis: {fixedrange: true},
         xaxis: {fixedrange: true},
         width: 994,
-    })
+    });
 }
 
 function GroupStdDevDistr(configs: Config[], data: Record<string, Results[]>) {
@@ -650,7 +669,7 @@ function GroupStdDevDistr(configs: Config[], data: Record<string, Results[]>) {
         return Math.sqrt(array.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
     }
     const D: number[] = configs.map((config) => {
-        return getStandardDeviation(data[config.outputName].map((res) => {
+        return getStandardDeviation(data[config.id].map((res) => {
             let sum = 0;
             Object.values(res.Statistics).forEach((stats) => {
                 sum += stats.DMG + stats.DoT
@@ -674,7 +693,7 @@ function GroupStdDevDistr(configs: Config[], data: Record<string, Results[]>) {
 }
 function GroupKillPerc(configs: Config[], data: Record<string, Results[]>) {
     const D: number[] = configs.map((config) => {
-        return (data[config.outputName].filter((res) => res.Remaining_HP == 0).length / data[config.outputName].length) * 100;
+        return (data[config.id].filter((res) => res.Remaining_HP == 0).length / data[config.id].length) * 100;
     });
     return Plotly.newPlot(document.createElement("div"), [{
         x: configs.map(config => config.outputName),
@@ -818,6 +837,8 @@ export class ImageLoader {
                 spareDic[currentKey]["icon"] = line.split("'")[1];
             } else if (currentKey != "" && line.startsWith("rarity: ")) {
                 spareDic[currentKey]["rarity"] = Number(line.slice(-2, -1));
+            } else if (currentKey != "" && line.startsWith("en_name")) {
+                spareDic[currentKey]["en_name"] = line.split("'").at(-2);
             }
         });
         this.ship_data = spareDic;
@@ -1006,17 +1027,21 @@ export function createSolidCanvas(width: number, height: number, color: string):
     return canvas;
 }
 
-export async function process_fleet(config: Config, imageLoader: ImageLoader) {
-    const key: string = config.outputName;
-    let fleet: any = loadDataByID(false, decodeURIComponent(config.fleetBuilderLink.split("?AFLD=")[1]))
+export function get_fleet_by_url(config: Config) {
+    let fleet: any = loadDataByID(false, decodeURIComponent(config.fleetBuilderLink.split("?AFLD=")[1]));
     if (typeof fleet == "string") {
-        return createSolidCanvas(71 * 2 * 7, 71 * 3, "black")
+        return createSolidCanvas(71 * 2 * 7, 71 * 3, "black");
     }
     if (fleet.length == 1) {
-        fleet = fleet[0]
+        fleet = fleet[0];
     } else {
-        fleet = fleet[Number(key.split(" - fleet ")[1]) - 1]
+        fleet = fleet[Number(config.outputName.split(" - fleet ")[1]) - 1];
     }
+    return fleet;
+}
+
+export async function process_fleet(config: Config, imageLoader: ImageLoader): Promise<HTMLCanvasElement> {
+    const fleet = get_fleet_by_url(config);
 
     let vang_ships: Ship[] = fleet[0].map((v: any[]) => new Ship(v));
     while (vang_ships.length < 3) {

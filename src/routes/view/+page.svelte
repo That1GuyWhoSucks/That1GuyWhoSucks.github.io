@@ -1,35 +1,54 @@
 
 <script lang="ts">
-import RawResults from '../../results.json';
-import RawConfigs from '../../configs.json';
 import { goto } from '$app/navigation';
 import { GroupGraphTypes, IndividualGraphTypes, ImageLoader, process_fleet, SEARCH_TYPES, ELEMENTS_PER_ROW, ENEMIES } from "$lib/index";
 import type { Config } from '$lib/index';
 import * as LZString from "lz-string";
 import Accordian from '../../Accordian.svelte';
+    import { json } from '@sveltejs/kit';
 
-let Configs: Config[] = RawConfigs as Config[];
-Configs = Configs.filter((config: Config) => {
-    return config.outputName in RawResults
-});
-let ConfigNames: string[] = Configs.map((config: Config) => config.outputName);
+interface ViewConfig extends Config {
+    active: boolean
+    images: [HTMLElement | null, boolean]
+}
+
+let configs: ViewConfig[] = [];
 let ConfigSearchTerm: string = "";
 let ConfigSearchType: keyof typeof SEARCH_TYPES = "Name";
-let CurrentConfigs: string[] = ConfigNames;
 let code: string = "";
 let SelectedConfigs: Record<string, boolean> = {};
 let SelectedIndivdualGraphs: Record<string, boolean> = {};
 let SelectedGroupGraphs: Record<string, boolean> = {};
-let ConfigImages: Record<string, [HTMLElement | null, boolean]> = {};
-Configs.forEach(config => {
-    ConfigImages[config.outputName] = [null, false];
-});
 let imageLoader: ImageLoader = new ImageLoader();
+
+
+Promise.all(
+  Object.entries(import.meta.glob("../../configs/*.json")).map(async ([path, loader]) => {
+    const mod = await loader();
+    // @ts-ignore
+    const data = mod.default ?? mod;
+    // @ts-ignore
+    const id = path.split("/").pop().replace(/\.json$/, "");
+    return { id, ...data, "active": true, "images": [null, false] };
+  })
+).then((confs: ViewConfig[]) => {
+    confs.sort((a, b) => {
+        let v = b.createdAt.localeCompare(a.createdAt)
+        if (v == 0) {
+            v = a.outputName.localeCompare(b.outputName);
+        };
+        return v;
+    });
+    configs = confs;
+})
+
+
 function GotoCode() {
     goto(`#/view_code?code=${code}`);
 }
+
+
 function GenerateCode() {
-    console.log(SelectedConfigs, SelectedIndivdualGraphs, SelectedGroupGraphs)
     code = LZString.compressToEncodedURIComponent(`${
         JSON.stringify(Object.entries(SelectedConfigs).filter(([name, wanted]) => wanted).map(([name, wanted]) => name))
     }!${
@@ -39,14 +58,19 @@ function GenerateCode() {
     }`);
     GotoCode()
 }
+
+
 function SortConfigs() {
-    CurrentConfigs = Configs.filter(config => {
-        return SEARCH_TYPES[ConfigSearchType](config, ConfigSearchTerm);
-    }).map(config => config.outputName);
+    configs.forEach((conf) => {
+        conf.active = SEARCH_TYPES[ConfigSearchType](conf, ConfigSearchTerm);
+    });
+    configs = configs; // don't question it
 }
-function Chunk(arr: string[]): string[][] {
+
+
+function Chunk(arr: ViewConfig[]): ViewConfig[][] {
     const result = [];
-    for (let i = 0; i < arr.length; i += ELEMENTS_PER_ROW) {
+    for (let i=0; i<arr.length; i+=ELEMENTS_PER_ROW) {
         result.push(arr.slice(i, i + ELEMENTS_PER_ROW));
     }
     return result;
@@ -120,17 +144,23 @@ function Chunk(arr: string[]): string[][] {
         </Accordian>
         <p>Configs:</p>
         <p><button on:click={function () {
-            CurrentConfigs.forEach((key) => {
-                SelectedConfigs[key] = !SelectedConfigs[key];
-            })
+            configs.forEach((conf) => {
+                if (conf.active) {
+                    SelectedConfigs[conf.id] = !SelectedConfigs[conf.id];
+                }
+            });
         }}>Invert</button><button on:click={function () {
-            CurrentConfigs.forEach((key) => {
-                SelectedConfigs[key] = true;
-            })
+            configs.forEach((conf) => {
+                if (conf.active) {
+                    SelectedConfigs[conf.id] = true;
+                }
+            });
         }}>All</button><button on:click={function () {
-            CurrentConfigs.forEach((key) => {
-                SelectedConfigs[key] = false;
-            })
+            configs.forEach((conf) => {
+                if (conf.active) {
+                    SelectedConfigs[conf.id] = false;
+                }
+            });
         }}>None</button></p>
         <div>
             <p>Search by: </p>
@@ -155,40 +185,37 @@ function Chunk(arr: string[]): string[][] {
         <p>Search: <input type="text" bind:value={ConfigSearchTerm} on:input={() => SortConfigs()}></p>
         <table style="width: 100%;">
             <tbody>
-                {#each Chunk(CurrentConfigs) as row}
+                {#each Chunk(configs.filter((conf) => conf.active)) as row}
                     <tr>
-                        {#each row as Name}
+                        {#each row as conf}
                             <td style="vertical-align: top; border: 1px solid black;">
                                 <Accordian style='width: 100%;'>
                                     <div slot="head" style="">
-                                        <p>{Name} <input type="checkbox" bind:checked={SelectedConfigs[Name]}></p>
+                                        <p>{conf.outputName} <input type="checkbox" bind:checked={SelectedConfigs[conf.id]}></p>
                                     </div>
-                                    <div slot="details" style="width: 994px; overflow-x: scroll;">
-                                        <pre>{JSON.stringify(Configs.find(c => c.outputName == Name), null, 2)}</pre>
-                                        <div bind:this={ConfigImages[Name][0]}></div>
-                                        {#if !ConfigImages[Name][1]}
+                                    <div slot="details" style="width: 994px; overflow-x: scroll; text-align: left;">
+                                        <pre>{JSON.stringify(conf, ["outputName", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2)}</pre>
+                                        <div bind:this={conf.images[0]}></div>
+                                        {#if !conf.images[1]}
                                             <button on:click={async function() {
                                                 if (imageLoader.rarity.length == 0) {
                                                     await imageLoader.init();
                                                 }
-                                                ConfigImages[Name][0]?.replaceChildren(await process_fleet(Configs.find(c => c.outputName == Name) as Config, imageLoader))
-                                                ConfigImages[Name][1] = true;
+                                                conf.images[0]?.replaceChildren(await process_fleet(conf, imageLoader))
+                                                conf.images[1] = true;
                                             }}>Generate fleet image</button>
                                         {/if}
                                     </div>
                                 </Accordian>
                             </td>
                         {/each}
-                        {#if row.length < ELEMENTS_PER_ROW}
-                            {#each Array(ELEMENTS_PER_ROW - row.length) as _}
-                                <td></td>
-                            {/each}
-                        {/if}
+                        {#each Array(ELEMENTS_PER_ROW - row.length) as _}
+                            <td></td>
+                        {/each}
                     </tr>
                 {/each}
             </tbody>
         </table>
-        
     </div>
     <br>
     <button on:click={GenerateCode} style="font-size: 69px;">Generate graphs</button>

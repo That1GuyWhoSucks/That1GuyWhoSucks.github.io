@@ -1,11 +1,9 @@
 <script lang="ts">
 import Accordian from '../../Accordian.svelte';
-import RawConfigs from '../../configs.json';
-import type { Config } from '$lib/index';
-import { ENEMIES, ENEMY_MODIFIERS, FT_TECH, FT_SHIPS, FT_SHIP_GROUP_TO_INDEX } from '$lib/index';
-
-
-let ConfigNames: string[] = (RawConfigs as Config[]).map((config: Config) => config.outputName);
+import { ENEMIES, ENEMY_MODIFIERS, FT_TECH, FT_SHIPS, FT_SHIP_GROUP_TO_INDEX, type CreatedConfig } from '$lib/index';
+function redirect() {
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSc81Mzv69MWE2iCAIxDZf4Oxz3WVjnmoDK_IokUJaAmn3I2zw/viewform?usp=dialog");
+}
 let outputName: string = "";
 let renhexLink: string = "";
 let authorName: string = "";
@@ -66,7 +64,7 @@ function GenerateConfig() {
         dungeonModifications["'stages'/1/'stageCloaktype'"] = parseInt(forceCloakState);
     }
 
-    let config = {
+    let config: CreatedConfig = {
         ft: FTCopy,
         outputName: outputName,
         fleetBuilderLink: renhexLink,
@@ -77,6 +75,7 @@ function GenerateConfig() {
         dungeonModifications: dungeonModifications,
         author: authorName,
         description: description,
+        createdAt: new Date().toISOString().slice(0, 19) + "Z"
     };
 
     if (error != "") {
@@ -85,21 +84,19 @@ function GenerateConfig() {
         alert("Output name is too short, make it longer.");
     } else if (config.fleetBuilderLink.length < 46) {
         alert("Enter the ENTIRE renhex link (`https://renhex.github.io/AzurLaneFleet/?AFLD=` included!)");
-    } else if (ConfigNames.find((name) => {
-        if (name.includes(" - fleet ")) {
-            name = name.split(" - fleet ")[0];
-        }
-        name.trim();
-        return name === config.outputName;
-    }) != undefined) {
-        alert("Output name already exists, make something unique.")
     } else {
-        console.log(config);
         var element: HTMLElement = document.getElementById('download') as HTMLElement;
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(config, null, 2)));
         element.setAttribute('download', `config-${config.outputName}.json`);
         element.innerText = `Download config-${config.outputName}.json`;
         (document.getElementById("code") as HTMLElement).innerText = JSON.stringify(config, null, 2);
+        element = document.getElementById("clipboard-button") as HTMLElement;
+        element.onclick = () => {
+            navigator.clipboard.writeText(JSON.stringify(config, null, 2));
+            alert("Copied to clipboard succsefully.")
+        }
+        element.style = "font-size: 42px;"
+
     }
 };
 </script>
@@ -215,6 +212,9 @@ function GenerateConfig() {
     </form>
     <button on:click={GenerateConfig} style="font-size: 69px;">Generate configuration file</button>
     <br>
+    <button id="clipboard-button" style="display: none;"> Copy Config to Clipboard </button>
+    <br>
+    <button id="form-button" style="font-size: 42px;" on:click={redirect}> &gt; Go to form to submit config &lt; </button>
     <a id="download"></a>
     <pre id="code" style="text-align: left; width: 200px; margin: auto;"></pre>
 </div>
