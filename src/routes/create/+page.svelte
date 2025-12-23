@@ -107,7 +107,7 @@ function GenerateConfig() {
         <h2>General test attributes</h2>
         <div style="border: 1px solid black;">
             <p>Renhex Link*<input type="url" required bind:value="{renhexLink}"></p>
-            <a href="https://renhex.github.io/AzurLaneFleet/">https://renhex.github.io/AzurLaneFleet/</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://renhex.github.io/AzurLaneFleet/">https://renhex.github.io/AzurLaneFleet/</a>
             <p>Include the entire URL from the "generate URL" button. It will copy gear, affinity, and level. Do not shorten the URL through any means (including the "short URL" option).</p>
         </div>
         <div style="border: 1px solid black;">
