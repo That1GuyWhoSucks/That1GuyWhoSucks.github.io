@@ -17,7 +17,7 @@ Promise.all(
   })
 ).then((confs: ViewConfig[]) => {
     configs = confs.sort((a, b) => {
-        let v = b.createdAt.localeCompare(a.createdAt)
+        let v = a.createdAt.localeCompare(b.createdAt)
         if (v == 0) {
             v = a.outputName.localeCompare(b.outputName);
         };
