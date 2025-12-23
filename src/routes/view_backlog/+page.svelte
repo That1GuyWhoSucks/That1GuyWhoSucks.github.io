@@ -38,7 +38,7 @@ function Chunk(arr: ViewConfig[]): ViewConfig[][] {
                                 <p>{conf.outputName}</p>
                             </div>
                             <div slot="details" style="width: 994px; overflow-x: scroll; text-align: left;">
-                                <pre>{JSON.stringify(conf, ["outputName", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2)}</pre>
+                                <pre>{JSON.stringify(conf, ["outputName", "attempts", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2)}</pre>
                                 <div bind:this={conf.images[0]}></div>
                                 {#if !conf.images[1]}
                                     <button on:click={async function() {
