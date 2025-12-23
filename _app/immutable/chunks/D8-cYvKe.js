@@ -1,1 +1,0 @@
-import{l as n,o as u}from"./CVAjrrWA.js";function a(i,f,e,r,s){var d;n&&u();var t=(d=f.$$slots)==null?void 0:d[e],l=!1;t===!0&&(t=f[e==="default"?"children":e],l=!0),t===void 0?s!==null&&s(i):t(i,l?()=>r:r)}export{a as s};
