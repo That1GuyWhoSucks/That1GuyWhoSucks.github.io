@@ -19,6 +19,7 @@ let EnemyStats = {
     "air": -1,
     "torpedo": -1,
     "hit": -1,
+    "type": -1,
 };
 let armor = 0;
 let dungeonId = 296015;
@@ -87,58 +88,80 @@ function GenerateConfig() {
     }
 };
 </script>
-<div style="text-align: center;">
-    <p>Complete the form below, hit the big "Generate configuration file", then submit in the form and you are done!</p>
-    <p>If you have any questions or want something more specific than can be generated here feel free to contact me @that1nerd on discord. If you want to try something there is a very good chance I can make it happen (with enough time).</p>
-    <form>
-        <h2>General information</h2>
-        <div style="border: 1px solid black;">
-            <p>Output Name*<input type="text" required bind:value="{outputName}"></p>
-            <p>The name the simulator uses to store data related to the comp.</p>
+<div class="page">
+    <header class="page-header">
+        <h1>Config Creator</h1>
+        <h3 class="subtitle">
+            Fill this form out and press submit. It's that easy.
+        </h3>
+    </header>
+    <h2>Required Information</h2>
+    <fieldset>
+        <legend>Basic Information</legend>
+
+        <label>
+            Output Name *
+            <input type="text" required bind:value="{outputName}">
+            <small>The name the simulator uses to store data.</small>
+        </label>
+        <br>
+        <label>
+            Renhex Link *
+            <input type="url" required bind:value="{renhexLink}" style="margin-left: 4px;">
+            <small>
+                Paste the full URL from “Generate URL”. Do not shorten it.
+                <a target="_blank" rel="noopener noreferrer" href="https://renhex.github.io/AzurLaneFleet/">https://renhex.github.io/AzurLaneFleet/</a>
+            </small>
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Test Setup</legend>
+
+        <label>
+            Attempt Count: <strong class="attempt-value">{attemptCount}</strong>
+            <input style="margin-bottom: -5px;" type="range" min="1" max="20" bind:value="{attemptCount}">
+            <small>
+                More attempts = better data, longer runtime.
+            </small>
+        </label>
+        <div class="two-col">
+        <div class="picker">
+            <h3>Enemy</h3>
+            {#each Object.entries(ENEMIES) as name}
+                <label class="radio-row">
+                    {name[0]}
+                    <input type="radio" name="enemyId" value="{name[1][0]}" bind:group="{enemy}">
+                </label>
+            {/each}
         </div>
-        <div style="border: 1px solid black;">
-            <p>Author Name<input type="text" bind:value="{authorName}"></p>
+        <div class="picker">
+            <h3>Dungeon</h3>
+            {#each Object.entries(ENEMIES) as name}
+                <label class="radio-row">
+                    {name[0]}
+                    <input type="radio" name="dungeonId" value="{name[1][1]}" bind:group="{dungeonId}">
+                </label>
+            {/each}
+        </div>
+    </div>
+    </fieldset>
+    
+    <Accordian>
+        <div slot="head">
+            <h2>Additional information</h2>
+        </div>
+        <div slot="details">
+            <p>Author Name  <input type="text" bind:value="{authorName}"></p>
             <p>Your name/tag. Not required but may be useful if someone else wants to inquire about your data.</p>
-        </div>
-        <div style="border: 1px solid black;">
-            <p>Description  <textarea style="width: 250px; height: 100px;" bind:value="{description}"></textarea></p>
+            <p>Description  <textarea style="margin-left: 12px;" bind:value="{description}"></textarea></p>
             <p>A short description of what this is meant to test, not required.</p>
         </div>
-        <h2>General test attributes</h2>
-        <div style="border: 1px solid black;">
-            <p>Renhex Link*<input type="url" required bind:value="{renhexLink}"></p>
-            <a target="_blank" rel="noopener noreferrer" href="https://renhex.github.io/AzurLaneFleet/">https://renhex.github.io/AzurLaneFleet/</a>
-            <p>Include the entire URL from the "generate URL" button. It will copy gear, affinity, and level. Do not shorten the URL through any means (including the "short URL" option).</p>
+    </Accordian>
+    <Accordian>
+        <div slot="head">
+            <h2>Modifications</h2>
         </div>
-        <div style="border: 1px solid black;">
-            <input type="range" min="1" max="20" bind:value="{attemptCount}">
-            <p>The number of trials per fleet, more will mean more datapoints but longer to run.</p>
-            <p>{attemptCount} attempts.</p>
-        </div>
-        <div style="border: 1px solid black; display: inline-flex;">
-            <div style="width: fit-content; margin: 0 10px 0 10px;">
-                <h3>Enemy ID</h3>
-                {#each (Object.entries(ENEMIES)) as name}
-                    <p><input type="radio" name="enemyId" value="{name[1][0]}" bind:group="{enemy}">{name[0]}</p>
-                {/each}
-                <p>Select an enemy ID, this will be the enemy spawned that will be attacked and the base stats used.</p>
-            </div>
-            <div style="width: fit-content; margin: 0 10px 0 10px;">
-                <h3>Dungeon ID</h3>
-                {#each Object.entries(ENEMIES) as name}
-                    <p><input type="radio" name="dungeonId" value="{name[1][1]}" bind:group="{dungeonId}">{name[0]}</p>
-                {/each}
-                <p>Select a dungeon ID, this will dictate things like movement patterns, attack patterns, and length of fight.</p>
-            </div>
-        </div>
-        <h2>Modifications</h2>
-        <div style="border: 1px solid black;">
-            {#each (Object.entries(ENEMY_MODIFIERS)) as modifiers}
-                <p>{modifiers[0]}: <input type="number" bind:value={EnemyStats[modifiers[1] as keyof typeof EnemyStats]} defaultValue="-1"></p>
-            {/each}
-            {#each ["Default", "Light", "Medium", "Heavy"] as arm, index}
-                <p><input type="radio" name="armorSelection" value="{index}" bind:group="{armor}">{arm}</p>
-            {/each}
+        <div slot="details">
             <p>Enemy stat modifications, values &lt; 0 will use default.</p>
             <Accordian>
                 <div slot="head">Click here to see the hull type numbers</div>
@@ -161,72 +184,158 @@ function GenerateConfig() {
                     </table>
                 </div>
             </Accordian>
-        </div>
-        <div style="border: 1px solid black;">
-            
-        </div>
-        <div style="border: 1px solid black;">
+            <div class="grid">
+                {#each Object.entries(ENEMY_MODIFIERS) as modifiers}
+                    <label>
+                        {modifiers[0]}
+                        <input type="number" bind:value={EnemyStats[modifiers[1] as keyof typeof EnemyStats]}>
+                    </label>
+                {/each}
+            </div>
+            <p>Armor override.</p>
+            {#each ["Default", "Light", "Medium", "Heavy"] as arm, index}
+                <label class="radio-row">{arm}<input type="radio" name="armorSelection" value="{index}" bind:group="{armor}"></label>
+            {/each}
             <p>Length of fight <input type="number" bind:value={battleLength}> (value &le; 0 will use default length)</p>
             <p>Force cloak state</p>
             <div>
-                <input type="radio" name="cloakState" value="-1" bind:group="{forceCloakState}"> Default
-                <input type="radio" name="cloakState" value="0" bind:group="{forceCloakState}"> Never Cloaked
-                <input type="radio" name="cloakState" value="1" bind:group="{forceCloakState}"> Always Cloaked
+                <label class="radio-row">Default<input type="radio" name="cloakState" value="-1" bind:group="{forceCloakState}"></label>
+                <label class="radio-row">Never Cloaked<input type="radio" name="cloakState" value="0" bind:group="{forceCloakState}"></label>
+                <label class="radio-row">Always Cloaked<input type="radio" name="cloakState" value="1" bind:group="{forceCloakState}"></label>
             </div>
-        </div>
-        <div style="border: 1px solid black; justify-content: center; display: grid;">
-            <table>
-                <tbody>
-                    <tr>
-                        <th></th>
-                        {#each FT_SHIPS as ship}
-                            <th>{ship}</th>
-                        {/each}
-                    </tr>
-                    {#each FT_TECH as tech}
+            <div style="justify-content: center; display: grid;">
+                <table>
+                    <tbody>
                         <tr>
-                            <th>{tech}</th>
+                            <th></th>
                             {#each FT_SHIPS as ship}
-                                <th><input type="number" bind:value={FT[`${ship}-${tech}` as keyof typeof FT]} defaultValue="-1"></th>
+                                <th>{ship}</th>
                             {/each}
                         </tr>
-                    {/each}
-                </tbody>
-            </table>
-            <p>Fleet tech values (Values &lt; 0 will use max values at time of running)</p>
+                        {#each FT_TECH as tech}
+                            <tr>
+                                <th>{tech}</th>
+                                {#each FT_SHIPS as ship}
+                                    <th><input type="number" bind:value={FT[`${ship}-${tech}` as keyof typeof FT]} defaultValue="-1"></th>
+                                {/each}
+                            </tr>
+                        {/each}
+                    </tbody>
+                </table>
+                <p>Fleet tech values (Values &lt; 0 will use max values at time of running)</p>
+            </div>
         </div>
-        <br>
-        <br>
-    </form>
-    <button on:click={GenerateConfig} style="font-size: 69px;">Generate configuration file</button>
-
+    </Accordian>
+    <button class="generate" onclick={GenerateConfig}>
+        Generate Configuration File
+    </button>
     <pre id="code" style="text-align: left; width: 200px; margin: auto;"></pre>
 </div>
 <style>
 tr {
     input {
-        width: 60px;
+        width: 40px;
     }
 }
 table {
     overflow: hidden;
+    input[type=number] {
+        -webkit-appearance: textfield;
+        -moz-appearance:    textfield;
+        appearance:         textfield;
+    }
 }
-
 tr:hover {
-    background-color: red;
+    background-color: #f0f0f0;
 }
-
 th {
     position: relative;
 }
 th:hover::after {
     content: "";
     position: absolute;
-    background-color: red;
+    background-color: #f0f0f0;
     left: 0;
     top: -5000px;
     height: 10000px;
     width: 100%;
     z-index: -1;
+    pointer-events: none;
 }
+.page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.subtitle {
+    opacity: 0.8;
+}
+fieldset {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    small {
+        display: block;
+        margin-top: 0.25rem;
+        opacity: 0.8;
+    }
+}
+input, textarea {
+    width: 100%;
+    max-width: 500px;
+}
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.picker {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+button.generate {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    margin: 2rem auto;
+    display: block;
+}
+.attempt-value {
+    display: inline-block;
+    width: 2ch;
+    text-align: right;
+    font-family: monospace;
+}
+.radio-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.radio-row input {
+    width: auto;
+}
+.radio-row input[type="radio"] {
+    width: auto;
+    max-width: none;
+    margin-left: auto;
+    margin-right: 35%;
+}
+
+
 </style>

@@ -62,7 +62,7 @@ if (status === 0) {
                 const header = document.createElement("h1");
                 const pre = document.createElement("pre");
                 pre.textContent = JSON.stringify(conf, ["outputName", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2);
-                pre.style = "word-wrap: anywhere; white-space: pre-wrap;"
+                pre.style = "word-wrap: anywhere; white-space: pre-wrap; max-width: 994px;"
                 header.innerText = conf.outputName;
                 mount(Accordian, {
                     target: div,
@@ -71,13 +71,14 @@ if (status === 0) {
                     }
                 });
                 // @ts-ignore
-                div.children[0].children[1].replaceChildren(...[
-                    await process_fleet(conf, imageManager), 
+                const gDiv = document.createElement("div");
+                gDiv.replaceChildren(...[await process_fleet(conf, imageManager), 
                     pre, 
-                    ...await Promise.all(generate_config_plots(conf, res, imageManager))
-                ]);
+                    ...await Promise.all(generate_config_plots(conf, res, imageManager))])
+                div.children[0].children[1].replaceChildren(gDiv);
                 div.prepend(header);
-                div.style = "height: 1060px; overflow-y: scroll; width: 1080px"
+                div.style = "min-width: fit-content; padding: 10px; border: 3px solid black;"
+                gDiv.style = "max-height: 80vh; overflow-y: scroll;";
                 Container.appendChild(div);
                 Configs.push(conf);
                 Res[conf.id] = res;
@@ -144,13 +145,7 @@ if (status === 0) {
 </Accordian>
 <div>
     
-    
 </div>
-<div bind:this={Container} style="display: flex; 
-        flex-direction: row; 
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden; 
-        min-width: fit-content;"></div>
+<div bind:this={Container} style="display: flex; overscroll-behavior-x: contain;"></div>
 <br>
 <div bind:this={GroupContainer} style="width: 1060px; min-width: 1060px;"></div>

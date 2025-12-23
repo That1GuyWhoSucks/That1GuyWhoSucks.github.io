@@ -6,20 +6,22 @@ const handleClick = () => open = !open
 </script>
 
 <div class="accordion">
-    <div class="header">
+    <div class="header" on:click={handleClick}>
         <div class="text" style="display: ruby; {style}">
             <slot name="head"></slot>
-            <button on:click={handleClick}>
-                +/-
+            <button>
+                {open ? "Hide" : "Show"}
             </button>
         </div>
         
     </div>
     
-    <div class="details" transition:slide style="{open ? '' : 'display: none;'}">
-        <slot name="details">
-        </slot>
-    </div>
+    <div class="details"
+     transition:slide
+     style="{open ? '' : 'display: none;'}">
+    <slot name="details" {open}></slot>
+</div>
+
 </div>
 
 <style>
@@ -36,7 +38,11 @@ const handleClick = () => open = !open
     }
     
     div.details {
-        background-color: #cecece;
         padding:1rem;
+        border: 1px solid black;
     }
+    div.header {
+        cursor: pointer;
+    }
+
 </style>

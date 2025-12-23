@@ -70,32 +70,49 @@ function Chunk(arr: ViewConfig[]): ViewConfig[][] {
     return result;
 }
 </script>
-<div style="text-align: center;">
-    <p>Select what configs to analyze and what graphs to create</p>
-    <p>OR you may enter a code here <input type="text" bind:value={code}> <button on:click={GotoCode}>submit code</button></p>
-    <div>
-        <p>Individual Graphs:</p>
-        <p><button on:click={function () {
-            Object.keys(SelectedIndivdualGraphs).forEach((key) => {
-                SelectedIndivdualGraphs[key] = !SelectedIndivdualGraphs[key];
-            })
-        }}>Invert</button><button on:click={function () {
-            Object.keys(SelectedIndivdualGraphs).forEach((key) => {
-                SelectedIndivdualGraphs[key] = true;
-            })
-        }}>All</button><button on:click={function () {
-            Object.keys(SelectedIndivdualGraphs).forEach((key) => {
-                SelectedIndivdualGraphs[key] = false;
-            })
-        }}>None</button></p>
-        {#each (Object.entries(IndividualGraphTypes)) as [key, type]}
-            <p style="width: 100%; margin-left: -49.5%; text-align: right;">{type[0]} <input type="checkbox" bind:checked={SelectedIndivdualGraphs[key]}></p>
-        {/each}
+<section class="intro">
+    <p>Select configs to analyze and choose which graphs to generate.</p>
+    <div class="code-input">
+        <label>
+            Have a code?
+            <input type="text" bind:value={code}>
+        </label>
+        <button on:click={GotoCode}>Load</button>
+    </div>
+</section>
+<section>
+    <h2>Graphs</h2>
+    <div class="panel">
+        <h3>Individual graphs</h3>
+        <div class="bulk-actions">
+            <button on:click={function () {
+                Object.keys(SelectedIndivdualGraphs).forEach((key) => {
+                    SelectedIndivdualGraphs[key] = !SelectedIndivdualGraphs[key];
+                })}}>Invert
+            </button>
+            <button on:click={function () {
+                Object.keys(SelectedIndivdualGraphs).forEach((key) => {
+                    SelectedIndivdualGraphs[key] = true;
+                })}}>All
+            </button>
+            <button on:click={function () {
+                Object.keys(SelectedIndivdualGraphs).forEach((key) => {
+                    SelectedIndivdualGraphs[key] = false;
+                })}}>None
+            </button>
+        </div>
+
+        <div class="checkbox-list">
+            {#each Object.entries(IndividualGraphTypes) as [key, type]}
+                <label>
+                    <input type="checkbox" bind:checked={SelectedIndivdualGraphs[key]}>
+                    {type[0]}
+                </label>
+            {/each}
+        </div>
         <Accordian>
-            <div slot="head">
-                <p>Click here to learn about each individual graph</p>
-            </div>
-            <div slot="details" style="padding: 1rem;">
+            <div slot="head">Click here to learn about each individual graph</div>
+            <div slot="details">
                 <p>Length of Battle: This graph shows the length of each fight in a bar chart. Useful to see if fights are ending early.</p>
                 <p>DoT Damage Distribution: This graph shows the DoT damage (only DoT) of each ship in a box plot. NOTE, DoT dmg is still given to the ship who started it. Useful to see who is starting DoT.</p>
                 <p>Remaining HP% of Ships: This graph shows the remaining HP% of each ship at the end of the fight in a box plot. Useful to see if any ships are dying or how much damage they are taking.</p>
@@ -108,36 +125,51 @@ function Chunk(arr: ViewConfig[]): ViewConfig[][] {
                 <p>Timelines: This graph is actually a set of graphs. It generates one graph per attempt which plots: the damage each ship deals in a specific second, torpedo launches/airstrikes/salvos, and the cloak state of airstrikes. NOTE, this is the only graph where selecting a ship in the legend will not update the scaling due to the annotations. Useful for seeing exactly when things launch (hovering over the annotation will show the exact launch time) and the damage that is being dealt at a specific time.</p>
             </div>
         </Accordian>
-        <p>Group Graphs:</p>
-        <p><button on:click={function () {
-            Object.keys(SelectedGroupGraphs).forEach((key) => {
-                SelectedGroupGraphs[key] = !SelectedGroupGraphs[key];
-            })
-        }}>Invert</button><button on:click={function () {
-            Object.keys(SelectedGroupGraphs).forEach((key) => {
-                SelectedGroupGraphs[key] = true;
-            })
-        }}>All</button><button on:click={function () {
-            Object.keys(SelectedGroupGraphs).forEach((key) => {
-                SelectedGroupGraphs[key] = false;
-            })
-        }}>None</button></p>
-        {#each (Object.entries(GroupGraphTypes)) as [key, type]}
-            <p style="width: 100%; margin-left: -49.5%; text-align: right;">{type[0]} <input type="checkbox" bind:checked={SelectedGroupGraphs[key]}></p>
-        {/each}
+    </div>
+    <div class="panel">
+        <h3>Group graphs</h3>
+        <div class="bulk-actions">
+            <button on:click={function () {
+                Object.keys(SelectedGroupGraphs).forEach((key) => {
+                    SelectedGroupGraphs[key] = !SelectedGroupGraphs[key];
+                })}}>Invert
+            </button>
+            <button on:click={function () {
+                Object.keys(SelectedGroupGraphs).forEach((key) => {
+                    SelectedGroupGraphs[key] = true;
+                })}}>All
+            </button>
+            <button on:click={function () {
+                Object.keys(SelectedGroupGraphs).forEach((key) => {
+                    SelectedGroupGraphs[key] = false;
+                })}}>None
+            </button>
+        </div>
+        <div class="checkbox-list">
+            {#each Object.entries(GroupGraphTypes) as [key, type]}
+                <label>
+                    <input type="checkbox" bind:checked={SelectedGroupGraphs[key]}>
+                    {type[0]}
+                </label>
+            {/each}
+        </div>
         <Accordian>
             <div slot="head">
                 <p>Click here to learn about each group graph</p>
             </div>
-            <div slot="details" style="padding: 1rem;">
+            <div slot="details">
                 <p>Remember to only compare across configs with the same goal in mind. Comparing a config that gave it's target 9,999,999hp and one that reduced it to 1,000,000hp will not provide valuble insight.</p>
                 <p>Damage Distribution: This graph compares the sum SURFACE damage of each attempt and plots it in a box plot for each config. Useful to compare the final damage of different configs.</p>
                 <p>Standard Deviation: This graph compares the standard deviation of each config in a bar chart. Useful to compare the consistency of damage across configs.</p>
                 <p>Kill %: This graph compares the kill ratio of each config in a bar chart. Useful to compare kill rates.</p>
             </div>
         </Accordian>
-        <p>Configs:</p>
-        <p><button on:click={function () {
+    </div>
+</section>
+<section>
+    <h2>Configs</h2>
+    <div class="bulk-actions">
+        <button on:click={function () {
             configs.forEach((conf) => {
                 if (conf.active) {
                     SelectedConfigs[conf.id] = !SelectedConfigs[conf.id];
@@ -155,62 +187,219 @@ function Chunk(arr: ViewConfig[]): ViewConfig[][] {
                     SelectedConfigs[conf.id] = false;
                 }
             });
-        }}>None</button></p>
-        <div>
-            <p>Search by: </p>
-            <div style="display: ruby;">
-                {#each Object.keys(SEARCH_TYPES) as type}
-                    <label style="margin-right: 1rem;">
-                        <input type="radio" name="searchType" value={type} bind:group={ConfigSearchType} on:change={() => ConfigSearchTerm = ""}> {type}
-                    </label>
-                {/each}
-            </div>
-        </div>
-        <Accordian>
-            <div slot="head">
-                <p>Click to see enemy and dungeon IDs</p>
-            </div>
-            <div slot="details" style="padding: 1rem;">
-                {#each Object.entries(ENEMIES) as data}
-                    <p>{data[0]} - enemy: {data[1][0]}, dungeon: {data[1][1]}</p>
-                {/each}
-            </div>
-        </Accordian>
-        <p>Search: <input type="text" bind:value={ConfigSearchTerm} on:input={() => SortConfigs()}></p>
-        <table style="width: 100%;">
-            <tbody>
-                {#each Chunk(configs.filter((conf) => conf.active)) as row}
-                    <tr>
-                        {#each row as conf}
-                            <td style="vertical-align: top; border: 1px solid black;">
-                                <Accordian style='width: 100%;'>
-                                    <div slot="head" style="">
-                                        <p>{conf.outputName} <input type="checkbox" bind:checked={SelectedConfigs[conf.id]}></p>
-                                    </div>
-                                    <div slot="details" style="width: 994px; overflow-x: scroll; text-align: left;">
-                                        <pre>{JSON.stringify(conf, ["outputName", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2)}</pre>
-                                        <div bind:this={conf.images[0]}></div>
-                                        {#if !conf.images[1]}
-                                            <button on:click={async function() {
-                                                if (imageLoader.rarity.length == 0) {
-                                                    await imageLoader.init();
-                                                }
-                                                conf.images[0]?.replaceChildren(await process_fleet(conf, imageLoader))
-                                                conf.images[1] = true;
-                                            }}>Generate fleet image</button>
-                                        {/if}
-                                    </div>
-                                </Accordian>
-                            </td>
-                        {/each}
-                        {#each Array(ELEMENTS_PER_ROW - row.length) as _}
-                            <td></td>
-                        {/each}
-                    </tr>
-                {/each}
-            </tbody>
-        </table>
+        }}>None</button>
     </div>
-    <br>
-    <button on:click={GenerateCode} style="font-size: 69px;">Generate graphs</button>
+    <div class="bulk-actions">
+        {#each Object.keys(SEARCH_TYPES) as type}
+            <label style="margin-right: 1rem;">
+                <input type="radio" name="searchType" value={type} bind:group={ConfigSearchType} on:change={() => ConfigSearchTerm = ""}> {type}
+            </label>
+        {/each}
+    </div>
+
+    <div class="search">
+        <label>Search: <input type="text" bind:value={ConfigSearchTerm} on:input={SortConfigs}></label>
+    </div>
+</section>
+<div class="config-list">
+    {#each configs.filter(c => c.active) as conf}
+        <div class="config-card">
+            
+            <label class="config-select">
+                <input
+                    type="checkbox"
+                    bind:checked={SelectedConfigs[conf.id]}
+                    title="Include this config in graphs"
+                />
+            </label>
+
+            <Accordian>
+                <div slot="head">
+                    <div class="config-head">
+                        <span class="config-title" style="padding-left: 20px;">{conf.outputName}</span>
+                        <span class="config-meta">
+                            {conf.author} | {conf.createdAt}
+                        </span>
+                    </div>
+                </div>
+
+                <div slot="details">
+                    <div class="config-details">
+
+                        <pre style="overflow-x: auto;">{JSON.stringify(conf, [
+                            "outputName",
+                            "author",
+                            "description",
+                            "fleetBuilderLink",
+                            "enemyId",
+                            "dungeonId",
+                            "ft",
+                            "createdAt"
+                        ], 2)}</pre>
+
+                        <div class="config-image-area">
+                            <div class="image-frame" bind:this={conf.images[0]}>
+                                <div class="image-placeholder">
+                                    Fleet image not generated
+                                </div>
+                            </div>
+
+                            {#if !conf.images[1]}
+                                <button
+                                    class="generate-image"
+                                    on:click={async () => {
+                                        if (imageLoader.rarity.length === 0) {
+                                            await imageLoader.init();
+                                        }
+                                        conf.images[0]?.replaceChildren(
+                                            await process_fleet(conf, imageLoader)
+                                        );
+                                        conf.images[1] = true;
+                                    }}>
+                                    Generate fleet image
+                                </button>
+                            {/if}
+                        </div>
+
+                    </div>
+                </div>
+            </Accordian>
+
+        </div>
+    {/each}
 </div>
+
+<div class="generate">
+    <button class="primary" on:click={GenerateCode}>
+        Generate
+    </button>
+</div>
+<style>
+.config-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Card shell */
+.config-card {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    background: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Checkbox column */
+.config-select {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 1rem;
+    background: #f0f0f0;
+    border-right: 1px solid #ccc;
+}
+
+/* Accordion header content */
+.config-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.config-title {
+    font-weight: 600;
+}
+
+.config-meta {
+    font-size: 0.85rem;
+    color: #666;
+    white-space: nowrap;
+}
+
+/* Expanded content */
+.config-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1rem 0.25rem;
+}
+
+/* JSON info block */
+.config-info pre {
+    max-height: 16rem;
+    overflow: auto;
+    background: #111;
+    color: #ddd;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+/* Image section */
+.config-image-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Ensures exact 994x333 display */
+.image-frame {
+    width: 994px;
+    height: 333px;
+    background: #222;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-placeholder {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.generate-image {
+    padding: 0.4rem 0.8rem;
+}
+
+section {
+    max-width: 750px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+.panel {
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+.bulk-actions {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.checkbox-list label {
+    display: block;
+    margin: 0.25rem 0;
+}
+
+.generate {
+    position: sticky;
+    bottom: 0;
+    padding: 1rem;
+    text-align: center;
+}
+button {
+    padding: 0.4rem 0.8rem;
+}
+button.primary {
+    font-size: 1.5rem; 
+    padding: 0.75rem 2rem;
+}
+</style>

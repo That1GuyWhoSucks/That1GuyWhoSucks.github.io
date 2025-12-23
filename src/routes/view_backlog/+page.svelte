@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ViewConfig } from "$lib";
-import { ELEMENTS_PER_ROW, process_fleet, ImageLoader } from "$lib";
+import { process_fleet, ImageLoader } from "$lib";
 import Accordian from '../../Accordian.svelte';
 
 let configs: ViewConfig[] = [];
@@ -24,45 +24,146 @@ Promise.all(
         return v;
     });
 });
-function Chunk(arr: ViewConfig[]): ViewConfig[][] {
-    const result = [];
-    for (let i=0; i<arr.length; i+=ELEMENTS_PER_ROW) {
-        result.push(arr.slice(i, i + ELEMENTS_PER_ROW));
-    }
-    return result;
-}
 </script>
 <h1>{configs.length} pending configs</h1>
-<table style="width: 100%;">
-    <tbody>
-        {#each Chunk(configs) as row}
-            <tr>
-                {#each row as conf}
-                    <td style="vertical-align: top; border: 1px solid black;">
-                        <Accordian style='width: 100%;'>
-                            <div slot="head" style="">
-                                <p>{conf.outputName}</p>
+<div class="config-list">
+    {#each configs as conf}
+        <div class="config-card">
+            <div >
+            </div>
+            <Accordian>
+                <div slot="head">
+                    <div class="config-head">
+                        <span class="config-title">{conf.outputName}</span>
+                        <span class="config-meta">
+                            {conf.author} | {conf.createdAt}
+                        </span>
+                    </div>
+                </div>
+
+                <div slot="details">
+                    <div class="config-details">
+
+                        <pre style="overflow: auto;">{JSON.stringify(conf, [
+                            "outputName",
+                            "author",
+                            "description",
+                            "fleetBuilderLink",
+                            "enemyId",
+                            "dungeonId",
+                            "ft",
+                            "createdAt"
+                        ], 2)}</pre>
+
+                        <div class="config-image-area">
+                            <div class="image-frame" bind:this={conf.images[0]}>
+                                <div class="image-placeholder">
+                                    Fleet image not generated
+                                </div>
                             </div>
-                            <div slot="details" style="width: 994px; overflow-x: scroll; text-align: left;">
-                                <pre>{JSON.stringify(conf, ["outputName", "attempts", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2)}</pre>
-                                <div bind:this={conf.images[0]}></div>
-                                {#if !conf.images[1]}
-                                    <button on:click={async function() {
-                                        if (imageLoader.rarity.length == 0) {
+
+                            {#if !conf.images[1]}
+                                <button
+                                    class="generate-image"
+                                    on:click={async () => {
+                                        if (imageLoader.rarity.length === 0) {
                                             await imageLoader.init();
                                         }
-                                        conf.images[0]?.replaceChildren(await process_fleet(conf, imageLoader))
+                                        conf.images[0]?.replaceChildren(
+                                            await process_fleet(conf, imageLoader)
+                                        );
                                         conf.images[1] = true;
-                                    }}>Generate fleet image</button>
-                                {/if}
-                            </div>
-                        </Accordian>
-                    </td>
-                {/each}
-                {#each Array(ELEMENTS_PER_ROW - row.length) as _}
-                    <td></td>
-                {/each}
-            </tr>
-        {/each}
-    </tbody>
-</table>
+                                    }}>
+                                    Generate fleet image
+                                </button>
+                            {/if}
+                        </div>
+
+                    </div>
+                </div>
+            </Accordian>
+
+        </div>
+    {/each}
+</div>
+<style>
+.config-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Card shell */
+.config-card {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    background: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.config-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.config-title {
+    font-weight: 600;
+}
+
+.config-meta {
+    font-size: 0.85rem;
+    color: #666;
+    white-space: nowrap;
+}
+
+.config-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1rem 0.25rem;
+}
+
+
+/* Image section */
+.config-image-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Ensures exact 994x333 display */
+.image-frame {
+    width: 994px;
+    height: 333px;
+    background: #222;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-placeholder {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.generate-image {
+    padding: 0.4rem 0.8rem;
+}
+
+section {
+    max-width: 750px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+.panel {
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
+</style>

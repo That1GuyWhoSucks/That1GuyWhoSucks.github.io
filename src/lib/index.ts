@@ -23,6 +23,7 @@ export const ENEMIES = {
     "Hornet META": [295270, 296270],
     "Kawakaze META": [295285, 296285],
     "Yuudachi META": [295300, 296300],
+    "Yorktown META": [295315, 296315],
 };
 
 export interface IndividualFleetTech {
@@ -372,8 +373,7 @@ function AvgTimeline(data: Results[], ship_data: ShipData[]) {
             rotation: 90
         },
         barmode: "stack",
-        width: 1800,
-        height: 600,
+        width: 994,
     })
 }
 function AttemptLength(data: Results[], ship_data: ShipData[]): Promise<Plotly.PlotlyHTMLElement> {
@@ -408,6 +408,10 @@ function AttemptLength(data: Results[], ship_data: ShipData[]): Promise<Plotly.P
 function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement> {
     let min: number;
     let max: number;
+    const skinToName: Record<string, string> = {};
+    ship_data.forEach((s) => {
+        skinToName[s.skin_id] = s.name
+    })
     data.forEach((attempt) => {
         Object.values(attempt.Timed_Damage).forEach((k) => {
             Object.keys(k).forEach((time) => {
@@ -427,7 +431,7 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
             return {
                 x: Object.keys(vals).map(k => Number(k)),
                 y: Object.values(vals),
-                name: ship,
+                name: skinToName[ship],
                 type: "bar",
             }
         })
@@ -464,7 +468,7 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
                         y: total_max,
                         xref: "x",
                         yref: "y",
-                        text: `${ship} airstrike ${hidden}`,
+                        text: `${skinToName[ship]} airstrike ${hidden}`,
                         showarrow: false,
                         yshift: 0,
                         hovertext: time
@@ -479,7 +483,7 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
                         y: total_max,
                         xref: "x",
                         yref: "y",
-                        text: `${ship} salvo`,
+                        text: `${skinToName[ship]} salvo`,
                         showarrow: false,
                         yshift: 0,
                         hovertext: time
@@ -494,7 +498,7 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
                         y: total_max,
                         xref: "x",
                         yref: "y",
-                        text: `${ship} torp`,
+                        text: `${skinToName[ship]} torp`,
                         showarrow: false,
                         hovertext: time,
                         yshift: 0
@@ -527,8 +531,7 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
                     range: [min, max]
                 },
                 barmode: "stack",
-                width: 1800,
-                height: 600,
+                width: 994,
                 annotations: annotations
             })
         })))
