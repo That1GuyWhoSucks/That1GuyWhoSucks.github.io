@@ -16,7 +16,13 @@ Promise.all(
     return { ...data, "images": [null, false] };
   })
 ).then((confs: ViewConfig[]) => {
-    configs = confs;
+    configs = confs.sort((a, b) => {
+        let v = b.createdAt.localeCompare(a.createdAt)
+        if (v == 0) {
+            v = a.outputName.localeCompare(b.outputName);
+        };
+        return v;
+    });
 });
 function Chunk(arr: ViewConfig[]): ViewConfig[][] {
     const result = [];
