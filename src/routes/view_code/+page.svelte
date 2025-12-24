@@ -132,6 +132,9 @@ if (status === 0) {
             goto("#/view")
         }}>Go back</button>
     {/if}
+    {#if status === 1}
+        <h3>Remember that you will likely have to scroll horizontally to see all configs.</h3>
+    {/if}
 </div>
 <Accordian open={true}>
     <h2 slot="head">Tips and extra info</h2>

@@ -44,7 +44,7 @@ let backlog = Object.keys(import.meta.glob("../pending/*.json")).length;
         </p>
 
         <p>
-            Unlike end-screen comparisons, the AutoTester™ separates DoT, AA, and surface damage,
+            Unlike endscreen comparisons, the AutoTester™ separates DoT, AA, and surface damage,
             tracks health, etc.
         </p>
 
@@ -69,7 +69,7 @@ let backlog = Object.keys(import.meta.glob("../pending/*.json")).length;
                     You can contact me on Discord for updates.
                 </p>
                 <p>
-                    Once ready, go to "View data", select your config(s), choose graphs,
+                    Once ready, go to "View data", choose graphs, select your config(s), 
                     and generate the results.
                 </p>
             </div>

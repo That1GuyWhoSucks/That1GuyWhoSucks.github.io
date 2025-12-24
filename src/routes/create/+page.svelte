@@ -108,6 +108,8 @@ function GenerateConfig() {
         <label>
             Renhex Link *
             <input type="url" required bind:value="{renhexLink}" style="margin-left: 4px;">
+            <p>This is the fleet that will be run, the AutoTester™ will copy it <strong><u>exactly</u></strong> as shown in the renhex link. Including affinity, oaths, levels, gear enhancements, augments etc.</p>
+            <p>You may have multiple fleets in the link and each will be run and seperated in the output. Submarine fleets are supported but you have to contact me to set it up.</p>
             <small>
                 Paste the full URL from “Generate URL”. Do not shorten it.
                 <a target="_blank" rel="noopener noreferrer" href="https://renhex.github.io/AzurLaneFleet/">https://renhex.github.io/AzurLaneFleet/</a>
@@ -246,7 +248,7 @@ table {
     }
 }
 tr:hover {
-    background-color: #f0f0f0;
+    background-color: #afafaf;
 }
 th {
     position: relative;
@@ -254,7 +256,7 @@ th {
 th:hover::after {
     content: "";
     position: absolute;
-    background-color: #f0f0f0;
+    background-color: #afafaf;
     left: 0;
     top: -5000px;
     height: 10000px;
