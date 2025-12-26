@@ -1101,6 +1101,7 @@ export async function process_fleet(config: Config, imageLoader: ImageLoader): P
         }
         output.appendChild(finalCanvas);
     });
+    output.style = "width: 994px;"
     
     return output;
 }
