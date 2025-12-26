@@ -130,7 +130,7 @@ Promise.all(
 /* Ensures exact 994x333 display */
 .image-frame {
     width: 994px;
-    height: 333px;
+    min-height: 333px;
     background: #222;
     border: 1px solid #444;
     display: flex;
