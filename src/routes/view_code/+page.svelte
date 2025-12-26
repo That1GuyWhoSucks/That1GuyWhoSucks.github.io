@@ -20,9 +20,11 @@ function generate_config_plots(config: Config, res: Results[], imageLoader: Imag
         })
     });
     const fleet = get_fleet_by_url(config);
+    // [fleet[0][0], fleet[0][1], fleet[0][2], fleet[1][2], fleet[1][0], fleet[1][1]]
     let con = [fleet[1][1], fleet[1][0], fleet[1][2], fleet[0][2], fleet[0][1], fleet[0][0]].map((s) => {
         return s[0];
     }).filter((s) => s).map((k) => ship_data[k]);
+    console.log(con)
     return SelectedIndividualGraphTypes.map((graph) => {
         // @ts-ignore
         return IndividualGraphTypes[graph][1](res, con)
@@ -54,7 +56,7 @@ if (status === 0) {
     try {
         imageManager.init().then(async () => {
             let Res: Record<string, Results[]> = {};
-            Promise.all(SelectedConfigs.map(async (id) => {
+            for (const id of SelectedConfigs) {
                 const conf: Config = (await import(`../../configs/${id}.json`, { with: { type: "json" } })).default;
                 
                 const res: Results[] = (await import(`../../results/${id}.json`, { with: { type: "json" } })).default;
@@ -83,22 +85,21 @@ if (status === 0) {
                 Container.appendChild(div);
                 Configs.push(conf);
                 Res[conf.id] = res;
-            })).then(async () => {
-                Configs = Configs;
-                if (SelectedGroupGraphs.length > 0) {
-                    const header = document.createElement("h1");
-                    header.innerText = "Group Graphs";
-                    mount(Accordian, {
-                        target: GroupContainer,
-                        props: {
-                            open: true
-                        }
-                    })
-                    GroupContainer.children[0].children[1].replaceChildren(...await Promise.all(generate_overall_plots(Configs, Res)));
-                    GroupContainer.prepend(header); 
-                }
-                status = 1;
-            });
+            }
+            Configs = Configs;
+            if (SelectedGroupGraphs.length > 0) {
+                const header = document.createElement("h1");
+                header.innerText = "Group Graphs";
+                mount(Accordian, {
+                    target: GroupContainer,
+                    props: {
+                        open: true
+                    }
+                })
+                GroupContainer.children[0].children[1].replaceChildren(...await Promise.all(generate_overall_plots(Configs, Res)));
+                GroupContainer.prepend(header); 
+            }
+            status = 1;
             
         })
     } catch (e) {

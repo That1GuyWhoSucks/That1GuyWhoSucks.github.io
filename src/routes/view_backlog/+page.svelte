@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ViewConfig } from "$lib";
-import { process_fleet, ImageLoader } from "$lib";
+import { process_fleets, ImageLoader } from "$lib";
 import Accordian from '../../Accordian.svelte';
 
 let configs: ViewConfig[] = [];
@@ -63,7 +63,7 @@ Promise.all(
                                             await imageLoader.init();
                                         }
                                         conf.images[0]?.replaceChildren(
-                                            await process_fleet(conf, imageLoader)
+                                            await process_fleets(conf, imageLoader)
                                         );
                                         conf.images[1] = true;
                                     }}>

@@ -228,8 +228,8 @@ export class ShipData {
     }
 }
 
-function PurDmg(data: Results[], ship_data: Record<string, ShipData>) {
-    const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
+function PurDmg(data: Results[], ship_data: ShipData[]) {
+    const D: Plotly.Data[] = ship_data.map((val) => {
         return {
             y: val.pureDmg(),
             name: val.name,
@@ -247,8 +247,8 @@ function PurDmg(data: Results[], ship_data: Record<string, ShipData>) {
         width: 994,
     })
 }
-function AADmg(data: Results[], ship_data: Record<string, ShipData>) {
-    const D: Plotly.Data[] = Object.values(ship_data).map((val) => {
+function AADmg(data: Results[], ship_data: ShipData[]) {
+    const D: Plotly.Data[] = ship_data.map((val) => {
         return {
             y: val.AADmg(),
             name: val.name,
@@ -411,7 +411,7 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
     const skinToName: Record<string, string> = {};
     ship_data.forEach((s) => {
         skinToName[s.skin_id] = s.name
-    })
+    });
     data.forEach((attempt) => {
         Object.values(attempt.Timed_Damage).forEach((k) => {
             Object.keys(k).forEach((time) => {
@@ -427,14 +427,14 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
     });
 
     const records: Plotly.Data[][] = data.map((res) => {
-        return Object.entries(res.Timed_Damage).sort(([ship, _], [ship2, __]) => ship.localeCompare(ship2)).map(([ship, vals]) => {
-            return {
-                x: Object.keys(vals).map(k => Number(k)),
-                y: Object.values(vals),
-                name: skinToName[ship],
+        return ship_data.map((ship) => {
+            return { 
+                x: Object.keys(res.Timed_Damage[ship.skin_id]).map(k => Number(k)),
+                y: Object.values(res.Timed_Damage[ship.skin_id]),
+                name: ship.name,
                 type: "bar",
             }
-        })
+        });
     })
 
     let total_max: number = 0;
@@ -532,7 +532,8 @@ function Timelines(data: Results[], ship_data: ShipData[]): Promise<HTMLElement>
                 },
                 barmode: "stack",
                 width: 994,
-                annotations: annotations
+                annotations: annotations,
+                legend: {"traceorder": "normal"}
             })
         })))
         resolve(div);
@@ -565,6 +566,7 @@ function TotalDmg(data: Results[], ship_data: ShipData[]): Promise<Plotly.Plotly
         },
         barmode: "stack",
         width: 994,
+        legend: {"traceorder": "normal"}
     })
 }
 
@@ -628,6 +630,7 @@ function StandTotalDmg(data: Results[], ship_data: ShipData[]): Promise<Plotly.P
         },
         barmode: "stack",
         width: 994,
+        legend: {"traceorder": "normal"}
     })
 }
 
@@ -1043,11 +1046,51 @@ export function get_fleet_by_url(config: Config) {
     if (fleet.length == 1) {
         fleet = fleet[0];
     } else {
-        if (config.outputName.includes(" - fleet ")) {
-            fleet = fleet[Number(config.outputName.split(" - fleet ")[1]) - 1];
-        }
+        fleet = fleet[Number(config.outputName.split(" - fleet ")[1]) - 1];
     }
     return fleet;
+}
+
+export async function process_fleet(config: Config, imageLoader: ImageLoader): Promise<HTMLCanvasElement> {
+    const fleet = get_fleet_by_url(config);
+    let vang_ships: Ship[] = fleet[0].map((v: any[]) => new Ship(v));
+    while (vang_ships.length < 3) {
+        vang_ships.push(new Ship([]));
+    }
+    let main_ships: Ship[] = fleet[1].map((s: any[]) => new Ship(s));
+    while (main_ships.length < 3) {
+        main_ships.push(new Ship([]));
+    }
+
+    let vang_images: HTMLCanvasElement[] = await Promise.all(vang_ships.map((ship) => ship.getImages(imageLoader)));
+    let main_images: HTMLCanvasElement[] = await Promise.all(main_ships.map((ship) => ship.getImages(imageLoader)));
+
+    const width = vang_images[0].width * 2;
+    const height = vang_images[0].height * 3;
+
+    const finalCanvas = document.createElement("canvas");
+    finalCanvas.width = width;
+    finalCanvas.height = height ;
+    const ctx = finalCanvas.getContext("2d");
+    if (!ctx) return finalCanvas;
+    // Fill background white.
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, width, height);
+    // Set font for text
+    ctx.font = "14px Arial";
+    ctx.fillStyle = "black";
+
+    for (let x=0; x<2; x++) {
+        for (let y=0; y<3; y++) {
+            if (x == 0) {
+                ctx.drawImage(main_images[y], 0, y * main_images[y].height);
+            } else {
+                ctx.drawImage(vang_images[y], vang_images[y].width, y * vang_images[y].height);
+            }
+        }
+    }
+    
+    return finalCanvas;
 }
 
 function get_fleets_by_url(config: Config) {
@@ -1058,7 +1101,7 @@ function get_fleets_by_url(config: Config) {
     return fleet;
 }
 
-export async function process_fleet(config: Config, imageLoader: ImageLoader): Promise<HTMLDivElement> {
+export async function process_fleets(config: Config, imageLoader: ImageLoader): Promise<HTMLDivElement> {
     const fleets = get_fleets_by_url(config);
     const output = document.createElement("div");
     // @ts-ignore
