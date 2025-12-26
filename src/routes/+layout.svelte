@@ -13,7 +13,6 @@ function Home() {
 function ViewBacklog() {
     goto("#/view_backlog");
 }
-console.log(window.location.href.split("/"))
 </script>
 <nav class="navbar">
     <a href="#/" on:click|preventDefault={Home}>Home</a>

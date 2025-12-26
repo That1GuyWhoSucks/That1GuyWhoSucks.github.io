@@ -1,6 +1,6 @@
 <script lang="ts">
 import Accordian from '../../Accordian.svelte';
-import { ENEMIES, ENEMY_MODIFIERS, FT_TECH, FT_SHIPS, FT_SHIP_GROUP_TO_INDEX, type CreatedConfig } from '$lib/index';
+import { ENEMIES, ENEMY_MODIFIERS, FT_TECH, FT_SHIPS, FT_SHIP_GROUP_TO_INDEX, patchLink, type CreatedConfig } from '$lib/index';
 let outputName: string = "";
 let renhexLink: string = "";
 let authorName: string = "";
@@ -25,6 +25,11 @@ let armor = 0;
 let dungeonId = 296015;
 let battleLength = 0;
 let FT: object = {};
+//202150, 317020
+let shipReplacements: [number, number][] = [];
+let gearReplacements: [number, number][] = [];
+let spReplacements: [number, number][] = [];
+
 function GenerateConfig() {
     outputName.trim();
     let error = "";
@@ -62,6 +67,8 @@ function GenerateConfig() {
         dungeonModifications["'stages'/1/'stageCloaktype'"] = parseInt(forceCloakState);
     }
 
+    renhexLink = patchLink(Object.fromEntries(shipReplacements), Object.fromEntries(gearReplacements), Object.fromEntries(spReplacements), renhexLink);
+
     let config: CreatedConfig = {
         ft: FTCopy,
         outputName: outputName,
@@ -73,7 +80,7 @@ function GenerateConfig() {
         dungeonModifications: dungeonModifications,
         author: authorName,
         description: description,
-        createdAt: new Date().toISOString().slice(0, 19) + "Z"
+        createdAt: new Date().toISOString().slice(0, 19) + "Z",
     };
 
     if (error != "") {
@@ -226,6 +233,37 @@ function GenerateConfig() {
                 </table>
                 <p>Fleet tech values (Values &lt; 0 will use max values at time of running)</p>
             </div>
+            <div>
+                <p>Replace ships <strong>(use skin ID)</strong> <button onclick={() => {
+                    console.log(shipReplacements);
+                    shipReplacements.push([-1, -1]);
+                    shipReplacements = shipReplacements
+                }}>new row</button></p>
+                {#each shipReplacements as val}
+                    <div>
+                        <input class="noPanel" type="number" bind:value={val[0]}/> <input class="noPanel" type="number" bind:value={val[1]}/>
+                    </div>
+                {/each}
+                <p>Replace gears <button onclick={() => {
+                    gearReplacements.push([-1, -1]);
+                    gearReplacements = gearReplacements;
+                }}>new row</button></p>
+                {#each gearReplacements as val}
+                    <div>
+                        <input class="noPanel" type="number" bind:value={val[0]}/> <input class="noPanel" type="number" bind:value={val[1]}/>
+                    </div>
+                {/each}
+                <p>Replace Augments <button onclick={() => {
+                    console.log(spReplacements);
+                    spReplacements.push([-1, -1]);
+                    spReplacements = spReplacements
+                }}>new row</button></p>
+                {#each spReplacements as val}
+                    <div>
+                        <input class="noPanel" type="number" bind:value={val[0]}/> <input class="noPanel" type="number" bind:value={val[1]}/>
+                    </div>
+                {/each}
+            </div>
         </div>
     </Accordian>
     <button class="generate" onclick={GenerateConfig}>
@@ -246,6 +284,12 @@ table {
         -moz-appearance:    textfield;
         appearance:         textfield;
     }
+}
+.noPanel {
+    -webkit-appearance: textfield;
+    -moz-appearance:    textfield;
+    appearance:         textfield;
+    width: 30ch;
 }
 tr:hover {
     background-color: #afafaf;

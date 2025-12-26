@@ -792,6 +792,30 @@ export function loadDataByID(noDump = false, string: string) {
     }
 }
 
+export function patchLink(shipReplacements: Record<number, number>, gearReplacements: Record<number, number>, spReplacements: Record<number, number>, renhexLink: string): string {
+    const data: any = loadDataByID(false, renhexLink.split("?AFLD=")[1]);
+    for (const i in data) {
+        for (const j in [0, 1]) {
+            for (const l in [0, 1, 2]) {
+                if (shipReplacements[data[i][j][l][0]] != null) {
+                    data[i][j][l][0] = shipReplacements[data[i][j][l][0]];
+                }
+                for (const k in [1, 2, 3, 4, 5]) {
+                    if (gearReplacements[data[i][j][l][k]] != null) {
+                        data[i][j][l][k] = gearReplacements[data[i][j][l][k]];
+                    }
+                }
+                if (spReplacements[data[i][j][l][6]] != null) {
+                    data[i][j][l][6] = spReplacements[data[i][j][l][6]];
+                }
+            }
+        }
+    }
+    let str = JSON.stringify(data);
+    str = LZString.compressToEncodedURIComponent(`${str}!0.07!${CryptoJS.MD5(str).toString().slice(0,7)}`);
+    return `${renhexLink.split("?AFLD=")[0]}?AFLD=${str}`;
+}
+
 function cloneImage(img: HTMLImageElement): HTMLImageElement {
     const canvas = document.createElement("canvas");
     canvas.width = img.width;

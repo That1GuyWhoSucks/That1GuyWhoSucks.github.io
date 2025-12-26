@@ -20,11 +20,9 @@ function generate_config_plots(config: Config, res: Results[], imageLoader: Imag
         })
     });
     const fleet = get_fleet_by_url(config);
-    // [fleet[0][0], fleet[0][1], fleet[0][2], fleet[1][2], fleet[1][0], fleet[1][1]]
     let con = [fleet[1][1], fleet[1][0], fleet[1][2], fleet[0][2], fleet[0][1], fleet[0][0]].map((s) => {
         return s[0];
     }).filter((s) => s).map((k) => ship_data[k]);
-    console.log(con)
     return SelectedIndividualGraphTypes.map((graph) => {
         // @ts-ignore
         return IndividualGraphTypes[graph][1](res, con)
