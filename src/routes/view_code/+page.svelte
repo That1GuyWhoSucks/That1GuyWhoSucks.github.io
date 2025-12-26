@@ -56,12 +56,13 @@ if (status === 0) {
             let Res: Record<string, Results[]> = {};
             Promise.all(SelectedConfigs.map(async (id) => {
                 const conf: Config = (await import(`../../configs/${id}.json`, { with: { type: "json" } })).default;
-                conf.id = id;
+                
                 const res: Results[] = (await import(`../../results/${id}.json`, { with: { type: "json" } })).default;
                 const div = document.createElement("div");
                 const header = document.createElement("h1");
                 const pre = document.createElement("pre");
-                pre.textContent = JSON.stringify(conf, ["outputName", "author", "description", "fleetBuilderLink", "enemyId", "dungeonId", "ft", "createdAt", "enemyModifications", "dungeonModifications"], 2);
+                pre.textContent = JSON.stringify(conf, null, 2);
+                conf.id = id;
                 pre.style = "word-wrap: anywhere; white-space: pre-wrap; max-width: 994px;"
                 header.innerText = conf.outputName;
                 mount(Accordian, {

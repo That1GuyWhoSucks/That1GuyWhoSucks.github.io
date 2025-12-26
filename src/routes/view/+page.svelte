@@ -226,16 +226,9 @@ function Chunk(arr: ViewConfig[]): ViewConfig[][] {
                 <div slot="details">
                     <div class="config-details">
 
-                        <pre style="overflow-x: auto;">{JSON.stringify(conf, [
-                            "outputName",
-                            "author",
-                            "description",
-                            "fleetBuilderLink",
-                            "enemyId",
-                            "dungeonId",
-                            "ft",
-                            "createdAt"
-                        ], 2)}</pre>
+                        <pre style="overflow-x: auto;">{JSON.stringify(Object.fromEntries(Object.entries(conf).filter(([k, v]) => {
+                            return ["id", "images", "active"].indexOf(k) == -1;
+                        })), null, 2)}</pre>
 
                         <div class="config-image-area">
                             <div class="image-frame" bind:this={conf.images[0]}>
