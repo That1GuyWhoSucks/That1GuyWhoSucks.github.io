@@ -2,7 +2,7 @@
 <script lang="ts">
 import { goto } from '$app/navigation';
 import { GroupGraphTypes, IndividualGraphTypes, ImageLoader, process_fleet, SEARCH_TYPES, ELEMENTS_PER_ROW, ENEMIES } from "$lib/index";
-import type { ViewConfig } from '$lib/index';
+import type { Config, ViewConfig } from '$lib/index';
 import * as LZString from "lz-string";
 import Accordian from '../../Accordian.svelte';
 
@@ -18,13 +18,13 @@ let imageLoader: ImageLoader = new ImageLoader();
 
 Promise.all(
   Object.entries(import.meta.glob("../../configs/*.json")).map(async ([path, loader]) => {
-    const mod = await loader();
-    // @ts-ignore
-    const data = mod.default ?? mod;
+    const mod: any = await loader();
+    const data = (mod.default ?? mod) as Object;
     // @ts-ignore
     const id = path.split("/").pop().replace(/\.json$/, "");
     return { id, ...data, "active": true, "images": [null, false] };
   })
+  // @ts-ignore
 ).then((confs: ViewConfig[]) => {
     confs.sort((a, b) => {
         let v = b.createdAt.localeCompare(a.createdAt)
@@ -61,24 +61,17 @@ function SortConfigs() {
     configs = configs; // don't question it
 }
 
-
-function Chunk(arr: ViewConfig[]): ViewConfig[][] {
-    const result = [];
-    for (let i=0; i<arr.length; i+=ELEMENTS_PER_ROW) {
-        result.push(arr.slice(i, i + ELEMENTS_PER_ROW));
-    }
-    return result;
-}
 </script>
 <section class="intro">
     <p>Select configs to analyze and choose which graphs to generate.</p>
     <div class="code-input">
         <label>
-            Have a code?
+            Already have a code?
             <input type="text" bind:value={code}>
         </label>
         <button on:click={GotoCode}>Load</button>
     </div>
+    <h3>Otherwise build your own code below.</h3>
 </section>
 <section>
     <h2>Graphs</h2>
@@ -321,7 +314,7 @@ function Chunk(arr: ViewConfig[]): ViewConfig[][] {
 }
 
 /* JSON info block */
-.config-info pre {
+pre {
     max-height: 16rem;
     overflow: auto;
     background: #111;

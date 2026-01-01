@@ -8,13 +8,11 @@ let imageLoader: ImageLoader = new ImageLoader();
 
 Promise.all(
   Object.entries(import.meta.glob("../../pending/*.json")).map(async ([path, loader]) => {
-    const mod = await loader();
-    // @ts-ignore
-    const data = mod.default ?? mod;
-    // @ts-ignore
-    const id = path.split("/").pop().replace(/\.json$/, "");
+    const mod: any = await loader();
+    const data = (mod.default ?? mod) as ViewConfig;
     return { ...data, "images": [null, false] };
   })
+  // @ts-ignore
 ).then((confs: ViewConfig[]) => {
     configs = confs.sort((a, b) => {
         let v = a.createdAt.localeCompare(b.createdAt)
@@ -86,7 +84,6 @@ Promise.all(
     gap: 0.75rem;
 }
 
-/* Card shell */
 .config-card {
     display: grid;
     grid-template-columns: 2.5rem 1fr;
@@ -119,7 +116,6 @@ Promise.all(
 }
 
 
-/* Image section */
 .config-image-area {
     display: flex;
     flex-direction: column;
@@ -127,7 +123,6 @@ Promise.all(
     gap: 0.5rem;
 }
 
-/* Ensures exact 994x333 display */
 .image-frame {
     width: 994px;
     min-height: 333px;
@@ -146,17 +141,5 @@ Promise.all(
 
 .generate-image {
     padding: 0.4rem 0.8rem;
-}
-
-section {
-    max-width: 750px;
-    margin: 1.5rem auto;
-    padding: 0 1rem;
-}
-.panel {
-    flex: 1;
-    min-width: 300px;
-    border: 1px solid #ccc;
-    padding: 1rem;
 }
 </style>
