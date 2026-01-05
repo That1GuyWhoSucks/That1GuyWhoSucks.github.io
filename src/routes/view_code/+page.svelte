@@ -107,7 +107,18 @@ if (status === 0) {
 }
 </script>
 <div style="text-align: center;">
-    <h1>Code: {code}</h1>
+    <h1>Code:</h1>
+    <h1 style="max-width: 100vw; word-break: break-all;">{code}</h1>
+    <button on:click={function () {
+        navigator.clipboard.writeText(code).then(() => {
+            alert("Code copied.");
+        });
+    }}>Copy code</button>
+    <button on:click={function () {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert("Shareable url copied.");
+        });
+    }}>Copy complete URL</button>
     {#if status === 0 && !(code === "NoXQhKEkA")}
         <h1>Loading...</h1>
     {/if}
