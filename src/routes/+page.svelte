@@ -12,7 +12,7 @@ let backlog = Object.keys(import.meta.glob("../pending/*.json")).length;
 
     <header class="hero">
         <h1>The AutoTester™</h1>
-
+        <h1>Closed until the game is interesting.</h1>
         <div class="versions">
             <p>Autotester™ version: <strong>1.7.0</strong> (06/01/26)</p>
             <p>Data viewer version: <strong>3.0.0</strong> (22/12/25)</p>
